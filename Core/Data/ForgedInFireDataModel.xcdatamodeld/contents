@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22741" systemVersion="23A344" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    
+    <!-- Client Entity -->
+    <entity name="Client" representedClassName="Client" syncable="YES">
+        <attribute name="firstName" optional="NO" attributeType="String"/>
+        <attribute name="lastName" optional="NO" attributeType="String"/>
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="dateOfBirth" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="contactEmail" optional="YES" attributeType="String"/>
+        <attribute name="contactPhone" optional="YES" attributeType="String"/>
+        <attribute name="biography" optional="YES" attributeType="String"/>
+        <attribute name="emergencyContactName" optional="YES" attributeType="String"/>
+        <attribute name="emergencyContactPhone" optional="YES" attributeType="String"/>
+        <attribute name="householdMembers" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="dependents" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="veteranStatus" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="housingStatus" optional="YES" attributeType="String"/>
+        <attribute name="employmentStatus" optional="YES" attributeType="String"/>
+        <attribute name="transportationStatus" optional="YES" attributeType="String"/>
+        <attribute name="legalNeeds" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="medicalNeeds" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="mentalHealthNeeds" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="recoveryNeeds" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="safetyConcerns" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="riskLevel" optional="YES" attributeType="String"/>
+        <attribute name="safeContactRules" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="confidentialAddress" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="addressLine1" optional="YES" attributeType="String"/>
+        <attribute name="addressLine2" optional="YES" attributeType="String"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="state" optional="YES" attributeType="String"/>
+        <attribute name="zip" optional="YES" attributeType="String"/>
+        <attribute name="lastContactDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="updatedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="assignedAdvocate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="assignedClients" inverseEntity="Staff"/>
+        <relationship name="safetyFlags" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SafetyFlag" inverseName="client" inverseEntity="SafetyFlag"/>
+        <relationship name="programEnrollments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ProgramEnrollment" inverseName="client" inverseEntity="ProgramEnrollment"/>
+        <relationship name="caseNotes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CaseNote" inverseName="client" inverseEntity="CaseNote"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="client" inverseEntity="Task"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Appointment" inverseName="client" inverseEntity="Appointment"/>
+        <relationship name="referrals" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Referral" inverseName="client" inverseEntity="Referral"/>
+        <relationship name="documents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Document" inverseName="client" inverseEntity="Document"/>
+        <relationship name="communications" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Communication" inverseName="client" inverseEntity="Communication"/>
+        <relationship name="safeHousePlacements" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SafeHousePlacement" inverseName="client" inverseEntity="SafeHousePlacement"/>
+        <relationship name="createdBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="createdClients" inverseEntity="Staff"/>
+    </entity>
+    
+    <!-- SafetyFlag Entity -->
+    <entity name="SafetyFlag" representedClassName="SafetyFlag" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="flagType" optional="YES" attributeType="String"/>
+        <attribute name="descriptionText" optional="YES" attributeType="String"/>
+        <attribute name="severity" optional="YES" attributeType="String"/>
+        <attribute name="isActive" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="resolvedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="safetyFlags" inverseEntity="Client"/>
+        <relationship name="createdBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="createdSafetyFlags" inverseEntity="Staff"/>
+        <relationship name="resolvedBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="resolvedSafetyFlags" inverseEntity="Staff"/>
+    </entity>
+    
+    <!-- Program Entity -->
+    <entity name="Program" representedClassName="Program" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="NO" attributeType="String"/>
+        <attribute name="descriptionText" optional="YES" attributeType="String"/>
+        <attribute name="programType" optional="YES" attributeType="String"/>
+        <attribute name="capacity" optional="NO" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="currentEnrollment" optional="NO" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="eligibilityRules" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="requiredFields" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="documentationRequirements" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="grantReportingFields" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="enrollments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ProgramEnrollment" inverseName="program" inverseEntity="ProgramEnrollment"/>
+    </entity>
+    
+    <!-- ProgramEnrollment Entity -->
+    <entity name="ProgramEnrollment" representedClassName="ProgramEnrollment" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="enrollmentDate" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="expectedCompletionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="actualCompletionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="goals" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="programEnrollments" inverseEntity="Client"/>
+        <relationship name="program" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Program" inverseName="enrollments" inverseEntity="Program"/>
+        <relationship name="assignedStaff" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="assignedEnrollments" inverseEntity="Staff"/>
+        <relationship name="caseNotes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CaseNote" inverseName="programEnrollment" inverseEntity="CaseNote"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="programEnrollment" inverseEntity="Task"/>
+        <relationship name="documents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Document" inverseName="programEnrollment" inverseEntity="Document"/>
+        <relationship name="outcomes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ProgramOutcome" inverseName="enrollment" inverseEntity="ProgramOutcome"/>
+        <relationship name="createdBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="createdEnrollments" inverseEntity="Staff"/>
+    </entity>
+    
+    <!-- CaseNote Entity -->
+    <entity name="CaseNote" representedClassName="CaseNote" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="noteType" optional="YES" attributeType="String"/>
+        <attribute name="narrative" optional="YES" attributeType="String"/>
+        <attribute name="attachments" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="followUpDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="visibilityLevel" optional="YES" attributeType="String"/>
+        <attribute name="supervisorReviewFlag" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isVoiceGenerated" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="reviewedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="caseNotes" inverseEntity="Client"/>
+        <relationship name="programEnrollment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProgramEnrollment" inverseName="caseNotes" inverseEntity="ProgramEnrollment"/>
+        <relationship name="staff" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="createdNotes" inverseEntity="Staff"/>
+        <relationship name="relatedTask" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="relatedNotes" inverseEntity="Task"/>
+        <relationship name="reviewedBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="reviewedNotes" inverseEntity="Staff"/>
+    </entity>
+    
+    <!-- Task Entity -->
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="taskName" optional="NO" attributeType="String"/>
+        <attribute name="taskType" optional="YES" attributeType="String"/>
+        <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="priority" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="completionDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="autoCreated" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="autoTriggerEvent" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="tasks" inverseEntity="Client"/>
+        <relationship name="programEnrollment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProgramEnrollment" inverseName="tasks" inverseEntity="ProgramEnrollment"/>
+        <relationship name="assignedStaff" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="assignedTasks" inverseEntity="Staff"/>
+        <relationship name="relatedDocument" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Document" inverseName="relatedTasks" inverseEntity="Document"/>
+        <relationship name="relatedNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CaseNote" inverseName="relatedTask" inverseEntity="CaseNote"/>
+        <relationship name="createdBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="createdTasks" inverseEntity="Staff"/>
+    </entity>
+    
+    <!-- Appointment Entity -->
+    <entity name="Appointment" representedClassName="Appointment" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="appointmentType" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="NO" attributeType="String"/>
+        <attribute name="descriptionText" optional="YES" attributeType="String"/>
+        <attribute name="startTime" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endTime" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="reminderSent" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="appointments" inverseEntity="Client"/>
+        <relationship name="staff" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="appointments" inverseEntity="Staff"/>
+        <relationship name="createdBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="createdAppointments" inverseEntity="Staff"/>
+    </entity>
+    
+    <!-- SafeHouse Entity -->
+    <entity name="SafeHouse" representedClassName="SafeHouse" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="codeName" optional="NO" attributeType="String"/>
+        <attribute name="capacity" optional="NO" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="currentOccupancy" optional="NO" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="availability" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="placementRestrictions" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="safetyRules" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="confidentialLocation" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="assignedStaff" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="assignedSafeHouses" inverseEntity="Staff"/>
+        <relationship name="placements" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SafeHousePlacement" inverseName="safeHouse" inverseEntity="SafeHousePlacement"/>
+    </entity>
+    
+    <!-- SafeHousePlacement Entity -->
+    <entity name="SafeHousePlacement" representedClassName="SafeHousePlacement" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="placementDate" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="expectedExitDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="actualExitDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="reasonForPlacement" optional="YES" attributeType="String"/>
+        <attribute name="safetyConcerns" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="requiredDocuments" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="houseRulesAccepted" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="exitPlan" optional="YES" attributeType="String"/>
+        <attribute name="destinationAfterExit" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="safeHousePlacements" inverseEntity="Client"/>
+        <relationship name="safeHouse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SafeHouse" inverseName="placements" inverseEntity="SafeHouse"/>
+        <relationship name="assignedAdvocate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="assignedPlacements" inverseEntity="Staff"/>
+        <relationship name="programEnrollment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProgramEnrollment" inverseName="placements" inverseEntity="ProgramEnrollment"/>
+        <relationship name="createdBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="createdPlacements" inverseEntity="Staff"/>
+    </entity>
+    
+    <!-- Staff Entity -->
+    <entity name="Staff" representedClassName="Staff" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="email" optional="NO" attributeType="String"/>
+        <attribute name="firstName" optional="NO" attributeType="String"/>
+        <attribute name="lastName" optional="NO" attributeType="String"/>
+        <attribute name="role" optional="YES" attributeType="String"/>
+        <attribute name="permissions" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="lastLogin" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="mfaEnabled" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        
+        <relationship name="assignedClients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Client" inverseName="assignedAdvocate" inverseEntity="Client"/>
+        <relationship name="createdClients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Client" inverseName="createdBy" inverseEntity="Client"/>
+        <relationship name="createdNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CaseNote" inverseName="staff" inverseEntity="CaseNote"/>
+        <relationship name="reviewedNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CaseNote" inverseName="reviewedBy" inverseEntity="CaseNote"/>
+        <relationship name="assignedTasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="assignedStaff" inverseEntity="Task"/>
+        <relationship name="createdTasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="createdBy" inverseEntity="Task"/>
+        <relationship name="assignedEnrollments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProgramEnrollment" inverseName="assignedStaff" inverseEntity="ProgramEnrollment"/>
+        <relationship name="createdEnrollments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProgramEnrollment" inverseName="createdBy" inverseEntity="ProgramEnrollment"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="staff" inverseEntity="Appointment"/>
+        <relationship name="createdAppointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="createdBy" inverseEntity="Appointment"/>
+        <relationship name="assignedSafeHouses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SafeHouse" inverseName="assignedStaff" inverseEntity="SafeHouse"/>
+        <relationship name="assignedPlacements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SafeHousePlacement" inverseName="assignedAdvocate" inverseEntity="SafeHousePlacement"/>
+        <relationship name="createdPlacements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SafeHousePlacement" inverseName="createdBy" inverseEntity="SafeHousePlacement"/>
+        <relationship name="createdSafetyFlags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SafetyFlag" inverseName="createdBy" inverseEntity="SafetyFlag"/>
+        <relationship name="resolvedSafetyFlags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SafetyFlag" inverseName="resolvedBy" inverseEntity="SafetyFlag"/>
+    </entity>
+    
+    <!-- Additional entities for completeness -->
+    <entity name="Referral" representedClassName="Referral" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="referralType" optional="YES" attributeType="String"/>
+        <attribute name="referralSource" optional="YES" attributeType="String"/>
+        <attribute name="referralDestination" optional="YES" attributeType="String"/>
+        <attribute name="referralDate" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="contactPerson" optional="YES" attributeType="String"/>
+        <attribute name="documentsShared" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="consentConfirmed" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="followUpDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="outcome" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="referrals" inverseEntity="Client"/>
+        <relationship name="createdBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="createdReferrals" inverseEntity="Staff"/>
+    </entity>
+    
+    <entity name="Document" representedClassName="Document" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="documentName" optional="NO" attributeType="String"/>
+        <attribute name="documentType" optional="YES" attributeType="String"/>
+        <attribute name="filePath" optional="YES" attributeType="String"/>
+        <attribute name="fileSize" optional="NO" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="mimeType" optional="YES" attributeType="String"/>
+        <attribute name="uploadDate" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="expirationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="visibilityLevel" optional="YES" attributeType="String"/>
+        <attribute name="accessRestrictions" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="version" optional="NO" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="signatureRequired" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="signatureStatus" optional="YES" attributeType="String"/>
+        <attribute name="reviewStatus" optional="YES" attributeType="String"/>
+        
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="documents" inverseEntity="Client"/>
+        <relationship name="programEnrollment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProgramEnrollment" inverseName="documents" inverseEntity="ProgramEnrollment"/>
+        <relationship name="uploadedBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="uploadedDocuments" inverseEntity="Staff"/>
+        <relationship name="relatedTasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="relatedDocument" inverseEntity="Task"/>
+    </entity>
+    
+    <entity name="Communication" representedClassName="Communication" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="communicationType" optional="YES" attributeType="String"/>
+        <attribute name="direction" optional="YES" attributeType="String"/>
+        <attribute name="subject" optional="YES" attributeType="String"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="durationMinutes" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="outcome" optional="YES" attributeType="String"/>
+        <attribute name="safeContactWarningsRespected" optional="NO" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Client" inverseName="communications" inverseEntity="Client"/>
+        <relationship name="staff" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="communications" inverseEntity="Staff"/>
+    </entity>
+    
+    <entity name="ProgramOutcome" representedClassName="ProgramOutcome" syncable="YES">
+        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="outcomeType" optional="YES" attributeType="String"/>
+        <attribute name="outcomeValue" optional="YES" attributeType="String"/>
+        <attribute name="measurementDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="achieved" optional="NO" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
+        
+        <relationship name="enrollment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProgramEnrollment" inverseName="outcomes" inverseEntity="ProgramEnrollment"/>
+        <relationship name="createdBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Staff" inverseName="createdOutcomes" inverseEntity="Staff"/>
+    </entity>
+    
+</model>
