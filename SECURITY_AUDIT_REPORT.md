@@ -1,4 +1,4 @@
-# Security Audit Report - Forged In Fire Client Manager
+# Security Audit Report - Arkhe Vault Client Manager
 
 **Date:** June 1, 2026  
 **Auditor:** Cascade AI Security Audit  
@@ -32,7 +32,7 @@ let data = "\(email):\(password)".data(using: .utf8)!
 
 // After (SECURE):
 private func hashPassword(_ password: String) -> String {
-    let salt = "ForgedInFire_" + ProcessInfo.processInfo.environment["APP_SALT_SUFFIX"]!
+    let salt = "ArkheVault_" + ProcessInfo.processInfo.environment["APP_SALT_SUFFIX"]!
     let inputData = Data((salt + password).utf8)
     let hashed = SHA256.hash(data: inputData)
     return hashed.compactMap { String(format: "%02x", $0) }.joined()
@@ -112,7 +112,7 @@ if #available(macOS 15.0, iOS 15.0, *) {
 
 ```swift
 private let pinnedBackendHashes: [String: [String]] = [
-    "api.forgedinfire.org": ["PLACEHOLDER_HASH_1", "PLACEHOLDER_HASH_2"],
+    "api.arkhevault.org": ["PLACEHOLDER_HASH_1", "PLACEHOLDER_HASH_2"],
     // ... additional endpoints
 ]
 ```
@@ -370,7 +370,7 @@ Replace placeholder hashes in:
 
 ## Conclusion
 
-The Forged In Fire Client Manager has undergone comprehensive security hardening. All critical vulnerabilities have been addressed with industry-standard solutions. The codebase now includes:
+The Arkhe Vault Client Manager has undergone comprehensive security hardening. All critical vulnerabilities have been addressed with industry-standard solutions. The codebase now includes:
 
 - ✅ **Zero plaintext password storage**
 - ✅ **TLS 1.3 with AES-256-GCM for all data in transit**

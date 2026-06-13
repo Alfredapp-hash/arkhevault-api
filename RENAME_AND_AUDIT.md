@@ -15,7 +15,7 @@
 cd /Users/purduelaw/Desktop/ArkheApps/StudentTracker
 
 # Rename the folder
-mv ForgedInFireClientManager ArkheVault
+mv ArkheVaultClientManager ArkheVault
 
 # Verify the rename
 ls -la
@@ -33,29 +33,29 @@ ls -la
 # Navigate to the renamed folder
 cd /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVault
 
-# 1. Replace "Forged In Fire" with "Arkhe Vault" (text with spaces)
-find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/Forged In Fire/Arkhe Vault/g' {} +
+# 1. Replace "Arkhe Vault" with "Arkhe Vault" (text with spaces)
+find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/Arkhe Vault/Arkhe Vault/g' {} +
 
-# 2. Replace "ForgedInFire" with "ArkheVault" (camelCase)
-find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/ForgedInFire/ArkheVault/g' {} +
+# 2. Replace "ArkheVault" with "ArkheVault" (camelCase)
+find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/ArkheVault/ArkheVault/g' {} +
 
-# 3. Replace "forgedinfire" with "arkhevault" (lowercase)
-find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/forgedinfire/arkhevault/g' {} +
+# 3. Replace "arkhevault" with "arkhevault" (lowercase)
+find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/arkhevault/arkhevault/g' {} +
 
-# 4. Replace "com.forgedinfire" with "com.arkheholdings.vault"
-find . -type f \( -name "*.swift" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/com\.forgedinfire/com.arkheholdings.vault/g' {} +
+# 4. Replace "com.arkheholdings.vault" with "com.arkheholdings.vault"
+find . -type f \( -name "*.swift" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/com\.arkhevault/com.arkheholdings.vault/g' {} +
 
-# 5. Replace "ForgeButton" with "ArkheButton"
-find . -type f -name "*.swift" -exec sed -i '' 's/ForgeButton/ArkheButton/g' {} +
+# 5. Replace "ArkheButton" with "ArkheButton"
+find . -type f -name "*.swift" -exec sed -i '' 's/ArkheButton/ArkheButton/g' {} +
 
-# 6. Replace "ForgeCard" with "ArkheCard"
-find . -type f -name "*.swift" -exec sed -i '' 's/ForgeCard/ArkheCard/g' {} +
+# 6. Replace "ArkheCard" with "ArkheCard"
+find . -type f -name "*.swift" -exec sed -i '' 's/ArkheCard/ArkheCard/g' {} +
 
-# 7. Replace "ForgeLogo" with "ArkheLogo"
-find . -type f -name "*.swift" -exec sed -i '' 's/ForgeLogo/ArkheLogo/g' {} +
+# 7. Replace "ArkheLogo" with "ArkheLogo"
+find . -type f -name "*.swift" -exec sed -i '' 's/ArkheLogo/ArkheLogo/g' {} +
 
-# 8. Replace "ForgedInFireApp" with "ArkheVaultApp"
-find . -type f -name "*.swift" -exec sed -i '' 's/ForgedInFireApp/ArkheVaultApp/g' {} +
+# 8. Replace "ArkheVaultApp" with "ArkheVaultApp"
+find . -type f -name "*.swift" -exec sed -i '' 's/ArkheVaultApp/ArkheVaultApp/g' {} +
 ```
 
 ---
@@ -68,18 +68,18 @@ find . -type f -name "*.swift" -exec sed -i '' 's/ForgedInFireApp/ArkheVaultApp/
 cd /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVault
 
 # Rename main app file
-mv App/ForgedInFireApp.swift App/ArkheVaultApp.swift
+mv App/ArkheVaultApp.swift App/ArkheVaultApp.swift
 
 # Rename UI components
-mv Shared/Components/ForgeButton.swift Shared/Components/ArkheButton.swift
-mv Shared/Components/ForgeLogo.swift Shared/Components/ArkheLogo.swift
+mv Shared/Components/ArkheButton.swift Shared/Components/ArkheButton.swift
+mv Shared/Components/ArkheLogo.swift Shared/Components/ArkheLogo.swift
 
 # Rename test directories (if needed)
-mv Tests/ForgedInFireClientManagerTests Tests/ArkheVaultTests
-mv Tests/ForgedInFireClientManagerUITests Tests/ArkheVaultUITests
+mv Tests/ArkheVaultClientManagerTests Tests/ArkheVaultTests
+mv Tests/ArkheVaultClientManagerUITests Tests/ArkheVaultUITests
 
 # Update test file names
-mv Tests/ArkheVaultTests/ForgedInFireClientManagerTests.swift Tests/ArkheVaultTests/ArkheVaultTests.swift 2>/dev/null || true
+mv Tests/ArkheVaultTests/ArkheVaultClientManagerTests.swift Tests/ArkheVaultTests/ArkheVaultTests.swift 2>/dev/null || true
 ```
 
 ---
@@ -89,37 +89,37 @@ mv Tests/ArkheVaultTests/ForgedInFireClientManagerTests.swift Tests/ArkheVaultTe
 ### Verify All Changes:
 
 ```bash
-# Check for any remaining "Forged In Fire" references
-echo "=== Checking for 'Forged In Fire' ==="
-grep -r "Forged In Fire" . --include="*.swift" --include="*.md" --include="*.json" --include="*.plist" || echo "✅ None found"
+# Check for any remaining "Arkhe Vault" references
+echo "=== Checking for 'Arkhe Vault' ==="
+grep -r "Arkhe Vault" . --include="*.swift" --include="*.md" --include="*.json" --include="*.plist" || echo "✅ None found"
 
-# Check for any remaining "ForgedInFire" references
-echo "=== Checking for 'ForgedInFire' ==="
-grep -r "ForgedInFire" . --include="*.swift" --include="*.md" --include="*.json" --include="*.plist" || echo "✅ None found"
+# Check for any remaining "ArkheVault" references
+echo "=== Checking for 'ArkheVault' ==="
+grep -r "ArkheVault" . --include="*.swift" --include="*.md" --include="*.json" --include="*.plist" || echo "✅ None found"
 
-# Check for any remaining "forgedinfire" references
-echo "=== Checking for 'forgedinfire' ==="
-grep -r "forgedinfire" . --include="*.swift" --include="*.md" --include="*.json" --include="*.plist" || echo "✅ None found"
+# Check for any remaining "arkhevault" references
+echo "=== Checking for 'arkhevault' ==="
+grep -r "arkhevault" . --include="*.swift" --include="*.md" --include="*.json" --include="*.plist" || echo "✅ None found"
 
-# Check for any remaining "com.forgedinfire" references
-echo "=== Checking for 'com.forgedinfire' ==="
-grep -r "com\.forgedinfire" . --include="*.swift" --include="*.json" --include="*.plist" || echo "✅ None found"
+# Check for any remaining "com.arkheholdings.vault" references
+echo "=== Checking for 'com.arkheholdings.vault' ==="
+grep -r "com\.arkhevault" . --include="*.swift" --include="*.json" --include="*.plist" || echo "✅ None found"
 
-# Check for any remaining "ForgeButton" references
-echo "=== Checking for 'ForgeButton' ==="
-grep -r "ForgeButton" . --include="*.swift" || echo "✅ None found"
+# Check for any remaining "ArkheButton" references
+echo "=== Checking for 'ArkheButton' ==="
+grep -r "ArkheButton" . --include="*.swift" || echo "✅ None found"
 
-# Check for any remaining "ForgeCard" references
-echo "=== Checking for 'ForgeCard' ==="
-grep -r "ForgeCard" . --include="*.swift" || echo "✅ None found"
+# Check for any remaining "ArkheCard" references
+echo "=== Checking for 'ArkheCard' ==="
+grep -r "ArkheCard" . --include="*.swift" || echo "✅ None found"
 
-# Check for any remaining "ForgeLogo" references
-echo "=== Checking for 'ForgeLogo' ==="
-grep -r "ForgeLogo" . --include="*.swift" || echo "✅ None found"
+# Check for any remaining "ArkheLogo" references
+echo "=== Checking for 'ArkheLogo' ==="
+grep -r "ArkheLogo" . --include="*.swift" || echo "✅ None found"
 
-# Check for any remaining "ForgedInFireApp" references
-echo "=== Checking for 'ForgedInFireApp' ==="
-grep -r "ForgedInFireApp" . --include="*.swift" || echo "✅ None found"
+# Check for any remaining "ArkheVaultApp" references
+echo "=== Checking for 'ArkheVaultApp' ==="
+grep -r "ArkheVaultApp" . --include="*.swift" || echo "✅ None found"
 ```
 
 ---
@@ -130,7 +130,7 @@ grep -r "ForgedInFireApp" . --include="*.swift" || echo "✅ None found"
 
 ```bash
 # The global sed commands above should handle this, but verify:
-grep -r "ForgedInFireClientManager" . --include="*.pbxproj" || echo "✅ Project file updated"
+grep -r "ArkheVaultClientManager" . --include="*.pbxproj" || echo "✅ Project file updated"
 
 # If still present, manually update:
 # - PRODUCT_NAME
@@ -148,7 +148,7 @@ grep -r "ForgedInFireClientManager" . --include="*.pbxproj" || echo "✅ Project
 # List all markdown files and check for old branding
 echo "=== Markdown Files Audit ==="
 find . -name "*.md" -type f | while read file; do
-    count=$(grep -c "Forged In Fire\|ForgedInFire\|forgedinfire" "$file" 2>/dev/null || echo 0)
+    count=$(grep -c "Arkhe Vault\|ArkheVault\|arkhevault" "$file" 2>/dev/null || echo 0)
     if [ "$count" -gt 0 ]; then
         echo "⚠️  $file: $count references remaining"
     fi
@@ -165,7 +165,7 @@ done
 # List all swift files and check for old branding
 echo "=== Swift Files Audit ==="
 find . -name "*.swift" -type f | while read file; do
-    count=$(grep -c "Forged In Fire\|ForgedInFire\|forgedinfire\|ForgeButton\|ForgeCard\|ForgeLogo\|ForgedInFireApp" "$file" 2>/dev/null || echo 0)
+    count=$(grep -c "Arkhe Vault\|ArkheVault\|arkhevault\|ArkheButton\|ArkheCard\|ArkheLogo\|ArkheVaultApp" "$file" 2>/dev/null || echo 0)
     if [ "$count" -gt 0 ]; then
         echo "⚠️  $file: $count references remaining"
     fi
@@ -235,9 +235,9 @@ xcodebuild build-for-testing \
 - [ ] Security audit uses new branding
 
 ### Code:
-- [ ] No "Forged In Fire" text remains
-- [ ] No "ForgedInFire" references remain
-- [ ] No "forgedinfire" references remain
+- [ ] No "Arkhe Vault" text remains
+- [ ] No "ArkheVault" references remain
+- [ ] No "arkhevault" references remain
 - [ ] Keychain uses `com.arkheholdings.vault`
 - [ ] Salt prefix uses `ArkheVault_`
 - [ ] All component names updated (ArkheButton, ArkheCard, ArkheLogo)
@@ -308,10 +308,10 @@ open /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVault/ArkheVault.xco
 
 ✅ **Rename Complete When:**
 1. Folder is named `ArkheVault`
-2. Zero grep results for "Forged In Fire"
-3. Zero grep results for "ForgedInFire"
-4. Zero grep results for "forgedinfire"
-5. Zero grep results for "ForgeButton/ForgeCard/ForgeLogo"
+2. Zero grep results for "Arkhe Vault"
+3. Zero grep results for "ArkheVault"
+4. Zero grep results for "arkhevault"
+5. Zero grep results for "ArkheButton/ArkheCard/ArkheLogo"
 6. Build succeeds with no warnings
 7. App launches showing "Arkhe Vault"
 8. All 85+ tests pass

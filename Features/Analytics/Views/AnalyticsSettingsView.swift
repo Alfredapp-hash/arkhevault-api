@@ -11,7 +11,7 @@ class AnalyticsManager: ObservableObject {
     @Published var sessionStartTime: Date?
     @Published var crashCount: Int = 0
     
-    private let logger = OSLog(subsystem: "com.forgedinfire.clientmanager", category: "Analytics")
+    private let logger = OSLog(subsystem: "com.arkheholdings.vault.clientmanager", category: "Analytics")
     private let context: NSManagedObjectContext
     
     private init(context: NSManagedObjectContext = CoreDataController.shared.container.viewContext) {
@@ -277,7 +277,7 @@ struct AnalyticsSettingsView: View {
             SectionHeader(title: "Analytics & Crash Reporting")
             
             // Analytics Toggle
-            ForgeCard {
+            ArkheCard {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Analytics")
@@ -300,7 +300,7 @@ struct AnalyticsSettingsView: View {
             }
             
             // Crash Reporting Toggle
-            ForgeCard {
+            ArkheCard {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Crash Reporting")
@@ -324,7 +324,7 @@ struct AnalyticsSettingsView: View {
             
             // Session Info
             if let sessionStart = analyticsManager.sessionStartTime {
-                ForgeCard {
+                ArkheCard {
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Session Duration")
@@ -346,7 +346,7 @@ struct AnalyticsSettingsView: View {
             
             // Crash Count
             if analyticsManager.crashCount > 0 {
-                ForgeCard {
+                ArkheCard {
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
                             Text("Crashes Reported")
@@ -370,7 +370,7 @@ struct AnalyticsSettingsView: View {
             SectionHeader(title: "Data Export")
             
             VStack(spacing: 12) {
-                ForgeButton(
+                ArkheButton(
                     title: "Export Analytics Data",
                     style: .secondary
                 ) {
@@ -378,7 +378,7 @@ struct AnalyticsSettingsView: View {
                     showingExportAlert = true
                 }
                 
-                ForgeButton(
+                ArkheButton(
                     title: "Export Error Data",
                     style: .secondary
                 ) {
@@ -390,7 +390,7 @@ struct AnalyticsSettingsView: View {
             // Privacy Notice
             SectionHeader(title: "Privacy")
             
-            ForgeCard {
+            ArkheCard {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Data Collection Notice")
                         .font(.brandBodyBold)

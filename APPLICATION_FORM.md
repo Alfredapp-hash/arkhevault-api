@@ -1,4 +1,4 @@
-# Forged In Fire - 2-Year Free Program Application
+# Arkhe Vault - 2-Year Free Program Application
 
 ## Organization Information
 
@@ -133,10 +133,10 @@ By signing below, I certify that:
 
 ## Submit Application
 
-**Email to:** nonprofit@forgedinfire.org  
+**Email to:** nonprofit@arkhevault.org  
 **Subject:** 2-Year Free Application - [Organization Name]
 
-**Questions?** Call (555) 123-4567 or email nonprofit@forgedinfire.org
+**Questions?** Call (555) 123-4567 or email nonprofit@arkhevault.org
 
 ---
 
@@ -144,6 +144,6 @@ By signing below, I certify that:
 1. We review your application (48 hours)
 2. If approved, we schedule a 30-minute onboarding call
 3. We set up your account and provide training
-4. You start using ForgedInFire (Month 0 of your 2 years)
+4. You start using ArkheVault (Month 0 of your 2 years)
 
 *End of Application Form*

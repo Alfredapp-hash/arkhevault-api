@@ -1,0 +1,900 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		51303FC6F1C916CE413C2A17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0240F63E68F2E7F60EAF769A /* AppDelegate.swift */; };
+		A3D8DB2B7F45A2991A41FDDD /* ArkheVaultApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81CE60B5266383D974FFFB4 /* ArkheVaultApp.swift */; };
+		79B88BF87A8E6EF5F617459B /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A85ED209DA3A112240DE28 /* MainWindow.swift */; };
+		21196D7D9FC27C34DCD68F3F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89979B5BBDAC18CA51716D4A /* LoginView.swift */; };
+		049D897EDF75184CDFFBF2CE /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDC4EC5110C0404EB1BA358 /* CoreDataController.swift */; };
+		23000A9BE893DA8EA698277A /* Client+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01EEE0F542F8F3E3EB4D764 /* Client+CoreData.swift */; };
+		3C59E34886CD630AEBC8D271 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD8DEE0AE22DAF4AA7F4A16F /* AIService.swift */; };
+		2D906F0DCB168B849B50313F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D5F0D8130C1D3B2F33AD53 /* AuthenticationManager.swift */; };
+		03A07509750855A1F3B97C93 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4138FECDFF49B184A2B9BE63 /* Configuration.swift */; };
+		42A4B41EE277A1564B32E887 /* NetworkSecurityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C33FCB3B9C0B7CF5C42AD9 /* NetworkSecurityManager.swift */; };
+		167BAE8BD4B2521508BE1EEF /* RateLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB979FF43F85B3D0D51088B /* RateLimiter.swift */; };
+		3D5BC76423E88CFB0273217B /* SecurityEventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53597B182784FC312BFE4E57 /* SecurityEventLogger.swift */; };
+		7889FDCD7E631EB10AADCA24 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415050FA6599CF1069831EB0 /* SessionManager.swift */; };
+		4A965E85A6B887E31EE416BE /* AnalyticsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BCC7F45CD1341D2C4802CA /* AnalyticsSettingsView.swift */; };
+		3AB8F0451144C865FB8746D2 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7764EA04D1AC5FF09210F5E5 /* CalendarView.swift */; };
+		2919B99B43EE6AA962DF11C4 /* ClientDocumentsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF24A8DCB51617067B9C196 /* ClientDocumentsTab.swift */; };
+		3FC26451B9B7A2CF1DAEF1BF /* ClientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FBC4A592883570C0742E84 /* ClientListView.swift */; };
+		E59D56A763A9FDBC3D33EA9E /* ClientNotesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E9E57780BE05E5E8877CBA /* ClientNotesTab.swift */; };
+		34265B4CC55ECBD79459E792 /* ClientProgramsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EB2D406C584F0FB178D2 /* ClientProgramsTab.swift */; };
+		E0FB3B9D98D99B4B63F9E3BB /* ClientTimelineTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB84C379C603FCF5E43D3181 /* ClientTimelineTab.swift */; };
+		51C7BD3EF10532D1652506B7 /* IntakeSystemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D87D1B1CD070F0536A6E88E /* IntakeSystemView.swift */; };
+		D25CC13DCA701A2234F7E328 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0369B03893AFA7CF74FE1C9 /* DashboardView.swift */; };
+		721D54BCDC5B8DCFBCB692EB /* DocumentExtractionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C32E5B1C7B90F54E5C3BB5B /* DocumentExtractionView.swift */; };
+		325C564333CA7BEB335F6D0C /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9719012379D046CB1FC99BE2 /* NotificationSettingsView.swift */; };
+		B68764360B0EB52EB0048428 /* OfflineSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C87CFF979C44DC1B2313B7 /* OfflineSettingsView.swift */; };
+		BBB92F2400F509E26F38BBD3 /* ProgramListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51ABB052C20AE97DBB21EF9 /* ProgramListView.swift */; };
+		451C68A5CC903B9749326A98 /* ReferralListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F80089204F9DAEE85FF610 /* ReferralListView.swift */; };
+		D166A920760984E5858A0F54 /* ReportListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B2D4BA36F8006AAAEF02D /* ReportListView.swift */; };
+		D3AD415CE6A1CDD7E5EC4F5F /* SafeHouseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CF3555147905949103E882 /* SafeHouseListView.swift */; };
+		B7B66BF0C79F5F563DCBE2D0 /* SafetyDashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159A25DAD5CBDBA5C9308A2E /* SafetyDashboardView.swift */; };
+		396496D5855C8F7C9D571C8B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3559817A6143F452AD3A8303 /* SettingsView.swift */; };
+		E4C029E78E848D303CE4D57C /* TaskListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE240841E27E472D63E1E2E /* TaskListView.swift */; };
+		09633F8F9B3413F52EA7743F /* VolunteerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B849E1B677928F6C5F098D /* VolunteerListView.swift */; };
+		8AA11069CFADC9E54ED7B9D8 /* ArkheButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B46D352E372AA1ADF35DA /* ArkheButton.swift */; };
+		99F82D59C0F75E54BC50996D /* ArkheCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDBC26D6F9A184D8D1E1E41 /* ArkheCard.swift */; };
+		1AF9F7F6DC76E0470651D35D /* ArkheLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6498074147127C96DA34D1CF /* ArkheLogo.swift */; };
+		B1482423A64B8E6EEE51FCBA /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CDADFC7C1A06882E2483884 /* ErrorHandler.swift */; };
+		BA8105D76150388B686E85CE /* Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17F9A6E8C0E58DE570143451 /* Branding.swift */; };
+		24425838BB3F5D7B5AD31FD3 /* CriticalComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6219767E2356A61597AC43D /* CriticalComponentTests.swift */; };
+		7898ED9D76550D8FF92F5F5C /* SecurityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0103D318AA1E7EF194096ADC /* SecurityTests.swift */; };
+		8F5698C6CB7E38DD4A259538 /* SecurityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C614F850701D82243FBA10E0 /* SecurityUITests.swift */; };
+		35E009BE0D2BB1080229DBDB /* ArkheVaultDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 05FC3ABB706F56F6EB7106FF /* ArkheVaultDataModel.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7BCCADA3021C07D12E775CB5 /* ArkheVault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArkheVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F3F2F31926B9EEDBD10FA2A /* ArkheVaultTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArkheVaultTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		85B18D5CC52AE6DDD2D1E223 /* ArkheVaultUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ArkheVaultUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0240F63E68F2E7F60EAF769A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F81CE60B5266383D974FFFB4 /* ArkheVaultApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkheVaultApp.swift; sourceTree = "<group>"; };
+		53A85ED209DA3A112240DE28 /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
+		89979B5BBDAC18CA51716D4A /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		5CDC4EC5110C0404EB1BA358 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		B01EEE0F542F8F3E3EB4D764 /* Client+CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client+CoreData.swift; sourceTree = "<group>"; };
+		AD8DEE0AE22DAF4AA7F4A16F /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
+		20D5F0D8130C1D3B2F33AD53 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		4138FECDFF49B184A2B9BE63 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		38C33FCB3B9C0B7CF5C42AD9 /* NetworkSecurityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSecurityManager.swift; sourceTree = "<group>"; };
+		8EB979FF43F85B3D0D51088B /* RateLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateLimiter.swift; sourceTree = "<group>"; };
+		53597B182784FC312BFE4E57 /* SecurityEventLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityEventLogger.swift; sourceTree = "<group>"; };
+		415050FA6599CF1069831EB0 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		20BCC7F45CD1341D2C4802CA /* AnalyticsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsSettingsView.swift; sourceTree = "<group>"; };
+		7764EA04D1AC5FF09210F5E5 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		CEF24A8DCB51617067B9C196 /* ClientDocumentsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientDocumentsTab.swift; sourceTree = "<group>"; };
+		79FBC4A592883570C0742E84 /* ClientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientListView.swift; sourceTree = "<group>"; };
+		94E9E57780BE05E5E8877CBA /* ClientNotesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientNotesTab.swift; sourceTree = "<group>"; };
+		1E90EB2D406C584F0FB178D2 /* ClientProgramsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProgramsTab.swift; sourceTree = "<group>"; };
+		FB84C379C603FCF5E43D3181 /* ClientTimelineTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTimelineTab.swift; sourceTree = "<group>"; };
+		2D87D1B1CD070F0536A6E88E /* IntakeSystemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntakeSystemView.swift; sourceTree = "<group>"; };
+		C0369B03893AFA7CF74FE1C9 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		4C32E5B1C7B90F54E5C3BB5B /* DocumentExtractionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentExtractionView.swift; sourceTree = "<group>"; };
+		9719012379D046CB1FC99BE2 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		C7C87CFF979C44DC1B2313B7 /* OfflineSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineSettingsView.swift; sourceTree = "<group>"; };
+		E51ABB052C20AE97DBB21EF9 /* ProgramListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramListView.swift; sourceTree = "<group>"; };
+		92F80089204F9DAEE85FF610 /* ReferralListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralListView.swift; sourceTree = "<group>"; };
+		977B2D4BA36F8006AAAEF02D /* ReportListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportListView.swift; sourceTree = "<group>"; };
+		D0CF3555147905949103E882 /* SafeHouseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeHouseListView.swift; sourceTree = "<group>"; };
+		159A25DAD5CBDBA5C9308A2E /* SafetyDashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyDashboardView.swift; sourceTree = "<group>"; };
+		3559817A6143F452AD3A8303 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6CE240841E27E472D63E1E2E /* TaskListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListView.swift; sourceTree = "<group>"; };
+		98B849E1B677928F6C5F098D /* VolunteerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolunteerListView.swift; sourceTree = "<group>"; };
+		045B46D352E372AA1ADF35DA /* ArkheButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkheButton.swift; sourceTree = "<group>"; };
+		CDDBC26D6F9A184D8D1E1E41 /* ArkheCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkheCard.swift; sourceTree = "<group>"; };
+		6498074147127C96DA34D1CF /* ArkheLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArkheLogo.swift; sourceTree = "<group>"; };
+		1CDADFC7C1A06882E2483884 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
+		17F9A6E8C0E58DE570143451 /* Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branding.swift; sourceTree = "<group>"; };
+		A6219767E2356A61597AC43D /* CriticalComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriticalComponentTests.swift; sourceTree = "<group>"; };
+		0103D318AA1E7EF194096ADC /* SecurityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityTests.swift; sourceTree = "<group>"; };
+		C614F850701D82243FBA10E0 /* SecurityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityUITests.swift; sourceTree = "<group>"; };
+		05FC3ABB706F56F6EB7106FF /* ArkheVaultDataModel.xcdatamodeld */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ArkheVaultDataModel.xcdatamodeld; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+
+
+		29B2D46AA747A59804D46E1F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26D0051BFA5D2DB99E093B6A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B252FAC1B609D9701F0A7D81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BF7A2D27A78D590BDEF15AF2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7BCCADA3021C07D12E775CB5 /* ArkheVault.app */,
+				2F3F2F31926B9EEDBD10FA2A /* ArkheVaultTests.xctest */,
+				85B18D5CC52AE6DDD2D1E223 /* ArkheVaultUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D1D0524B025E57AFFF263442 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				0240F63E68F2E7F60EAF769A /* AppDelegate.swift */,
+				F81CE60B5266383D974FFFB4 /* ArkheVaultApp.swift */,
+				53A85ED209DA3A112240DE28 /* MainWindow.swift */,
+				99D45A13655825DDF9DB3FC4 /* Views */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		35D315DEBBF45F223B169A61 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				65BFE31FDA3EADDE49A1EFB4 /* Data */,
+				1E39133965AFA6B29F5894C9 /* Services */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		984D844B917CCD4C29DE2A97 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				2834F8AE719702FCECB8635A /* Analytics */,
+				11C4EC900AA1965E5F60389D /* Calendar */,
+				AE58D254B121B21AFF6F87DF /* ClientManagement */,
+				F1EB4C128DD3C7054B08640B /* Dashboard */,
+				C4EECF6C072D5AAC74036A10 /* DocumentExtraction */,
+				430B23EE82FDD2C1C359CFEA /* Notifications */,
+				F9BDA52BE24B7AE616F2AB7E /* OfflineMode */,
+				B8F9904E26D75892ADEDD035 /* ProgramManagement */,
+				1B082C9A4C43645F3420AD46 /* ReferralManagement */,
+				0B03A3583E0DACD5FA99FA70 /* Reporting */,
+				039D7A1A33EA6E86B939EDA3 /* SafeHouseManagement */,
+				368464B0C34E15D7B2B3EB59 /* SafetyManagement */,
+				2C3495591E10CB2A6AB17552 /* Settings */,
+				DC8417910ED0A62372614E0F /* TaskManagement */,
+				3DC599FC3AEA7452CA30D14C /* VolunteerManagement */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		B46A6AFB1DC88CE23F6E63F1 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				D893723842785C94B6717501 /* Components */,
+				374A1F8C805D15D791351DC2 /* Utilities */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		74C0354F987B4FC0FDE2C044 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E2584296638FD6B7FFACD932 /* ArkheVaultTests */,
+				27011D8FC3356F222CE4B5B6 /* ArkheVaultUITests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		5928955287B8089ED2177128 /* ArkheVault */ = {
+			isa = PBXGroup;
+			children = (
+				D1D0524B025E57AFFF263442 /* App */,
+				35D315DEBBF45F223B169A61 /* Core */,
+				984D844B917CCD4C29DE2A97 /* Features */,
+				B46A6AFB1DC88CE23F6E63F1 /* Shared */,
+				74C0354F987B4FC0FDE2C044 /* Tests */,
+				BF7A2D27A78D590BDEF15AF2 /* Products */,
+			);
+			path = .;
+			sourceTree = "<group>";
+		};
+		99D45A13655825DDF9DB3FC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89979B5BBDAC18CA51716D4A /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		65BFE31FDA3EADDE49A1EFB4 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				5CDC4EC5110C0404EB1BA358 /* CoreDataController.swift */,
+				8DC43FBE704213119A554A77 /* Models */,
+				05FC3ABB706F56F6EB7106FF /* ArkheVaultDataModel.xcdatamodeld */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1E39133965AFA6B29F5894C9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AD8DEE0AE22DAF4AA7F4A16F /* AIService.swift */,
+				20D5F0D8130C1D3B2F33AD53 /* AuthenticationManager.swift */,
+				4138FECDFF49B184A2B9BE63 /* Configuration.swift */,
+				38C33FCB3B9C0B7CF5C42AD9 /* NetworkSecurityManager.swift */,
+				8EB979FF43F85B3D0D51088B /* RateLimiter.swift */,
+				53597B182784FC312BFE4E57 /* SecurityEventLogger.swift */,
+				415050FA6599CF1069831EB0 /* SessionManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2834F8AE719702FCECB8635A /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				C2F94B23CB505BEB6F2D4BE0 /* Views */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		11C4EC900AA1965E5F60389D /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				902280100E0036847162DDB4 /* Views */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		AE58D254B121B21AFF6F87DF /* ClientManagement */ = {
+			isa = PBXGroup;
+			children = (
+				0DC1224A50BD97CA20A30FF2 /* Views */,
+			);
+			path = ClientManagement;
+			sourceTree = "<group>";
+		};
+		F1EB4C128DD3C7054B08640B /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				A64C0B97424A0BBFCD6FCCEF /* Views */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		C4EECF6C072D5AAC74036A10 /* DocumentExtraction */ = {
+			isa = PBXGroup;
+			children = (
+				6297E37D4BDC9EA0D038AC99 /* Views */,
+			);
+			path = DocumentExtraction;
+			sourceTree = "<group>";
+		};
+		430B23EE82FDD2C1C359CFEA /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				661A5ACD507055ECE1BAB1C6 /* Views */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		F9BDA52BE24B7AE616F2AB7E /* OfflineMode */ = {
+			isa = PBXGroup;
+			children = (
+				95D8D61A0714C6D1C04148AD /* Views */,
+			);
+			path = OfflineMode;
+			sourceTree = "<group>";
+		};
+		B8F9904E26D75892ADEDD035 /* ProgramManagement */ = {
+			isa = PBXGroup;
+			children = (
+				88CA1A9DAAC2891DB35565E8 /* Views */,
+			);
+			path = ProgramManagement;
+			sourceTree = "<group>";
+		};
+		1B082C9A4C43645F3420AD46 /* ReferralManagement */ = {
+			isa = PBXGroup;
+			children = (
+				FBC03A1EA1F661CC9AB46FC9 /* Views */,
+			);
+			path = ReferralManagement;
+			sourceTree = "<group>";
+		};
+		0B03A3583E0DACD5FA99FA70 /* Reporting */ = {
+			isa = PBXGroup;
+			children = (
+				AA3CFF63AB5B5D975EBAC231 /* Views */,
+			);
+			path = Reporting;
+			sourceTree = "<group>";
+		};
+		039D7A1A33EA6E86B939EDA3 /* SafeHouseManagement */ = {
+			isa = PBXGroup;
+			children = (
+				42240BA9A6F544690E573989 /* Views */,
+			);
+			path = SafeHouseManagement;
+			sourceTree = "<group>";
+		};
+		368464B0C34E15D7B2B3EB59 /* SafetyManagement */ = {
+			isa = PBXGroup;
+			children = (
+				2B88B356373E8FBB2E258F32 /* Views */,
+			);
+			path = SafetyManagement;
+			sourceTree = "<group>";
+		};
+		2C3495591E10CB2A6AB17552 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4D4465B2102BA528B43EFC84 /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		DC8417910ED0A62372614E0F /* TaskManagement */ = {
+			isa = PBXGroup;
+			children = (
+				1327A2A10410630E4B7E11EE /* Views */,
+			);
+			path = TaskManagement;
+			sourceTree = "<group>";
+		};
+		3DC599FC3AEA7452CA30D14C /* VolunteerManagement */ = {
+			isa = PBXGroup;
+			children = (
+				8F57D83ED0031B10672D9C4C /* Views */,
+			);
+			path = VolunteerManagement;
+			sourceTree = "<group>";
+		};
+		D893723842785C94B6717501 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				045B46D352E372AA1ADF35DA /* ArkheButton.swift */,
+				CDDBC26D6F9A184D8D1E1E41 /* ArkheCard.swift */,
+				6498074147127C96DA34D1CF /* ArkheLogo.swift */,
+				1CDADFC7C1A06882E2483884 /* ErrorHandler.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		374A1F8C805D15D791351DC2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				17F9A6E8C0E58DE570143451 /* Branding.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E2584296638FD6B7FFACD932 /* ArkheVaultTests */ = {
+			isa = PBXGroup;
+			children = (
+				A6219767E2356A61597AC43D /* CriticalComponentTests.swift */,
+				0103D318AA1E7EF194096ADC /* SecurityTests.swift */,
+			);
+			path = ArkheVaultTests;
+			sourceTree = "<group>";
+		};
+		27011D8FC3356F222CE4B5B6 /* ArkheVaultUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C614F850701D82243FBA10E0 /* SecurityUITests.swift */,
+			);
+			path = ArkheVaultUITests;
+			sourceTree = "<group>";
+		};
+		8DC43FBE704213119A554A77 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B01EEE0F542F8F3E3EB4D764 /* Client+CoreData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C2F94B23CB505BEB6F2D4BE0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				20BCC7F45CD1341D2C4802CA /* AnalyticsSettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		902280100E0036847162DDB4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7764EA04D1AC5FF09210F5E5 /* CalendarView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0DC1224A50BD97CA20A30FF2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CEF24A8DCB51617067B9C196 /* ClientDocumentsTab.swift */,
+				79FBC4A592883570C0742E84 /* ClientListView.swift */,
+				94E9E57780BE05E5E8877CBA /* ClientNotesTab.swift */,
+				1E90EB2D406C584F0FB178D2 /* ClientProgramsTab.swift */,
+				FB84C379C603FCF5E43D3181 /* ClientTimelineTab.swift */,
+				2D87D1B1CD070F0536A6E88E /* IntakeSystemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A64C0B97424A0BBFCD6FCCEF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C0369B03893AFA7CF74FE1C9 /* DashboardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6297E37D4BDC9EA0D038AC99 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4C32E5B1C7B90F54E5C3BB5B /* DocumentExtractionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		661A5ACD507055ECE1BAB1C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9719012379D046CB1FC99BE2 /* NotificationSettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		95D8D61A0714C6D1C04148AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C7C87CFF979C44DC1B2313B7 /* OfflineSettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		88CA1A9DAAC2891DB35565E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E51ABB052C20AE97DBB21EF9 /* ProgramListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FBC03A1EA1F661CC9AB46FC9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				92F80089204F9DAEE85FF610 /* ReferralListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA3CFF63AB5B5D975EBAC231 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				977B2D4BA36F8006AAAEF02D /* ReportListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		42240BA9A6F544690E573989 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0CF3555147905949103E882 /* SafeHouseListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2B88B356373E8FBB2E258F32 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				159A25DAD5CBDBA5C9308A2E /* SafetyDashboardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4D4465B2102BA528B43EFC84 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3559817A6143F452AD3A8303 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1327A2A10410630E4B7E11EE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6CE240841E27E472D63E1E2E /* TaskListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8F57D83ED0031B10672D9C4C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				98B849E1B677928F6C5F098D /* VolunteerListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6439CF22188FA14BBD363342 /* ArkheVault */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 330D3F4D1FBE1F8B5BA135B0 /* Build configuration list for PBXNativeTarget "ArkheVault" */;
+			buildPhases = (
+				869AA75568406BC6181D282D /* Sources */,
+				66F8606E9F0A136E2228EBCB /* Resources */,
+				29B2D46AA747A59804D46E1F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArkheVault;
+			productName = ArkheVault;
+			productReference = 7BCCADA3021C07D12E775CB5 /* ArkheVault.app */;
+			productType = "com.apple.product-type.application";
+		};
+		25D7405295CF625C4584855E /* ArkheVaultTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3DB94BF1C1880FD6B7B880F /* Build configuration list for PBXNativeTarget "ArkheVaultTests" */;
+			buildPhases = (
+				2DEB4E6A98116EE413F7368E /* Sources */,
+				26D0051BFA5D2DB99E093B6A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2E6159E5875F29B175D79896 /* PBXTargetDependency */,
+			);
+			name = ArkheVaultTests;
+			productName = ArkheVaultTests;
+			productReference = 2F3F2F31926B9EEDBD10FA2A /* ArkheVaultTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1D63FF904FDF5EE159AB1AA0 /* ArkheVaultUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CE1A6E3EB713FC05DE432B5 /* Build configuration list for PBXNativeTarget "ArkheVaultUITests" */;
+			buildPhases = (
+				4FDC408748F72811B59488EF /* Sources */,
+				B252FAC1B609D9701F0A7D81 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2E6159E5875F29B175D79896 /* PBXTargetDependency */,
+			);
+			name = ArkheVaultUITests;
+			productName = ArkheVaultUITests;
+			productReference = 85B18D5CC52AE6DDD2D1E223 /* ArkheVaultUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46F86FAA6BBF9AC94A7E4595 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					6439CF22188FA14BBD363342 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					25D7405295CF625C4584855E = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 6439CF22188FA14BBD363342;
+					};
+					1D63FF904FDF5EE159AB1AA0 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 6439CF22188FA14BBD363342;
+					};
+				};
+			};
+			buildConfigurationList = 14620A0EB52E6D9676ED0FF9 /* Build configuration list for PBXProject "ArkheVault" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5928955287B8089ED2177128;
+			productRefGroup = BF7A2D27A78D590BDEF15AF2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6439CF22188FA14BBD363342 /* ArkheVault */,
+				25D7405295CF625C4584855E /* ArkheVaultTests */,
+				1D63FF904FDF5EE159AB1AA0 /* ArkheVaultUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		66F8606E9F0A136E2228EBCB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		869AA75568406BC6181D282D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51303FC6F1C916CE413C2A17 /* AppDelegate.swift in Sources */,
+				A3D8DB2B7F45A2991A41FDDD /* ArkheVaultApp.swift in Sources */,
+				79B88BF87A8E6EF5F617459B /* MainWindow.swift in Sources */,
+				21196D7D9FC27C34DCD68F3F /* LoginView.swift in Sources */,
+				049D897EDF75184CDFFBF2CE /* CoreDataController.swift in Sources */,
+				23000A9BE893DA8EA698277A /* Client+CoreData.swift in Sources */,
+				3C59E34886CD630AEBC8D271 /* AIService.swift in Sources */,
+				2D906F0DCB168B849B50313F /* AuthenticationManager.swift in Sources */,
+				03A07509750855A1F3B97C93 /* Configuration.swift in Sources */,
+				42A4B41EE277A1564B32E887 /* NetworkSecurityManager.swift in Sources */,
+				167BAE8BD4B2521508BE1EEF /* RateLimiter.swift in Sources */,
+				3D5BC76423E88CFB0273217B /* SecurityEventLogger.swift in Sources */,
+				7889FDCD7E631EB10AADCA24 /* SessionManager.swift in Sources */,
+				4A965E85A6B887E31EE416BE /* AnalyticsSettingsView.swift in Sources */,
+				3AB8F0451144C865FB8746D2 /* CalendarView.swift in Sources */,
+				2919B99B43EE6AA962DF11C4 /* ClientDocumentsTab.swift in Sources */,
+				3FC26451B9B7A2CF1DAEF1BF /* ClientListView.swift in Sources */,
+				E59D56A763A9FDBC3D33EA9E /* ClientNotesTab.swift in Sources */,
+				34265B4CC55ECBD79459E792 /* ClientProgramsTab.swift in Sources */,
+				E0FB3B9D98D99B4B63F9E3BB /* ClientTimelineTab.swift in Sources */,
+				51C7BD3EF10532D1652506B7 /* IntakeSystemView.swift in Sources */,
+				D25CC13DCA701A2234F7E328 /* DashboardView.swift in Sources */,
+				721D54BCDC5B8DCFBCB692EB /* DocumentExtractionView.swift in Sources */,
+				325C564333CA7BEB335F6D0C /* NotificationSettingsView.swift in Sources */,
+				B68764360B0EB52EB0048428 /* OfflineSettingsView.swift in Sources */,
+				BBB92F2400F509E26F38BBD3 /* ProgramListView.swift in Sources */,
+				451C68A5CC903B9749326A98 /* ReferralListView.swift in Sources */,
+				D166A920760984E5858A0F54 /* ReportListView.swift in Sources */,
+				D3AD415CE6A1CDD7E5EC4F5F /* SafeHouseListView.swift in Sources */,
+				B7B66BF0C79F5F563DCBE2D0 /* SafetyDashboardView.swift in Sources */,
+				396496D5855C8F7C9D571C8B /* SettingsView.swift in Sources */,
+				E4C029E78E848D303CE4D57C /* TaskListView.swift in Sources */,
+				09633F8F9B3413F52EA7743F /* VolunteerListView.swift in Sources */,
+				8AA11069CFADC9E54ED7B9D8 /* ArkheButton.swift in Sources */,
+				99F82D59C0F75E54BC50996D /* ArkheCard.swift in Sources */,
+				1AF9F7F6DC76E0470651D35D /* ArkheLogo.swift in Sources */,
+				B1482423A64B8E6EEE51FCBA /* ErrorHandler.swift in Sources */,
+				BA8105D76150388B686E85CE /* Branding.swift in Sources */,
+				35E009BE0D2BB1080229DBDB /* ArkheVaultDataModel.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2DEB4E6A98116EE413F7368E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24425838BB3F5D7B5AD31FD3 /* CriticalComponentTests.swift in Sources */,
+				7898ED9D76550D8FF92F5F5C /* SecurityTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FDC408748F72811B59488EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F5698C6CB7E38DD4A259538 /* SecurityUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXContainerItemProxy section */
+		431387EB7262E1CFC79B125E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6439CF22188FA14BBD363342;
+			remoteInfo = ArkheVault;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		2E6159E5875F29B175D79896 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6439CF22188FA14BBD363342 /* ArkheVault */;
+			targetProxy = 431387EB7262E1CFC79B125E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		32246F39F4A00D3496149190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG=1";
+			};
+			name = Debug;
+		};
+		B07094C226BDAFE911FF20DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+			};
+			name = Release;
+		};
+		60040AE552F44BF902A4938E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) PRODUCT_BUNDLE_IDENTIFIER = com.arkheholdings.vault;
+				PRODUCT_NAME = $(TARGET_NAME);
+				SWIFT_VERSION = 5.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 1.0;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Arkhe Vault";
+				INFOPLIST_KEY_LSApplicationCategoryType = public.app-category.business;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Arkhe Holdings. All rights reserved.";
+				ENABLE_HARDENED_RUNTIME = YES;";
+			};
+			name = Debug;
+		};
+		4052DF9B3A85A55ACADF572B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) PRODUCT_BUNDLE_IDENTIFIER = com.arkheholdings.vault;
+				PRODUCT_NAME = $(TARGET_NAME);
+				SWIFT_VERSION = 5.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 1.0;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Arkhe Vault";
+				INFOPLIST_KEY_LSApplicationCategoryType = public.app-category.business;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2026 Arkhe Holdings. All rights reserved.";
+				ENABLE_HARDENED_RUNTIME = YES;";
+			};
+			name = Release;
+		};
+		4B6EF5EC6A4329BF954B8D4E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = com.arkheholdings.vault.tests;
+				PRODUCT_NAME = $(TARGET_NAME);
+				SWIFT_VERSION = 5.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 1.0;
+				BUNDLE_LOADER = $(TEST_HOST);
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ArkheVault.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ArkheVault";
+			};
+			name = Debug;
+		};
+		D69656239C1AA250533F79D8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = com.arkheholdings.vault.tests;
+				PRODUCT_NAME = $(TARGET_NAME);
+				SWIFT_VERSION = 5.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 1.0;
+				BUNDLE_LOADER = $(TEST_HOST);
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ArkheVault.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ArkheVault";
+			};
+			name = Release;
+		};
+		8498EC07E859EC722062D1AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = com.arkheholdings.vault.uitests;
+				PRODUCT_NAME = $(TARGET_NAME);
+				SWIFT_VERSION = 5.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 1.0;
+			};
+			name = Debug;
+		};
+		6051C10B1B22DD0789782849 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_BUNDLE_IDENTIFIER = com.arkheholdings.vault.uitests;
+				PRODUCT_NAME = $(TARGET_NAME);
+				SWIFT_VERSION = 5.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 1.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14620A0EB52E6D9676ED0FF9 /* Build configuration list for PBXProject "ArkheVault" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32246F39F4A00D3496149190 /* Debug */,
+				B07094C226BDAFE911FF20DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		330D3F4D1FBE1F8B5BA135B0 /* Build configuration list for PBXNativeTarget "ArkheVault" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				60040AE552F44BF902A4938E /* Debug */,
+				4052DF9B3A85A55ACADF572B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3DB94BF1C1880FD6B7B880F /* Build configuration list for PBXNativeTarget "ArkheVaultTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4B6EF5EC6A4329BF954B8D4E /* Debug */,
+				D69656239C1AA250533F79D8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CE1A6E3EB713FC05DE432B5 /* Build configuration list for PBXNativeTarget "ArkheVaultUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8498EC07E859EC722062D1AC /* Debug */,
+				6051C10B1B22DD0789782849 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46F86FAA6BBF9AC94A7E4595 /* Project object */;
+}

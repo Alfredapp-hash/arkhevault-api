@@ -27,7 +27,7 @@ struct TaskListView: View {
                     
                     Spacer()
                     
-                    ForgeButton(title: "New Task", style: .primary) {
+                    ArkheButton(title: "New Task", style: .primary) {
                         showingNewTaskSheet = true
                     }
                 }
@@ -175,7 +175,7 @@ struct TaskCard: View {
     
     var body: some View {
         Button(action: onTap) {
-            ForgeCard(backgroundColor: priorityBackgroundColor) {
+            ArkheCard(backgroundColor: priorityBackgroundColor) {
                 VStack(alignment: .leading, spacing: 12) {
                     // Header
                     HStack {
@@ -265,15 +265,15 @@ struct TaskCard: View {
                     
                     // Actions
                     HStack(spacing: 8) {
-                        ForgeButton(title: "Complete", style: .primary, isDisabled: task.status == "completed") {
+                        ArkheButton(title: "Complete", style: .primary, isDisabled: task.status == "completed") {
                             completeTask()
                         }
                         
-                        ForgeIconButton(systemImage: "phone", style: .secondary) {
+                        ArkheIconButton(systemImage: "phone", style: .secondary) {
                             // Call related action
                         }
                         
-                        ForgeIconButton(systemImage: "doc.text", style: .outline) {
+                        ArkheIconButton(systemImage: "doc.text", style: .outline) {
                             // Add note action
                         }
                     }
@@ -509,7 +509,7 @@ struct NewTaskSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Create Task",
                         style: .primary,
                         isDisabled: taskName.isEmpty || isLoading,
@@ -608,7 +608,7 @@ struct TaskDetailView: View {
                 Spacer()
                 
                 if task.status != "completed" {
-                    ForgeButton(title: "Complete Task", style: .primary) {
+                    ArkheButton(title: "Complete Task", style: .primary) {
                         showingCompleteDialog = true
                     }
                 }
@@ -621,7 +621,7 @@ struct TaskDetailView: View {
                 VStack(spacing: 20) {
                     SectionHeader(title: "Task Details")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 12) {
                             InfoRow(icon: "list.bullet", title: "Task Type", value: task.taskType?.displayName ?? "General")
                             
@@ -659,7 +659,7 @@ struct TaskDetailView: View {
                     if let client = task.client {
                         SectionHeader(title: "Related Client")
                         
-                        ForgeCard {
+                        ArkheCard {
                             VStack(spacing: 12) {
                                 InfoRow(icon: "person.fill", title: "Name", value: client.fullName)
                                 
@@ -694,7 +694,7 @@ struct TaskDetailView: View {
                     if let notes = task.notes, !notes.isEmpty {
                         SectionHeader(title: "Notes")
                         
-                        ForgeCard {
+                        ArkheCard {
                             VStack(alignment: . leading, spacing: 8) {
                                 Text(notes)
                                     .font(.brandBody)
@@ -706,7 +706,7 @@ struct TaskDetailView: View {
                     // Timeline
                     SectionHeader(title: "Timeline")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             TimelineItem(
                                 icon: "plus.circle.fill",
@@ -732,19 +732,19 @@ struct TaskDetailView: View {
                         SectionHeader(title: "Quick Actions")
                         
                         HStack(spacing: 12) {
-                            ForgeButton(title: "Call Client", style: .primary) {
+                            ArkheButton(title: "Call Client", style: .primary) {
                                 // Call action
                             }
                             
-                            ForgeButton(title: "Add Note", style: .secondary) {
+                            ArkheButton(title: "Add Note", style: .secondary) {
                                 // Add note action
                             }
                             
-                            ForgeButton(title: "Reschedule", style: .outline) {
+                            ArkheButton(title: "Reschedule", style: .outline) {
                                 // Reschedule action
                             }
                             
-                            ForgeButton(title: "Escalate", style: .danger) {
+                            ArkheButton(title: "Escalate", style: .danger) {
                                 // Escalate action
                             }
                         }
@@ -811,7 +811,7 @@ struct StaffWorkQueueView: View {
                     SectionHeader(title: "Due Today", subtitle: "\(viewModel.tasksDueToday.count) tasks")
                     
                     if viewModel.tasksDueToday.isEmpty {
-                        ForgeCard {
+                        ArkheCard {
                             HStack {
                                 Image(systemName: "checkmark.circle")
                                     .font(.system(size: 32))
@@ -876,7 +876,7 @@ struct WorkQueueTaskCard: View {
     let task: Task
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             HStack(spacing: 12) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(task.taskName)
@@ -923,7 +923,7 @@ struct HighRiskClientCard: View {
     let client: Client
     
     var body: some View {
-        ForgeCard(backgroundColor: .dangerRed.opacity(0.1)) {
+        ArkheCard(backgroundColor: .dangerRed.opacity(0.1)) {
             HStack(spacing: 12) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(client.fullName)
@@ -937,7 +937,7 @@ struct HighRiskClientCard: View {
                 
                 Spacer()
                 
-                ForgeButton(title: "View Profile", style: .danger) {
+                ArkheButton(title: "View Profile", style: .danger) {
                     // Navigate to client
                 }
             }

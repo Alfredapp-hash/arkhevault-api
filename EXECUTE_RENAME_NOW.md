@@ -8,11 +8,11 @@
 
 ```bash
 cd /Users/purduelaw/Desktop/ArkheApps/StudentTracker
-mv ForgedInFireClientManager ArkheVault
+mv ArkheVaultClientManager ArkheVault
 ls -la  # Verify rename worked
 ```
 
-**Expected output:** You should see `ArkheVault` folder instead of `ForgedInFireClientManager`
+**Expected output:** You should see `ArkheVault` folder instead of `ArkheVaultClientManager`
 
 ---
 
@@ -25,50 +25,50 @@ cd /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVault
 ### Run these 8 commands one by one:
 
 ```bash
-# Command 1: Replace "Forged In Fire" with "Arkhe Vault"
-find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/Forged In Fire/Arkhe Vault/g' {} +
+# Command 1: Replace "Arkhe Vault" with "Arkhe Vault"
+find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/Arkhe Vault/Arkhe Vault/g' {} +
 echo "✅ Command 1 complete"
 ```
 
 ```bash
-# Command 2: Replace "ForgedInFire" with "ArkheVault"
-find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/ForgedInFire/ArkheVault/g' {} +
+# Command 2: Replace "ArkheVault" with "ArkheVault"
+find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/ArkheVault/ArkheVault/g' {} +
 echo "✅ Command 2 complete"
 ```
 
 ```bash
-# Command 3: Replace "forgedinfire" with "arkhevault"
-find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/forgedinfire/arkhevault/g' {} +
+# Command 3: Replace "arkhevault" with "arkhevault"
+find . -type f \( -name "*.swift" -o -name "*.md" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/arkhevault/arkhevault/g' {} +
 echo "✅ Command 3 complete"
 ```
 
 ```bash
-# Command 4: Replace "com.forgedinfire" with "com.arkheholdings.vault"
-find . -type f \( -name "*.swift" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/com\.forgedinfire/com.arkheholdings.vault/g' {} +
+# Command 4: Replace "com.arkheholdings.vault" with "com.arkheholdings.vault"
+find . -type f \( -name "*.swift" -o -name "*.json" -o -name "*.plist" \) -exec sed -i '' 's/com\.arkhevault/com.arkheholdings.vault/g' {} +
 echo "✅ Command 4 complete"
 ```
 
 ```bash
-# Command 5: Replace "ForgeButton" with "ArkheButton"
-find . -type f -name "*.swift" -exec sed -i '' 's/ForgeButton/ArkheButton/g' {} +
+# Command 5: Replace "ArkheButton" with "ArkheButton"
+find . -type f -name "*.swift" -exec sed -i '' 's/ArkheButton/ArkheButton/g' {} +
 echo "✅ Command 5 complete"
 ```
 
 ```bash
-# Command 6: Replace "ForgeCard" with "ArkheCard"
-find . -type f -name "*.swift" -exec sed -i '' 's/ForgeCard/ArkheCard/g' {} +
+# Command 6: Replace "ArkheCard" with "ArkheCard"
+find . -type f -name "*.swift" -exec sed -i '' 's/ArkheCard/ArkheCard/g' {} +
 echo "✅ Command 6 complete"
 ```
 
 ```bash
-# Command 7: Replace "ForgeLogo" with "ArkheLogo"
-find . -type f -name "*.swift" -exec sed -i '' 's/ForgeLogo/ArkheLogo/g' {} +
+# Command 7: Replace "ArkheLogo" with "ArkheLogo"
+find . -type f -name "*.swift" -exec sed -i '' 's/ArkheLogo/ArkheLogo/g' {} +
 echo "✅ Command 7 complete"
 ```
 
 ```bash
-# Command 8: Replace "ForgedInFireApp" with "ArkheVaultApp"
-find . -type f -name "*.swift" -exec sed -i '' 's/ForgedInFireApp/ArkheVaultApp/g' {} +
+# Command 8: Replace "ArkheVaultApp" with "ArkheVaultApp"
+find . -type f -name "*.swift" -exec sed -i '' 's/ArkheVaultApp/ArkheVaultApp/g' {} +
 echo "✅ Command 8 complete"
 ```
 
@@ -78,11 +78,11 @@ echo "✅ Command 8 complete"
 
 ```bash
 # Rename main app entry point
-mv App/ForgedInFireApp.swift App/ArkheVaultApp.swift 2>/dev/null || echo "Already renamed or file doesn't exist"
+mv App/ArkheVaultApp.swift App/ArkheVaultApp.swift 2>/dev/null || echo "Already renamed or file doesn't exist"
 
 # Rename UI components
-mv Shared/Components/ForgeButton.swift Shared/Components/ArkheButton.swift 2>/dev/null || echo "Already renamed"
-mv Shared/Components/ForgeLogo.swift Shared/Components/ArkheLogo.swift 2>/dev/null || echo "Already renamed"
+mv Shared/Components/ArkheButton.swift Shared/Components/ArkheButton.swift 2>/dev/null || echo "Already renamed"
+mv Shared/Components/ArkheLogo.swift Shared/Components/ArkheLogo.swift 2>/dev/null || echo "Already renamed"
 
 echo "✅ File renaming complete"
 ```
@@ -92,24 +92,24 @@ echo "✅ File renaming complete"
 ## Step 4: Verify Changes
 
 ```bash
-echo "=== CHECKING FOR REMAINING 'Forged In Fire' ==="
-grep -r "Forged In Fire" . --include="*.swift" --include="*.md" 2>/dev/null || echo "✅ None found - GOOD!"
+echo "=== CHECKING FOR REMAINING 'Arkhe Vault' ==="
+grep -r "Arkhe Vault" . --include="*.swift" --include="*.md" 2>/dev/null || echo "✅ None found - GOOD!"
 
 echo ""
-echo "=== CHECKING FOR REMAINING 'ForgedInFire' ==="
-grep -r "ForgedInFire" . --include="*.swift" --include="*.md" 2>/dev/null || echo "✅ None found - GOOD!"
+echo "=== CHECKING FOR REMAINING 'ArkheVault' ==="
+grep -r "ArkheVault" . --include="*.swift" --include="*.md" 2>/dev/null || echo "✅ None found - GOOD!"
 
 echo ""
-echo "=== CHECKING FOR REMAINING 'ForgeButton' ==="
-grep -r "ForgeButton" . --include="*.swift" 2>/dev/null || echo "✅ None found - GOOD!"
+echo "=== CHECKING FOR REMAINING 'ArkheButton' ==="
+grep -r "ArkheButton" . --include="*.swift" 2>/dev/null || echo "✅ None found - GOOD!"
 
 echo ""
-echo "=== CHECKING FOR REMAINING 'ForgeCard' ==="
-grep -r "ForgeCard" . --include="*.swift" 2>/dev/null || echo "✅ None found - GOOD!"
+echo "=== CHECKING FOR REMAINING 'ArkheCard' ==="
+grep -r "ArkheCard" . --include="*.swift" 2>/dev/null || echo "✅ None found - GOOD!"
 
 echo ""
-echo "=== CHECKING FOR REMAINING 'ForgeLogo' ==="
-grep -r "ForgeLogo" . --include="*.swift" 2>/dev/null || echo "✅ None found - GOOD!"
+echo "=== CHECKING FOR REMAINING 'ArkheLogo' ==="
+grep -r "ArkheLogo" . --include="*.swift" 2>/dev/null || echo "✅ None found - GOOD!"
 
 echo ""
 echo "✅✅✅ ALL CHECKS COMPLETE ✅✅✅"
@@ -133,14 +133,14 @@ code /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVault
 
 | Command | Changes Made | Files Affected |
 |---------|--------------|----------------|
-| 1 | "Forged In Fire" → "Arkhe Vault" | All text references |
-| 2 | "ForgedInFire" → "ArkheVault" | Class names, variables |
-| 3 | "forgedinfire" → "arkhevault" | URLs, identifiers |
-| 4 | "com.forgedinfire" → "com.arkheholdings.vault" | Bundle IDs, services |
-| 5 | "ForgeButton" → "ArkheButton" | UI component |
-| 6 | "ForgeCard" → "ArkheCard" | UI component |
-| 7 | "ForgeLogo" → "ArkheLogo" | Logo component |
-| 8 | "ForgedInFireApp" → "ArkheVaultApp" | App entry point |
+| 1 | "Arkhe Vault" → "Arkhe Vault" | All text references |
+| 2 | "ArkheVault" → "ArkheVault" | Class names, variables |
+| 3 | "arkhevault" → "arkhevault" | URLs, identifiers |
+| 4 | "com.arkheholdings.vault" → "com.arkheholdings.vault" | Bundle IDs, services |
+| 5 | "ArkheButton" → "ArkheButton" | UI component |
+| 6 | "ArkheCard" → "ArkheCard" | UI component |
+| 7 | "ArkheLogo" → "ArkheLogo" | Logo component |
+| 8 | "ArkheVaultApp" → "ArkheVaultApp" | App entry point |
 
 ---
 
@@ -148,9 +148,9 @@ code /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVault
 
 **After running all commands:**
 - ✅ Folder named `ArkheVault`
-- ✅ No "Forged In Fire" text anywhere in code
-- ✅ No "ForgedInFire" class names
-- ✅ No "forgedinfire" in URLs/identifiers
+- ✅ No "Arkhe Vault" text anywhere in code
+- ✅ No "ArkheVault" class names
+- ✅ No "arkhevault" in URLs/identifiers
 - ✅ All components use "Arkhe" prefix
 - ✅ App entry point is `ArkheVaultApp.swift`
 

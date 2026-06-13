@@ -1,4 +1,4 @@
-# Forged In Fire - 2-Year Free Program: Key Terms
+# Arkhe Vault - 2-Year Free Program: Key Terms
 
 ## Quick Reference for Nonprofits
 
@@ -78,8 +78,8 @@
 ---
 
 **Questions?**
-Email: nonprofit@forgedinfire.org  
+Email: nonprofit@arkhevault.org  
 Phone: (555) 123-4567  
-Website: forgedinfire.org/nonprofit
+Website: arkhevault.org/nonprofit
 
 *End of Key Terms Summary*

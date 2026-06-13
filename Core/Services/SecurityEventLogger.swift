@@ -7,8 +7,8 @@ import os.log
 class SecurityEventLogger {
     static let shared = SecurityEventLogger()
     
-    private let logger = OSLog(subsystem: "com.forgedinfire.clientmanager", category: "Security")
-    private let logQueue = DispatchQueue(label: "com.forgedinfire.securitylog", qos: .utility)
+    private let logger = OSLog(subsystem: "com.arkheholdings.vault.clientmanager", category: "Security")
+    private let logQueue = DispatchQueue(label: "com.arkheholdings.vault.securitylog", qos: .utility)
     private let logFileURL: URL
     
     private init() {
@@ -19,7 +19,7 @@ class SecurityEventLogger {
             return
         }
         
-        let appFolder = appSupport.appendingPathComponent("ForgedInFire")
+        let appFolder = appSupport.appendingPathComponent("ArkheVault")
         try? fileManager.createDirectory(at: appFolder, withIntermediateDirectories: true)
         
         logFileURL = appFolder.appendingPathComponent("security_events.log")

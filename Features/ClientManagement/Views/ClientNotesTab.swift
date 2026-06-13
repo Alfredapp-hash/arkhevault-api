@@ -17,7 +17,7 @@ struct ClientNotesTab: View {
             HStack {
                 SectionHeader(title: "Case Notes", subtitle: "\(filteredNotes.count) notes")
                 
-                ForgeButton(title: "New Note", style: .primary) {
+                ArkheButton(title: "New Note", style: .primary) {
                     showingNewNoteSheet = true
                 }
             }
@@ -36,7 +36,7 @@ struct ClientNotesTab: View {
             
             // Notes List
             if filteredNotes.isEmpty {
-                ForgeCard {
+                ArkheCard {
                     VStack(spacing: 12) {
                         Image(systemName: "doc.text")
                             .font(.system(size: 32))
@@ -124,7 +124,7 @@ struct CaseNoteCard: View {
     
     var body: some View {
         Button(action: onTap) {
-            ForgeCard(backgroundColor: backgroundColor) {
+            ArkheCard(backgroundColor: backgroundColor) {
                 VStack(alignment: .leading, spacing: 12) {
                     // Header
                     HStack {
@@ -373,7 +373,7 @@ struct NewCaseNoteSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Save Note",
                         style: .primary,
                         isDisabled: narrative.isEmpty || isLoading,
@@ -630,7 +630,7 @@ struct AIEnhancementSheet: View {
                 
                 Spacer()
                 
-                ForgeButton(
+                ArkheButton(
                     title: isEnhancing ? "Enhancing..." : "Enhance Note",
                     style: .primary,
                     isDisabled: selectedOptions.isEmpty || isEnhancing,
@@ -651,7 +651,7 @@ struct AIEnhancementSheet: View {
                 
                 if let enhanced = enhancedNote {
                     ToolbarItem(placement: .primaryAction) {
-                        ForgeButton(title: "Use Enhanced", style: .primary) {
+                        ArkheButton(title: "Use Enhanced", style: .primary) {
                             completion(enhanced)
                             dismiss()
                         }
@@ -713,7 +713,7 @@ struct CaseNoteDetailView: View {
                 Spacer()
                 
                 if note.supervisorReviewFlag {
-                    ForgeButton(title: "Mark as Reviewed", style: .secondary) {
+                    ArkheButton(title: "Mark as Reviewed", style: .secondary) {
                         showingReviewDialog = true
                     }
                 }
@@ -726,7 +726,7 @@ struct CaseNoteDetailView: View {
                 VStack(spacing: 20) {
                     SectionHeader(title: "Note Details")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 12) {
                             InfoRow(icon: "list.bullet", title: "Note Type", value: note.noteType?.displayName ?? "General")
                             InfoRow(icon: "eye.fill", title: "Visibility", value: note.visibilityLevel?.capitalized ?? "Standard")
@@ -757,7 +757,7 @@ struct CaseNoteDetailView: View {
                     if let narrative = note.narrative {
                         SectionHeader(title: "Narrative")
                         
-                        ForgeCard {
+                        ArkheCard {
                             Text(narrative)
                                 .font(.brandBody)
                                 .foregroundColor(.textPrimary)
@@ -768,7 +768,7 @@ struct CaseNoteDetailView: View {
                     if let followUpDate = note.followUpDate {
                         SectionHeader(title: "Follow-up")
                         
-                        ForgeCard {
+                        ArkheCard {
                             InfoRow(icon: "calendar.badge.exclamationmark", title: "Follow-up Date", value: followUpDate.formatted(date: .long, time: .omitted), iconColor: .forgeTeal)
                         }
                     }
@@ -777,7 +777,7 @@ struct CaseNoteDetailView: View {
                     if let enrollment = note.programEnrollment {
                         SectionHeader(title: "Related Program")
                         
-                        ForgeCard {
+                        ArkheCard {
                             InfoRow(icon: "star.fill", title: "Program", value: enrollment.program?.name ?? "Unknown")
                         }
                     }
@@ -785,7 +785,7 @@ struct CaseNoteDetailView: View {
                     // Timeline
                     SectionHeader(title: "Timeline")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             TimelineItem(
                                 icon: "plus.circle.fill",
@@ -808,11 +808,11 @@ struct CaseNoteDetailView: View {
                     
                     // Actions
                     HStack(spacing: 12) {
-                        ForgeButton(title: "Edit Note", style: .primary) {
+                        ArkheButton(title: "Edit Note", style: .primary) {
                             // Edit action
                         }
                         
-                        ForgeButton(title: "Print", style: .secondary) {
+                        ArkheButton(title: "Print", style: .secondary) {
                             // Print action
                         }
                     }

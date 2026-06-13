@@ -13,7 +13,7 @@ struct DashboardView: View {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         HStack(spacing: 12) {
-                            ForgeLogo(size: .compact, style: .iconOnly)
+                            ArkheLogo(size: .compact, style: .iconOnly)
                             
                             VStack(alignment: .leading, spacing: 2) {
                                 Text("Executive Dashboard")
@@ -94,7 +94,7 @@ struct DashboardView: View {
                 // Charts Row
                 HStack(spacing: 16) {
                     // Client Trends Chart
-                    ForgeCard {
+                    ArkheCard {
                         VStack(alignment: .leading, spacing: 16) {
                             SectionHeader(title: "Client Trends", subtitle: "Last 6 months")
                             
@@ -123,7 +123,7 @@ struct DashboardView: View {
                     }
                     
                     // Program Distribution
-                    ForgeCard {
+                    ArkheCard {
                         VStack(alignment: .leading, spacing: 16) {
                             SectionHeader(title: "Program Distribution", subtitle: "Current enrollments")
                             
@@ -144,7 +144,7 @@ struct DashboardView: View {
                 // Activity Feed and Quick Actions
                 HStack(spacing: 16) {
                     // Recent Activity
-                    ForgeCard {
+                    ArkheCard {
                         VStack(alignment: .leading, spacing: 16) {
                             SectionHeader(title: "Recent Activity", subtitle: "Latest updates")
                             
@@ -157,7 +157,7 @@ struct DashboardView: View {
                     }
                     
                     // Quick Actions
-                    ForgeCard {
+                    ArkheCard {
                         VStack(alignment: .leading, spacing: 16) {
                             SectionHeader(title: "Quick Actions", subtitle: "Common tasks")
                             
@@ -200,7 +200,7 @@ struct DashboardView: View {
                 .padding(.horizontal)
                 
                 // Risk Overview
-                ForgeCard {
+                ArkheCard {
                     VStack(alignment: .leading, spacing: 16) {
                         SectionHeader(title: "Risk Overview", subtitle: "Clients requiring attention")
                         
@@ -498,7 +498,7 @@ struct RiskClientCard: View {
                 InfoRow(icon: "clock.fill", title: "Last Contact", value: client.lastContactDate?.formatted(date: .abbreviated, time: .omitted) ?? "Never")
             }
             
-            ForgeButton(title: "View Profile", style: .outline) {
+            ArkheButton(title: "View Profile", style: .outline) {
                 // Navigate to client profile
             }
         }

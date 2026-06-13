@@ -298,7 +298,7 @@ struct NotificationSettingsView: View {
             SectionHeader(title: "Notifications")
             
             // Enable Notifications
-            ForgeCard {
+            ArkheCard {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Enable Notifications")
@@ -329,7 +329,7 @@ struct NotificationSettingsView: View {
             if notificationsEnabled && notificationManager.isAuthorized {
                 // Notification Settings
                 VStack(spacing: 12) {
-                    ForgeCard {
+                    ArkheCard {
                         HStack {
                             Text("Sound")
                                 .font(.brandBody)
@@ -342,7 +342,7 @@ struct NotificationSettingsView: View {
                         }
                     }
                     
-                    ForgeCard {
+                    ArkheCard {
                         HStack {
                             Text("Badge Count")
                                 .font(.brandBody)
@@ -361,7 +361,7 @@ struct NotificationSettingsView: View {
                 
                 VStack(spacing: 12) {
                     ForEach(NotificationManager.NotificationType.allCases, id: \.self) { type in
-                        ForgeCard {
+                        ArkheCard {
                             HStack {
                                 Text(type.rawValue)
                                     .font(.brandBody)
@@ -396,14 +396,14 @@ struct NotificationSettingsView: View {
                     }
                 }
                 
-                ForgeButton(
+                ArkheButton(
                     title: "Clear History",
                     style: .outline
                 ) {
                     notificationManager.clearNotificationHistory()
                 }
             } else if notificationsEnabled && !notificationManager.isAuthorized {
-                ForgeCard {
+                ArkheCard {
                     VStack(spacing: 12) {
                         Image(systemName: "bell.slash")
                             .font(.system(size: 32))
@@ -431,7 +431,7 @@ struct NotificationHistoryRow: View {
     let entry: NotificationEntry
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(entry.title)

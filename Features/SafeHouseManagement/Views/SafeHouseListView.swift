@@ -26,7 +26,7 @@ struct SafeHouseListView: View {
                     
                     Spacer()
                     
-                    ForgeButton(title: "New Safe House", style: .primary) {
+                    ArkheButton(title: "New Safe House", style: .primary) {
                         showingNewSafeHouseSheet = true
                     }
                 }
@@ -88,7 +88,7 @@ struct SafeHouseListView: View {
             
             // Safe House List
             if viewModel.filteredSafeHouses.isEmpty {
-                ForgeCard {
+                ArkheCard {
                     VStack(spacing: 12) {
                         Image(systemName: "house.slash")
                             .font(.system(size: 32))
@@ -187,7 +187,7 @@ struct SafeHouseCard: View {
     
     var body: some View {
         Button(action: onTap) {
-            ForgeCard(backgroundColor: availabilityBackgroundColor) {
+            ArkheCard(backgroundColor: availabilityBackgroundColor) {
                 VStack(alignment: .leading, spacing: 12) {
                     // Header
                     HStack {
@@ -257,11 +257,11 @@ struct SafeHouseCard: View {
                     
                     // Actions
                     HStack(spacing: 8) {
-                        ForgeButton(title: "View Details", style: .primary) {
+                        ArkheButton(title: "View Details", style: .primary) {
                             onTap()
                         }
                         
-                        ForgeIconButton(systemImage: "plus", style: .secondary) {
+                        ArkheIconButton(systemImage: "plus", style: .secondary) {
                             // Create placement
                         }
                     }
@@ -469,7 +469,7 @@ struct NewSafeHouseSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Create Safe House",
                         style: .primary,
                         isDisabled: codeName.isEmpty || isLoading,
@@ -595,11 +595,11 @@ struct SafeHouseDetailView: View {
                 
                 Spacer()
                 
-                ForgeButton(title: "New Placement", style: .primary) {
+                ArkheButton(title: "New Placement", style: .primary) {
                     showingNewPlacementSheet = true
                 }
                 
-                ForgeButton(title: "Edit", style: .secondary) {
+                ArkheButton(title: "Edit", style: .secondary) {
                     showingEditSheet = true
                 }
             }
@@ -611,7 +611,7 @@ struct SafeHouseDetailView: View {
                 VStack(spacing: 20) {
                     SectionHeader(title: "Safe House Details")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 12) {
                             InfoRow(icon: "bed.double.fill", title: "Capacity", value: "\(safeHouse.capacity) beds")
                             InfoRow(icon: "person.3.fill", title: "Current Occupancy", value: "\(safeHouse.currentOccupancy) residents")
@@ -628,7 +628,7 @@ struct SafeHouseDetailView: View {
                     if let rules = safeHouse.safetyRules, !rules.isEmpty {
                         SectionHeader(title: "Safety Rules")
                         
-                        ForgeCard {
+                        ArkheCard {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Required safety rules:")
                                     .font(.brandCaption)
@@ -653,7 +653,7 @@ struct SafeHouseDetailView: View {
                     if let restrictions = safeHouse.placementRestrictions, !restrictions.isEmpty {
                         SectionHeader(title: "Placement Restrictions")
                         
-                        ForgeCard {
+                        ArkheCard {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Placement restrictions:")
                                     .font(.brandCaption)
@@ -678,7 +678,7 @@ struct SafeHouseDetailView: View {
                     if let location = safeHouse.confidentialLocation {
                         SectionHeader(title: "Confidential Location")
                         
-                        ForgeCard {
+                        ArkheCard {
                             VStack(alignment: .leading, spacing: 8) {
                                 HStack(spacing: 8) {
                                     Image(systemName: "lock.fill")
@@ -703,7 +703,7 @@ struct SafeHouseDetailView: View {
                             }
                         }
                     } else {
-                        ForgeCard {
+                        ArkheCard {
                             Text("No current placements")
                                 .font(.brandBody)
                                 .foregroundColor(.textSecondary)
@@ -714,11 +714,11 @@ struct SafeHouseDetailView: View {
                     SectionHeader(title: "Actions")
                     
                     HStack(spacing: 12) {
-                        ForgeButton(title: "New Placement", style: .primary) {
+                        ArkheButton(title: "New Placement", style: .primary) {
                             showingNewPlacementSheet = true
                         }
                         
-                        ForgeButton(title: "View History", style: .secondary) {
+                        ArkheButton(title: "View History", style: .secondary) {
                             // View history
                         }
                     }
@@ -744,7 +744,7 @@ struct PlacementRow: View {
     let placement: SafeHousePlacement
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             HStack(spacing: 16) {
                 VStack(alignment: .leading, spacing: 4) {
                     if let client = placement.client {
@@ -923,7 +923,7 @@ struct NewPlacementSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Create Placement",
                         style: .primary,
                         isDisabled: selectedClient == nil || !houseRulesAccepted || isLoading,
@@ -1094,7 +1094,7 @@ struct EditSafeHouseSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Save Changes",
                         style: .primary,
                         isLoading: isLoading

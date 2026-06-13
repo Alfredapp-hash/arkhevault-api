@@ -26,7 +26,7 @@ struct ReportListView: View {
                     
                     Spacer()
                     
-                    ForgeButton(title: "Generate Report", style: .primary) {
+                    ArkheButton(title: "Generate Report", style: .primary) {
                         // Generate report action
                     }
                 }
@@ -51,7 +51,7 @@ struct ReportListView: View {
                     
                     Spacer()
                     
-                    ForgeIconButton(systemImage: "square.and.arrow.down", style: .secondary) {
+                    ArkheIconButton(systemImage: "square.and.arrow.down", style: .secondary) {
                         // Export report
                     }
                 }
@@ -166,7 +166,7 @@ struct GrantReportView: View {
             SectionHeader(title: "Client Demographics")
             
             HStack(spacing: 16) {
-                ForgeCard {
+                ArkheCard {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Demographic Distribution")
                             .font(.brandSubheading)
@@ -184,7 +184,7 @@ struct GrantReportView: View {
                     }
                 }
                 
-                ForgeCard {
+                ArkheCard {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Housing Status")
                             .font(.brandSubheading)
@@ -211,7 +211,7 @@ struct GrantReportView: View {
             // Outcomes Tracking
             SectionHeader(title: "Grant-Specific Outcomes")
             
-            ForgeCard {
+            ArkheCard {
                 VStack(alignment: .leading, spacing: 16) {
                     ForEach(viewModel.outcomes, id: \.id) { outcome in
                         OutcomeRow(outcome: outcome)
@@ -224,18 +224,18 @@ struct GrantReportView: View {
             // Narrative Generation
             SectionHeader(title: "AI-Generated Grant Narrative")
             
-            ForgeCard {
+            ArkheCard {
                 VStack(alignment: .leading, spacing: 12) {
                     Text(viewModel.generatedNarrative)
                         .font(.brandBody)
                         .foregroundColor(.textPrimary)
                     
                     HStack {
-                        ForgeButton(title: "Regenerate", style: .secondary) {
+                        ArkheButton(title: "Regenerate", style: .secondary) {
                             viewModel.generateNarrative(context: viewContext)
                         }
                         
-                        ForgeButton(title: "Copy to Clipboard", style: .outline) {
+                        ArkheButton(title: "Copy to Clipboard", style: .outline) {
                             // Copy action
                         }
                     }
@@ -407,7 +407,7 @@ struct ProgramMetricCard: View {
     let metric: ProgramMetric
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             VStack(alignment: .leading, spacing: 12) {
                 Text(metric.name)
                     .font(.brandBodyBold)
@@ -497,7 +497,7 @@ struct ImpactReportView: View {
     let timeframe: ReportTimeframe
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             VStack(spacing: 20) {
                 Text("Impact Report")
                     .font(.brandTitle)
@@ -518,7 +518,7 @@ struct PerformanceReportView: View {
     let timeframe: ReportTimeframe
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             VStack(spacing: 20) {
                 Text("Performance Report")
                     .font(.brandTitle)
@@ -536,7 +536,7 @@ struct PerformanceReportView: View {
 // MARK: - Custom Report View
 struct CustomReportView: View {
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             VStack(spacing: 20) {
                 Text("Custom Report Builder")
                     .font(.brandTitle)

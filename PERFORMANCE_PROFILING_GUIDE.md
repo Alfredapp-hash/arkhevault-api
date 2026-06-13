@@ -2,9 +2,9 @@
 
 ## Overview
 
-This document provides comprehensive guidance on profiling and optimizing the performance of the Forged In Fire Client Manager macOS application.
+This document provides comprehensive guidance on profiling and optimizing the performance of the Arkhe Vault Client Manager macOS application.
 
-**Project Location:** `/Users/purduelaw/Desktop/ArkheApps/StudentTracker/ForgedInFireClientManager/`
+**Project Location:** `/Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVaultClientManager/`
 
 ---
 
@@ -153,7 +153,7 @@ This document provides comprehensive guidance on profiling and optimizing the pe
 sample <pid> -duration 10 -file sample.txt
 
 # Sample specific process
-sample ForgedInFireClientManager -duration 30
+sample ArkheVaultClientManager -duration 30
 ```
 
 #### 2. `leaks`

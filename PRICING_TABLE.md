@@ -1,4 +1,4 @@
-# Forged In Fire - Pricing Summary
+# Arkhe Vault - Pricing Summary
 
 ## Three Tiers for Every Stage
 
@@ -142,7 +142,7 @@
    - Budget <$500K, OR  
    - Financial hardship  
 
-**Apply:** nonprofit@forgedinfire.org
+**Apply:** nonprofit@arkhevault.org
 
 ---
 
@@ -163,7 +163,7 @@ A: Absolutely. Export anytime. We delete 60 days after you leave.
 ---
 
 **Ready to Apply?**
-Email: nonprofit@forgedinfire.org  
+Email: nonprofit@arkhevault.org  
 Subject: 2-Year Free Application
 
 *End of Pricing Table*

@@ -1,7 +1,7 @@
 import SwiftUI
 
-// MARK: - Forged In Fire Branded Card
-struct ForgeCard<Content: View>: View {
+// MARK: - Arkhe Vault Branded Card
+struct ArkheCard<Content: View>: View {
     let content: Content
     var backgroundColor: Color = .lightCharcoal
     var cornerRadius: CGFloat = 12
@@ -202,13 +202,13 @@ extension View {
 // MARK: - Preview
 #Preview {
     VStack(spacing: 20) {
-        ForgeCard {
+        ArkheCard {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Card Title")
                     .font(.brandHeading)
                     .foregroundColor(.textPrimary)
                 
-                Text("Card content goes here with the Forged In Fire branding applied.")
+                Text("Card content goes here with the Arkhe Vault branding applied.")
                     .font(.brandBody)
                     .foregroundColor(.textSecondary)
                 
@@ -220,7 +220,7 @@ extension View {
             }
         }
         
-        ForgeCard(backgroundColor: .deepCharcoal) {
+        ArkheCard(backgroundColor: .deepCharcoal) {
             VStack(spacing: 12) {
                 RiskLevelIndicator(level: .low)
                 RiskLevelIndicator(level: .medium)

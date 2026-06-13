@@ -26,7 +26,7 @@ struct ClientListView: View {
                     
                     Spacer()
                     
-                    ForgeButton(title: "New Client", style: .primary) {
+                    ArkheButton(title: "New Client", style: .primary) {
                         showingNewClientSheet = true
                     }
                 }
@@ -248,15 +248,15 @@ struct ClientDetailView: View {
                 
                 ToolbarItem(placement: .primaryAction) {
                     HStack(spacing: 8) {
-                        ForgeIconButton(systemImage: "phone", style: .primary) {
+                        ArkheIconButton(systemImage: "phone", style: .primary) {
                             // Initiate call
                         }
                         
-                        ForgeIconButton(systemImage: "envelope", style: .secondary) {
+                        ArkheIconButton(systemImage: "envelope", style: .secondary) {
                             // Send email
                         }
                         
-                        ForgeIconButton(systemImage: "pencil", style: .outline) {
+                        ArkheIconButton(systemImage: "pencil", style: .outline) {
                             // Edit client
                         }
                     }
@@ -317,11 +317,11 @@ struct ClientSnapshotBanner: View {
             
             // Quick Actions
             VStack(spacing: 8) {
-                ForgeButton(title: "Call", style: .outline) {
+                ArkheButton(title: "Call", style: .outline) {
                     // Initiate call
                 }
                 
-                ForgeButton(title: "Note", style: .primary) {
+                ArkheButton(title: "Note", style: .primary) {
                     // Create quick note
                 }
             }
@@ -393,7 +393,7 @@ struct ClientOverviewTab: View {
             // Personal Information
             SectionHeader(title: "Personal Information")
             
-            ForgeCard {
+            ArkheCard {
                 VStack(spacing: 12) {
                     InfoRow(icon: "person.fill", title: "Full Name", value: client.fullName)
                     if let dob = client.dateOfBirth {
@@ -423,7 +423,7 @@ struct ClientOverviewTab: View {
             if client.emergencyContactName != nil || client.emergencyContactPhone != nil {
                 SectionHeader(title: "Emergency Contact")
                 
-                ForgeCard {
+                ArkheCard {
                     VStack(spacing: 12) {
                         if let name = client.emergencyContactName {
                             InfoRow(icon: "person.2.fill", title: "Contact Name", value: name)
@@ -438,7 +438,7 @@ struct ClientOverviewTab: View {
             // Status Information
             SectionHeader(title: "Status Information")
             
-            ForgeCard {
+            ArkheCard {
                 VStack(spacing: 12) {
                     InfoRow(icon: "house.fill", title: "Housing Status", value: client.housingStatus ?? "Unknown")
                     InfoRow(icon: "briefcase.fill", title: "Employment Status", value: client.employmentStatus ?? "Unknown")
@@ -468,7 +468,7 @@ struct ClientProgramsTab: View {
     let client: Client
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             Text("Program enrollments coming soon")
                 .font(.brandBody)
                 .foregroundColor(.textSecondary)
@@ -480,7 +480,7 @@ struct ClientNotesTab: View {
     let client: Client
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             Text("Case notes coming soon")
                 .font(.brandBody)
                 .foregroundColor(.textSecondary)
@@ -492,7 +492,7 @@ struct ClientTasksTab: View {
     let client: Client
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             Text("Tasks coming soon")
                 .font(.brandBody)
                 .foregroundColor(.textSecondary)
@@ -504,7 +504,7 @@ struct ClientDocumentsTab: View {
     let client: Client
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             Text("Documents coming soon")
                 .font(.brandBody)
                 .foregroundColor(.textSecondary)
@@ -524,7 +524,7 @@ struct ClientSafetyTab: View {
                     SafetyFlagCard(flag: flag)
                 }
             } else {
-                ForgeCard {
+                ArkheCard {
                     HStack(spacing: 12) {
                         Image(systemName: "checkmark.shield.fill")
                             .foregroundColor(.successGreen)
@@ -547,7 +547,7 @@ struct ClientSafetyTab: View {
             
             SectionHeader(title: "Safe Contact Rules")
             
-            ForgeCard {
+            ArkheCard {
                 Text("Safe contact rules configuration coming soon")
                     .font(.brandBody)
                     .foregroundColor(.textSecondary)
@@ -560,7 +560,7 @@ struct ClientTimelineTab: View {
     let client: Client
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             Text("Activity timeline coming soon")
                 .font(.brandBody)
                 .foregroundColor(.textSecondary)
@@ -573,7 +573,7 @@ struct SafetyFlagCard: View {
     let flag: SafetyFlag
     
     var body: some View {
-        ForgeCard(backgroundColor: severityBackgroundColor) {
+        ArkheCard(backgroundColor: severityBackgroundColor) {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text(flag.flagType?.capitalized ?? "Safety Flag")
@@ -654,7 +654,7 @@ struct NewClientSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(title: "Create", style: .primary, isDisabled: isLoading) {
+                    ArkheButton(title: "Create", style: .primary, isDisabled: isLoading) {
                         createClient()
                     }
                 }

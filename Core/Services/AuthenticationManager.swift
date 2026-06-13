@@ -11,7 +11,7 @@ class AuthenticationManager: ObservableObject {
     @Published var currentUser: Staff?
     @Published var errorMessage: String?
     
-    private let keychainService = "com.forgedinfire.clientmanager"
+    private let keychainService = "com.arkheholdings.vault.clientmanager"
     
     private init() {
         checkExistingSession()
@@ -265,7 +265,7 @@ struct LoginView: View {
         VStack(spacing: 24) {
             // Logo and Title
             VStack(spacing: 16) {
-                // Forged In Fire Logo Placeholder
+                // Arkhe Vault Logo Placeholder
                 RoundedRectangle(cornerRadius: 8)
                     .fill(Color.forgeTeal)
                     .frame(width: 80, height: 80)
@@ -276,7 +276,7 @@ struct LoginView: View {
                     )
                 
                 VStack(spacing: 8) {
-                    Text("Forged In Fire")
+                    Text("Arkhe Vault")
                         .font(.brandTitle)
                         .foregroundColor(.textPrimary)
                     
@@ -294,7 +294,7 @@ struct LoginView: View {
                         .foregroundColor(.textSecondary)
                     
                     TextField("Enter your email", text: $email)
-                        .textFieldStyle(ForgeTextFieldStyle())
+                        .textFieldStyle(ArkheTextFieldStyle())
                 }
                 
                 VStack(alignment: .leading, spacing: 8) {
@@ -303,7 +303,7 @@ struct LoginView: View {
                         .foregroundColor(.textSecondary)
                     
                     SecureField("Enter your password", text: $password)
-                        .textFieldStyle(ForgeTextFieldStyle())
+                        .textFieldStyle(ArkheTextFieldStyle())
                 }
             }
             
@@ -322,7 +322,7 @@ struct LoginView: View {
             }
             
             // Login Button
-            ForgeButton(
+            ArkheButton(
                 title: isLoading ? "Signing In..." : "Sign In",
                 style: .primary,
                 isDisabled: isLoading || email.isEmpty || password.isEmpty,
@@ -363,11 +363,11 @@ struct LoginView: View {
             
             // Footer
             VStack(spacing: 8) {
-                Text("Forged In Fire - Client Management")
+                Text("Arkhe Vault - Client Management")
                     .font(.brandSmall)
                     .foregroundColor(.textMuted)
                 
-                Text("© 2024 Forged In Fire. All rights reserved.")
+                Text("© 2024 Arkhe Vault. All rights reserved.")
                     .font(.brandTiny)
                     .foregroundColor(.textMuted)
             }
@@ -391,7 +391,7 @@ struct LoginView: View {
 }
 
 // MARK: - Custom TextField Style
-struct ForgeTextFieldStyle: TextFieldStyle {
+struct ArkheTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .padding(.horizontal, 16)

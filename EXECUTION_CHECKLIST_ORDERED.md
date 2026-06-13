@@ -17,7 +17,7 @@ cd /Users/purduelaw/Desktop/ArkheApps/StudentTracker
 
 ```bash
 # Rename root folder
-mv ForgedInFireClientManager ArkheVault
+mv ArkheVaultClientManager ArkheVault
 ```
 
 ```bash
@@ -26,58 +26,58 @@ cd ArkheVault
 ```
 
 ```bash
-# Replace "Forged In Fire" with "Arkhe Vault"
-find . -type f \( -name "*.swift" -o -name "*.md" \) -exec sed -i '' 's/Forged In Fire/Arkhe Vault/g' {} +
+# Replace "Arkhe Vault" with "Arkhe Vault"
+find . -type f \( -name "*.swift" -o -name "*.md" \) -exec sed -i '' 's/Arkhe Vault/Arkhe Vault/g' {} +
 ```
 
 ```bash
-# Replace "ForgedInFire" with "ArkheVault"
-find . -type f \( -name "*.swift" -o -name "*.md" \) -exec sed -i '' 's/ForgedInFire/ArkheVault/g' {} +
+# Replace "ArkheVault" with "ArkheVault"
+find . -type f \( -name "*.swift" -o -name "*.md" \) -exec sed -i '' 's/ArkheVault/ArkheVault/g' {} +
 ```
 
 ```bash
-# Replace "forgedinfire" with "arkhevault"
-find . -type f \( -name "*.swift" -o -name "*.md" \) -exec sed -i '' 's/forgedinfire/arkhevault/g' {} +
+# Replace "arkhevault" with "arkhevault"
+find . -type f \( -name "*.swift" -o -name "*.md" \) -exec sed -i '' 's/arkhevault/arkhevault/g' {} +
 ```
 
 ```bash
-# Replace "ForgeButton" with "ArkheButton"
-find . -type f -name "*.swift" -exec sed -i '' 's/ForgeButton/ArkheButton/g' {} +
+# Replace "ArkheButton" with "ArkheButton"
+find . -type f -name "*.swift" -exec sed -i '' 's/ArkheButton/ArkheButton/g' {} +
 ```
 
 ```bash
-# Replace "ForgeCard" with "ArkheCard"
-find . -type f -name "*.swift" -exec sed -i '' 's/ForgeCard/ArkheCard/g' {} +
+# Replace "ArkheCard" with "ArkheCard"
+find . -type f -name "*.swift" -exec sed -i '' 's/ArkheCard/ArkheCard/g' {} +
 ```
 
 ```bash
-# Replace "ForgeLogo" with "ArkheLogo"
-find . -type f -name "*.swift" -exec sed -i '' 's/ForgeLogo/ArkheLogo/g' {} +
+# Replace "ArkheLogo" with "ArkheLogo"
+find . -type f -name "*.swift" -exec sed -i '' 's/ArkheLogo/ArkheLogo/g' {} +
 ```
 
 ```bash
 # Rename main app file
-mv App/ForgedInFireApp.swift App/ArkheVaultApp.swift 2>/dev/null; echo "Done"
+mv App/ArkheVaultApp.swift App/ArkheVaultApp.swift 2>/dev/null; echo "Done"
 ```
 
 ```bash
 # Rename button component
-mv Shared/Components/ForgeButton.swift Shared/Components/ArkheButton.swift 2>/dev/null; echo "Done"
+mv Shared/Components/ArkheButton.swift Shared/Components/ArkheButton.swift 2>/dev/null; echo "Done"
 ```
 
 ```bash
 # Rename logo component
-mv Shared/Components/ForgeLogo.swift Shared/Components/ArkheLogo.swift 2>/dev/null; echo "Done"
+mv Shared/Components/ArkheLogo.swift Shared/Components/ArkheLogo.swift 2>/dev/null; echo "Done"
 ```
 
 ```bash
-# Verify no "Forged In Fire" remains
-grep -r "Forged In Fire" . --include="*.swift" --include="*.md" 2>/dev/null || echo "✅ No references found"
+# Verify no "Arkhe Vault" remains
+grep -r "Arkhe Vault" . --include="*.swift" --include="*.md" 2>/dev/null || echo "✅ No references found"
 ```
 
 ```bash
-# Verify no "ForgedInFire" remains
-grep -r "ForgedInFire" . --include="*.swift" --include="*.md" 2>/dev/null || echo "✅ No references found"
+# Verify no "ArkheVault" remains
+grep -r "ArkheVault" . --include="*.swift" --include="*.md" 2>/dev/null || echo "✅ No references found"
 ```
 
 ```bash

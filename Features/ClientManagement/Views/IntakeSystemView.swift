@@ -25,7 +25,7 @@ struct IntakeSystemView: View {
                     
                     Spacer()
                     
-                    ForgeButton(title: "New Intake Form", style: .primary) {
+                    ArkheButton(title: "New Intake Form", style: .primary) {
                         showingNewFormSheet = true
                     }
                 }
@@ -149,7 +149,7 @@ struct IntakeFormCard: View {
     let form: IntakeForm
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             VStack(alignment: .leading, spacing: 12) {
                 // Header
                 HStack {
@@ -222,15 +222,15 @@ struct IntakeFormCard: View {
                 
                 // Quick Actions
                 HStack(spacing: 8) {
-                    ForgeButton(title: "Start Intake", style: .primary) {
+                    ArkheButton(title: "Start Intake", style: .primary) {
                         // Start intake action
                     }
                     
-                    ForgeIconButton(systemImage: "eye", style: .outline) {
+                    ArkheIconButton(systemImage: "eye", style: .outline) {
                         // Preview form
                     }
                     
-                    ForgeIconButton(systemImage: "pencil", style: .secondary) {
+                    ArkheIconButton(systemImage: "pencil", style: .secondary) {
                         // Edit form
                     }
                 }
@@ -448,7 +448,7 @@ struct NewIntakeFormSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Create Form",
                         style: .primary,
                         isDisabled: formName.isEmpty || isLoading,
@@ -515,7 +515,7 @@ struct DynamicIntakeFormView: View {
                 VStack(spacing: 20) {
                     SectionHeader(title: "Personal Information")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             FormField(label: "First Name", placeholder: "Enter first name", text: $formResponses["firstName"])
                             FormField(label: "Last Name", placeholder: "Enter last name", text: $formResponses["lastName"])
@@ -527,7 +527,7 @@ struct DynamicIntakeFormView: View {
                     
                     SectionHeader(title: "Situation Assessment")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             FormField(label: "Current Housing Status", placeholder: "Select housing status", text: $formResponses["housingStatus"])
                             FormField(label: "Employment Status", placeholder: "Select employment status", text: $formResponses["employmentStatus"])
@@ -546,7 +546,7 @@ struct DynamicIntakeFormView: View {
                     
                     SectionHeader(title: "Needs Assessment")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Services Needed")
@@ -570,7 +570,7 @@ struct DynamicIntakeFormView: View {
                     
                     // Navigation
                     HStack(spacing: 12) {
-                        ForgeButton(title: "Previous", style: .outline, isDisabled: currentPage == 0) {
+                        ArkheButton(title: "Previous", style: .outline, isDisabled: currentPage == 0) {
                             if currentPage > 0 {
                                 currentPage -= 1
                             }
@@ -578,7 +578,7 @@ struct DynamicIntakeFormView: View {
                         
                         Spacer()
                         
-                        ForgeButton(
+                        ArkheButton(
                             title: currentPage < totalPages - 1 ? "Next" : "Submit Intake",
                             style: .primary,
                             isLoading: isSubmitting
@@ -643,7 +643,7 @@ struct FormField: View {
                 .foregroundColor(.textSecondary)
             
             TextField(placeholder, text: $text)
-                .textFieldStyle(ForgeTextFieldStyle())
+                .textFieldStyle(ArkheTextFieldStyle())
         }
     }
 }
@@ -690,7 +690,7 @@ struct IntakeResultsView: View {
                 // Summary
                 SectionHeader(title: "Intake Summary")
                 
-                ForgeCard {
+                ArkheCard {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Client Information Collected")
                             .font(.brandBodyBold)
@@ -716,7 +716,7 @@ struct IntakeResultsView: View {
                 
                 Spacer()
                 
-                ForgeButton(title: "Complete", style: .primary) {
+                ArkheButton(title: "Complete", style: .primary) {
                     dismiss()
                 }
             }
@@ -742,7 +742,7 @@ struct ProgramSuggestionCard: View {
     let onEnroll: () -> Void
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             HStack(spacing: 16) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(program.name)
@@ -760,7 +760,7 @@ struct ProgramSuggestionCard: View {
                 
                 Spacer()
                 
-                ForgeButton(title: "Enroll", style: .primary) {
+                ArkheButton(title: "Enroll", style: .primary) {
                     onEnroll()
                 }
             }

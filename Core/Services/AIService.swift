@@ -185,7 +185,7 @@ class AIService: NSObject, ObservableObject, URLSessionDelegate {
     // MARK: - Prompt Builders
     private func buildClientSummaryPrompt(client: Client) -> String {
         var prompt = """
-        Generate a concise client summary for Forged In Fire client management system.
+        Generate a concise client summary for Arkhe Vault client management system.
         
         Client Information:
         - Name: \(client.fullName)
@@ -262,7 +262,7 @@ class AIService: NSObject, ObservableObject, URLSessionDelegate {
     
     private func buildGrantNarrativePrompt(metrics: GrantMetrics, timeframe: String) -> String {
         return """
-        Generate a compelling grant narrative for Forged In Fire.
+        Generate a compelling grant narrative for Arkhe Vault.
         
         Time Period: \(timeframe)
         
@@ -273,7 +273,7 @@ class AIService: NSObject, ObservableObject, URLSessionDelegate {
         - Volunteer Hours: \(metrics.volunteerHours)
         - Staff Hours: \(metrics.staffHours)
         
-        Write a 200-300 word narrative that demonstrates impact, highlights successes, and aligns with Forged In Fire's mission of serving survivors of commercial sex trafficking.
+        Write a 200-300 word narrative that demonstrates impact, highlights successes, and aligns with Arkhe Vault's mission of serving survivors of commercial sex trafficking.
         """
     }
     
@@ -539,11 +539,11 @@ struct AINoteEditorView: View {
             
             // Action Buttons
             HStack(spacing: 12) {
-                ForgeButton(title: "Cancel", style: .outline) {
+                ArkheButton(title: "Cancel", style: .outline) {
                     // Cancel action
                 }
                 
-                ForgeButton(title: "Save Note", style: .primary) {
+                ArkheButton(title: "Save Note", style: .primary) {
                     // Save note action
                 }
             }
@@ -606,7 +606,7 @@ struct EnhancementOptionsSheet: View {
                 
                 Spacer()
                 
-                ForgeButton(
+                ArkheButton(
                     title: isEnhancing ? "Enhancing..." : "Enhance Note",
                     style: .primary,
                     isDisabled: selectedOptions.isEmpty || isEnhancing,

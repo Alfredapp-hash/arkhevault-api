@@ -2,9 +2,9 @@
 
 ## Overview
 
-This document provides a comprehensive strategy for managing Core Data schema migrations in the Forged In Fire Client Manager macOS application, ensuring smooth transitions between app versions without data loss.
+This document provides a comprehensive strategy for managing Core Data schema migrations in the Arkhe Vault Client Manager macOS application, ensuring smooth transitions between app versions without data loss.
 
-**Project Location:** `/Users/purduelaw/Desktop/ArkheApps/StudentTracker/ForgedInFireClientClientManager/`
+**Project Location:** `/Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVaultClientClientManager/`
 
 ---
 
@@ -460,7 +460,7 @@ If automatic rollback fails:
 
 ### Model Versioning
 
-1. **Current Model:** `ForgedInFireDataModel.xcdatamodeld`
+1. **Current Model:** `ArkheVaultDataModel.xcdatamodeld`
 2. **Versioning:** Xcode automatically versions when you make changes
 3. **Naming Convention:** Keep the same name, let Xcode handle versioning
 
@@ -679,7 +679,7 @@ If you plan to add iCloud sync in the future:
 
 ## Conclusion
 
-The Forged In Fire Client Manager uses Core Data with a well-structured schema. By following this migration strategy, you can:
+The Arkhe Vault Client Manager uses Core Data with a well-structured schema. By following this migration strategy, you can:
 
 - ✅ Safely evolve the data model over time
 - ✅ Maintain data integrity

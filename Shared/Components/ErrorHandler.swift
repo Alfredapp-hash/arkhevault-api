@@ -436,7 +436,7 @@ struct ErrorStateView: View {
             }
             
             if let onRetry = onRetry {
-                ForgeButton(
+                ArkheButton(
                     title: "Try Again",
                     style: .primary
                 ) {
@@ -489,7 +489,7 @@ struct EmptyStateView: View {
             }
             
             if let action = action, let actionTitle = actionTitle {
-                ForgeButton(
+                ArkheButton(
                     title: actionTitle,
                     style: .secondary
                 ) {

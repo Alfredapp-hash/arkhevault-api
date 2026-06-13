@@ -1,4 +1,4 @@
-# Forged In Fire - 2-Year Free Nonprofit Agreement
+# Arkhe Vault - 2-Year Free Nonprofit Agreement
 
 **Agreement Date:** _______________  
 **Organization:** ___________________________________  
@@ -9,7 +9,7 @@
 
 ## 1. PURPOSE OF THIS AGREEMENT
 
-Forged In Fire ("Provider") offers qualifying nonprofit organizations complimentary access to its case management software platform for a period of twenty-four (24) months ("Free Period"). This agreement establishes the terms, conditions, and expectations for participation in the 2-Year Free Nonprofit Program.
+Arkhe Vault ("Provider") offers qualifying nonprofit organizations complimentary access to its case management software platform for a period of twenty-four (24) months ("Free Period"). This agreement establishes the terms, conditions, and expectations for participation in the 2-Year Free Nonprofit Program.
 
 **Provider Mission:** To empower organizations serving vulnerable populations with enterprise-grade technology, regardless of budget constraints.
 
@@ -280,7 +280,7 @@ By signing below, both parties agree to the terms of this agreement.
 **Signature:** ___________________________________  
 **Date:** _______________________________________  
 
-### Forged In Fire:
+### Arkhe Vault:
 
 **Name:** _______________________________________  
 **Title:** _______________________________________  
@@ -311,7 +311,7 @@ Before signing, please confirm:
 ☐ My organization meets all eligibility requirements  
 ☐ I have authority to sign this agreement on behalf of the organization  
 
-**Questions?** Contact: nonprofit@forgedinfire.org | (555) 123-4567
+**Questions?** Contact: nonprofit@arkhevault.org | (555) 123-4567
 
 ---
 

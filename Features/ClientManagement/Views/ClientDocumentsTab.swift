@@ -18,7 +18,7 @@ struct ClientDocumentsTab: View {
             HStack {
                 SectionHeader(title: "Documents", subtitle: "\(filteredDocuments.count) documents")
                 
-                ForgeButton(title: "Upload Document", style: .primary) {
+                ArkheButton(title: "Upload Document", style: .primary) {
                     showingUploadSheet = true
                 }
             }
@@ -48,7 +48,7 @@ struct ClientDocumentsTab: View {
             
             // Documents List
             if filteredDocuments.isEmpty {
-                ForgeCard {
+                ArkheCard {
                     VStack(spacing: 12) {
                         Image(systemName: "doc")
                             .font(.system(size: 32))
@@ -159,7 +159,7 @@ struct DocumentCard: View {
     
     var body: some View {
         Button(action: onTap) {
-            ForgeCard(backgroundColor: backgroundColor) {
+            ArkheCard(backgroundColor: backgroundColor) {
                 VStack(alignment: .leading, spacing: 12) {
                     // Header
                     HStack {
@@ -229,15 +229,15 @@ struct DocumentCard: View {
                     
                     // Actions
                     HStack(spacing: 8) {
-                        ForgeButton(title: "View", style: .primary) {
+                        ArkheButton(title: "View", style: .primary) {
                             onTap()
                         }
                         
-                        ForgeIconButton(systemImage: "square.and.arrow.down", style: .secondary) {
+                        ArkheIconButton(systemImage: "square.and.arrow.down", style: .secondary) {
                             // Download action
                         }
                         
-                        ForgeIconButton(systemImage: "square.and.arrow.up", style: .outline) {
+                        ArkheIconButton(systemImage: "square.and.arrow.up", style: .outline) {
                             // Share action
                         }
                     }
@@ -423,7 +423,7 @@ struct UploadDocumentSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Upload",
                         style: .primary,
                         isDisabled: selectedFileURL == nil || documentName.isEmpty || isUploading,
@@ -571,15 +571,15 @@ struct DocumentDetailView: View {
                 Spacer()
                 
                 HStack(spacing: 8) {
-                    ForgeIconButton(systemImage: "square.and.arrow.down", style: .primary) {
+                    ArkheIconButton(systemImage: "square.and.arrow.down", style: .primary) {
                         // Download action
                     }
                     
-                    ForgeIconButton(systemImage: "square.and.arrow.up", style: .secondary) {
+                    ArkheIconButton(systemImage: "square.and.arrow.up", style: .secondary) {
                         // Share action
                     }
                     
-                    ForgeIconButton(systemImage: "pencil", style: .outline) {
+                    ArkheIconButton(systemImage: "pencil", style: .outline) {
                         // Edit action
                     }
                 }
@@ -592,7 +592,7 @@ struct DocumentDetailView: View {
                 VStack(spacing: 20) {
                     SectionHeader(title: "Document Details")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 12) {
                             InfoRow(icon: "doc.fill", title: "Document Type", value: document.documentType?.capitalized ?? "Unknown")
                             InfoRow(icon: "eye.fill", title: "Visibility", value: document.visibilityLevel?.capitalized ?? "Standard")
@@ -613,7 +613,7 @@ struct DocumentDetailView: View {
                     if document.signatureRequired {
                         SectionHeader(title: "Signature Status")
                         
-                        ForgeCard {
+                        ArkheCard {
                             VStack(spacing: 12) {
                                 HStack {
                                     Image(systemName: document.signatureStatus == "signed" ? "checkmark.circle.fill" : "clock.fill")
@@ -632,7 +632,7 @@ struct DocumentDetailView: View {
                                 }
                                 
                                 if document.signatureStatus == "pending" {
-                                    ForgeButton(title: "Request Signature", style: .primary) {
+                                    ArkheButton(title: "Request Signature", style: .primary) {
                                         // Request signature action
                                     }
                                 }
@@ -644,7 +644,7 @@ struct DocumentDetailView: View {
                     if let restrictions = document.accessRestrictions, !restrictions.isEmpty {
                         SectionHeader(title: "Access Restrictions")
                         
-                        ForgeCard {
+                        ArkheCard {
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("This document is restricted to:")
                                     .font(.brandCaption)
@@ -668,7 +668,7 @@ struct DocumentDetailView: View {
                     // Review Status
                     SectionHeader(title: "Review Status")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 12) {
                             HStack {
                                 Image(systemName: document.reviewStatus == "approved" ? "checkmark.circle.fill" : "clock.fill")
@@ -687,11 +687,11 @@ struct DocumentDetailView: View {
                             }
                             
                             HStack(spacing: 12) {
-                                ForgeButton(title: "Approve", style: .primary) {
+                                ArkheButton(title: "Approve", style: .primary) {
                                     // Approve action
                                 }
                                 
-                                ForgeButton(title: "Request Changes", style: .secondary) {
+                                ArkheButton(title: "Request Changes", style: .secondary) {
                                     // Request changes action
                                 }
                             }
@@ -701,7 +701,7 @@ struct DocumentDetailView: View {
                     // Version History
                     SectionHeader(title: "Version History")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 12) {
                             VersionHistoryRow(version: 1, date: document.uploadDate, uploadedBy: document.uploadedBy?.fullName ?? "System")
                         }
@@ -711,15 +711,15 @@ struct DocumentDetailView: View {
                     SectionHeader(title: "Actions")
                     
                     HStack(spacing: 12) {
-                        ForgeButton(title: "Download", style: .primary) {
+                        ArkheButton(title: "Download", style: .primary) {
                             // Download action
                         }
                         
-                        ForgeButton(title: "Print", style: .secondary) {
+                        ArkheButton(title: "Print", style: .secondary) {
                             // Print action
                         }
                         
-                        ForgeButton(title: "Delete", style: .danger) {
+                        ArkheButton(title: "Delete", style: .danger) {
                             showingDeleteDialog = true
                         }
                     }

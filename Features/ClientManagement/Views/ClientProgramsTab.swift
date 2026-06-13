@@ -14,7 +14,7 @@ struct ClientProgramsTab: View {
             HStack {
                 SectionHeader(title: "Program Enrollments", subtitle: "\(client.activeProgramsCount) active programs")
                 
-                ForgeButton(title: "Enroll in Program", style: .primary) {
+                ArkheButton(title: "Enroll in Program", style: .primary) {
                     showingEnrollSheet = true
                 }
             }
@@ -31,7 +31,7 @@ struct ClientProgramsTab: View {
                     }
                 }
             } else {
-                ForgeCard {
+                ArkheCard {
                     VStack(spacing: 12) {
                         Image(systemName: "star.slash")
                             .font(.system(size: 32))
@@ -72,7 +72,7 @@ struct ProgramEnrollmentCard: View {
     
     var body: some View {
         Button(action: onTap) {
-            ForgeCard {
+            ArkheCard {
                 VStack(alignment: .leading, spacing: 12) {
                     // Header
                     HStack {
@@ -218,7 +218,7 @@ struct AvailableProgramCard: View {
     @State private var showingEnrollDialog = false
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
@@ -260,7 +260,7 @@ struct AvailableProgramCard: View {
                     
                     Spacer()
                     
-                    ForgeButton(
+                    ArkheButton(
                         title: "Enroll",
                         style: .primary,
                         isDisabled: program.isFull
@@ -374,7 +374,7 @@ struct ProgramEnrollmentSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Enroll",
                         style: .primary,
                         isDisabled: selectedProgram == nil || isLoading,
@@ -465,7 +465,7 @@ struct ProgramEnrollmentDetailView: View {
                 Spacer()
                 
                 if enrollment.isActive {
-                    ForgeButton(title: "Complete Enrollment", style: .primary) {
+                    ArkheButton(title: "Complete Enrollment", style: .primary) {
                         showingCompleteDialog = true
                     }
                 }
@@ -541,7 +541,7 @@ struct EnrollmentOverviewTab: View {
         VStack(spacing: 20) {
             SectionHeader(title: "Enrollment Details")
             
-            ForgeCard {
+            ArkheCard {
                 VStack(spacing: 12) {
                     InfoRow(icon: "star.fill", title: "Program", value: enrollment.program?.name ?? "Unknown")
                     InfoRow(icon: "calendar", title: "Enrollment Date", value: enrollment.enrollmentDate.formatted(date: .long, time: .omitted))
@@ -565,7 +565,7 @@ struct EnrollmentOverviewTab: View {
             if let goals = enrollment.goals, !goals.isEmpty {
                 SectionHeader(title: "Goals")
                 
-                ForgeCard {
+                ArkheCard {
                     VStack(alignment: .leading, spacing: 8) {
                         ForEach(Array(goals.enumerated()), id: \.offset) { index, goal in
                             HStack(spacing: 8) {
@@ -585,7 +585,7 @@ struct EnrollmentOverviewTab: View {
             if let notes = enrollment.notes, !notes.isEmpty {
                 SectionHeader(title: "Notes")
                 
-                ForgeCard {
+                ArkheCard {
                     Text(notes)
                         .font(.brandBody)
                         .foregroundColor(.textPrimary)
@@ -599,7 +599,7 @@ struct EnrollmentNotesTab: View {
     let enrollment: ProgramEnrollment
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             Text("Program-specific notes coming soon")
                 .font(.brandBody)
                 .foregroundColor(.textSecondary)
@@ -611,7 +611,7 @@ struct EnrollmentTasksTab: View {
     let enrollment: ProgramEnrollment
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             Text("Program-specific tasks coming soon")
                 .font(.brandBody)
                 .foregroundColor(.textSecondary)
@@ -623,7 +623,7 @@ struct EnrollmentDocumentsTab: View {
     let enrollment: ProgramEnrollment
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             Text("Program-specific documents coming soon")
                 .font(.brandBody)
                 .foregroundColor(.textSecondary)
@@ -635,7 +635,7 @@ struct EnrollmentOutcomesTab: View {
     let enrollment: ProgramEnrollment
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             Text("Program outcomes tracking coming soon")
                 .font(.brandBody)
                 .foregroundColor(.textSecondary)

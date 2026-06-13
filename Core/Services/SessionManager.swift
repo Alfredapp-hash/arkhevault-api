@@ -174,7 +174,7 @@ struct SessionTimeoutView: View {
                     .foregroundColor(.textMuted)
             }
             
-            ForgeButton(
+            ArkheButton(
                 title: "Sign In Again",
                 style: .primary,
                 isFullWidth: true
@@ -227,12 +227,12 @@ struct SessionWarningView: View {
                 Button("Logout") {
                     AuthenticationManager.shared.logout()
                 }
-                .buttonStyle(ForgeButtonStyle(style: .outline))
+                .buttonStyle(ArkheButtonStyle(style: .outline))
                 
                 Button("Continue Session") {
                     sessionManager.extendSession()
                 }
-                .buttonStyle(ForgeButtonStyle(style: .primary))
+                .buttonStyle(ArkheButtonStyle(style: .primary))
             }
         }
         .padding(20)
