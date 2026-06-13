@@ -1,7 +1,7 @@
 import SwiftUI
 
-// MARK: - Forged In Fire Logo Component
-struct ForgeLogo: View {
+// MARK: - Arkhe Vault Logo Component
+struct ArkheLogo: View {
     var size: LogoSize = .medium
     var style: LogoStyle = .full
     var showTagline: Bool = false
@@ -129,7 +129,7 @@ struct BrandHeader: View {
     var body: some View {
         HStack(spacing: 16) {
             if showLogo {
-                ForgeLogo(size: .medium, style: .iconOnly)
+                ArkheLogo(size: .medium, style: .iconOnly)
             }
             
             VStack(alignment: .leading, spacing: 4) {
@@ -158,7 +158,7 @@ struct BrandFooter: View {
     var body: some View {
         VStack(spacing: 12) {
             if showLogo {
-                ForgeLogo(size: .compact, style: .iconOnly)
+                ArkheLogo(size: .compact, style: .iconOnly)
             }
             
             Text(BrandSystem.appName)
@@ -196,12 +196,12 @@ struct BrandCard<Content: View>: View {
     }
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             VStack(alignment: .leading, spacing: 16) {
                 // Header with logo
                 HStack {
                     if showLogo {
-                        ForgeLogo(size: .small, style: .iconOnly)
+                        ArkheLogo(size: .small, style: .iconOnly)
                     }
                     
                     VStack(alignment: .leading, spacing: 4) {
@@ -399,15 +399,15 @@ struct BrandBadge: View {
 #Preview("Logo Sizes") {
     VStack(spacing: 20) {
         HStack(spacing: 20) {
-            ForgeLogo(size: .extraSmall)
-            ForgeLogo(size: .small)
-            ForgeLogo(size: .compact)
-            ForgeLogo(size: .medium)
+            ArkheLogo(size: .extraSmall)
+            ArkheLogo(size: .small)
+            ArkheLogo(size: .compact)
+            ArkheLogo(size: .medium)
         }
         
         HStack(spacing: 20) {
-            ForgeLogo(size: .large)
-            ForgeLogo(size: .extraLarge)
+            ArkheLogo(size: .large)
+            ArkheLogo(size: .extraLarge)
         }
     }
     .padding()
@@ -416,8 +416,8 @@ struct BrandBadge: View {
 
 #Preview("Logo Styles") {
     VStack(spacing: 20) {
-        ForgeLogo(size: .medium, style: .full, showTagline: true)
-        ForgeLogo(size: .medium, style: .iconOnly)
+        ArkheLogo(size: .medium, style: .full, showTagline: true)
+        ArkheLogo(size: .medium, style: .iconOnly)
     }
     .padding()
     .background(Color.deepCharcoal)

@@ -28,7 +28,7 @@ struct ReferralListView: View {
                     
                     Spacer()
                     
-                    ForgeButton(title: "New Referral", style: .primary) {
+                    ArkheButton(title: "New Referral", style: .primary) {
                         showingNewReferralSheet = true
                     }
                 }
@@ -110,7 +110,7 @@ struct ReferralListView: View {
             
             // Referral List
             if viewModel.filteredReferrals.isEmpty {
-                ForgeCard {
+                ArkheCard {
                     VStack(spacing: 12) {
                         Image(systemName: "arrow.right.arrow.left")
                             .font(.system(size: 32))
@@ -212,7 +212,7 @@ struct ReferralCard: View {
     
     var body: some View {
         Button(action: onTap) {
-            ForgeCard(backgroundColor: statusBackgroundColor) {
+            ArkheCard(backgroundColor: statusBackgroundColor) {
                 VStack(alignment: .leading, spacing: 12) {
                     // Header
                     HStack {
@@ -310,12 +310,12 @@ struct ReferralCard: View {
                     
                     // Actions
                     HStack(spacing: 8) {
-                        ForgeButton(title: "View Details", style: .primary) {
+                        ArkheButton(title: "View Details", style: .primary) {
                             onTap()
                         }
                         
                         if referral.status == "pending" {
-                            ForgeIconButton(systemImage: "checkmark", style: .secondary) {
+                            ArkheIconButton(systemImage: "checkmark", style: .secondary) {
                                 // Mark as contacted
                             }
                         }
@@ -576,7 +576,7 @@ struct NewReferralSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Create Referral",
                         style: .primary,
                         isDisabled: selectedClient == nil || referralDestination.isEmpty || !consentConfirmed || isLoading,
@@ -711,7 +711,7 @@ struct ReferralDetailView: View {
                 Spacer()
                 
                 if referral.status == "pending" || referral.status == "in_progress" {
-                    ForgeButton(title: "Update Status", style: .primary) {
+                    ArkheButton(title: "Update Status", style: .primary) {
                         showingUpdateStatusSheet = true
                     }
                 }
@@ -724,11 +724,11 @@ struct ReferralDetailView: View {
                 VStack(spacing: 20) {
                     SectionHeader(title: "Referral Details")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 12) {
                             InfoRow(icon: "list.bullet", title: "Referral Type", value: referral.referralType?.displayName ?? "Unknown")
                             InfoRow(icon: "arrow.right.arrow.left", title: "Destination", value: referral.referralDestination ?? "Unknown")
-                            InfoRow(icon: "arrow.left", title: "Source", value: referral.referralSource ?? "Forged In Fire")
+                            InfoRow(icon: "arrow.left", title: "Source", value: referral.referralSource ?? "Arkhe Vault")
                             InfoRow(icon: "info.circle", title: "Status", value: referral.status?.capitalized ?? "Unknown")
                             
                             if let referralDate = referral.referralDate {
@@ -744,7 +744,7 @@ struct ReferralDetailView: View {
                     // Contact Information
                     SectionHeader(title: "Contact Information")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 12) {
                             if let contactPerson = referral.contactPerson {
                                 InfoRow(icon: "person.fill", title: "Contact Person", value: contactPerson)
@@ -759,7 +759,7 @@ struct ReferralDetailView: View {
                     // Consent & Documentation
                     SectionHeader(title: "Consent & Documentation")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 12) {
                             HStack {
                                 Image(systemName: referral.consentConfirmed ? "checkmark.shield.fill" : "xmark.shield.fill")
@@ -803,7 +803,7 @@ struct ReferralDetailView: View {
                     if let outcome = referral.outcome {
                         SectionHeader(title: "Referral Outcome")
                         
-                        ForgeCard {
+                        ArkheCard {
                             VStack(alignment: .leading, spacing: 12) {
                                 Text("Outcome")
                                     .font(.brandCaption)
@@ -820,7 +820,7 @@ struct ReferralDetailView: View {
                     if let notes = referral.notes {
                         SectionHeader(title: "Notes")
                         
-                        ForgeCard {
+                        ArkheCard {
                             Text(notes)
                                 .font(.brandBody)
                                 .foregroundColor(.textPrimary)
@@ -830,7 +830,7 @@ struct ReferralDetailView: View {
                     // Timeline
                     SectionHeader(title: "Timeline")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             TimelineItem(
                                 icon: "arrow.right.arrow.left",
@@ -862,11 +862,11 @@ struct ReferralDetailView: View {
                     
                     // Actions
                     HStack(spacing: 12) {
-                        ForgeButton(title: "Update Status", style: .primary) {
+                        ArkheButton(title: "Update Status", style: .primary) {
                             showingUpdateStatusSheet = true
                         }
                         
-                        ForgeButton(title: "Send Follow-up", style: .secondary) {
+                        ArkheButton(title: "Send Follow-up", style: .secondary) {
                             // Send follow-up action
                         }
                     }
@@ -945,7 +945,7 @@ struct UpdateReferralStatusSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Update",
                         style: .primary,
                         isDisabled: isLoading,

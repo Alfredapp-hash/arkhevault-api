@@ -155,7 +155,7 @@ class SecurityPerformanceTests: XCTestCase {
     
     func testPasswordHashingPerformance() {
         let password = "testpassword123"
-        let salt = "ForgedInFire_test"
+        let salt = "ArkheVault_test"
         
         measure {
             for _ in 0..<100 {

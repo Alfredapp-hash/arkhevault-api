@@ -25,7 +25,7 @@ struct ProgramListView: View {
                     
                     Spacer()
                     
-                    ForgeButton(title: "New Program", style: .primary) {
+                    ArkheButton(title: "New Program", style: .primary) {
                         showingNewProgramSheet = true
                     }
                 }
@@ -148,7 +148,7 @@ struct ProgramManagementCard: View {
     
     var body: some View {
         Button(action: onTap) {
-            ForgeCard {
+            ArkheCard {
                 VStack(alignment: .leading, spacing: 12) {
                     // Header
                     HStack {
@@ -210,15 +210,15 @@ struct ProgramManagementCard: View {
                     
                     // Quick Actions
                     HStack(spacing: 8) {
-                        ForgeButton(title: "Manage", style: .primary) {
+                        ArkheButton(title: "Manage", style: .primary) {
                             onTap()
                         }
                         
-                        ForgeIconButton(systemImage: "person.badge.plus", style: .secondary) {
+                        ArkheIconButton(systemImage: "person.badge.plus", style: .secondary) {
                             // Quick enrollment
                         }
                         
-                        ForgeIconButton(systemImage: "chart.bar", style: .outline) {
+                        ArkheIconButton(systemImage: "chart.bar", style: .outline) {
                             // View reports
                         }
                     }
@@ -310,7 +310,7 @@ struct NewProgramSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Create Program",
                         style: .primary,
                         isDisabled: programName.isEmpty || isLoading,
@@ -392,7 +392,7 @@ struct ProgramDetailView: View {
                 
                 Spacer()
                 
-                ForgeButton(title: "Edit Program", style: .secondary) {
+                ArkheButton(title: "Edit Program", style: .secondary) {
                     showingEditSheet = true
                 }
             }
@@ -476,7 +476,7 @@ struct ProgramOverviewTab: View {
         VStack(spacing: 20) {
             SectionHeader(title: "Program Details")
             
-            ForgeCard {
+            ArkheCard {
                 VStack(spacing: 12) {
                     InfoRow(icon: "star.fill", title: "Program Name", value: program.name)
                     InfoRow(icon: "list.bullet", title: "Program Type", value: program.programType?.displayName ?? "Unknown")
@@ -498,7 +498,7 @@ struct ProgramOverviewTab: View {
             
             SectionHeader(title: "Capacity Information")
             
-            ForgeCard {
+            ArkheCard {
                 VStack(spacing: 12) {
                     InfoRow(icon: "person.2.fill", title: "Total Capacity", value: "\(program.capacity)")
                     InfoRow(icon: "person.fill", title: "Current Enrollments", value: "\(program.currentEnrollment)")
@@ -520,15 +520,15 @@ struct ProgramOverviewTab: View {
             SectionHeader(title: "Quick Actions")
             
             HStack(spacing: 12) {
-                ForgeButton(title: "Enroll Client", style: .primary) {
+                ArkheButton(title: "Enroll Client", style: .primary) {
                     // Enroll action
                 }
                 
-                ForgeButton(title: "View Waitlist", style: .secondary) {
+                ArkheButton(title: "View Waitlist", style: .secondary) {
                     // Waitlist action
                 }
                 
-                ForgeButton(title: "Generate Report", style: .outline) {
+                ArkheButton(title: "Generate Report", style: .outline) {
                     // Report action
                 }
             }
@@ -540,7 +540,7 @@ struct ProgramEnrollmentsTab: View {
     let program: Program
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             Text("Program enrollments list coming soon")
                 .font(.brandBody)
                 .foregroundColor(.textSecondary)
@@ -552,7 +552,7 @@ struct ProgramEligibilityTab: View {
     let program: Program
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             VStack(spacing: 16) {
                 SectionHeader(title: "Eligibility Rules")
                 
@@ -586,7 +586,7 @@ struct ProgramEligibilityTab: View {
                     )
                 }
                 
-                ForgeButton(title: "Add Eligibility Rule", style: .outline) {
+                ArkheButton(title: "Add Eligibility Rule", style: .outline) {
                     // Add rule action
                 }
             }
@@ -615,7 +615,7 @@ struct EligibilityRuleRow: View {
             
             Spacer()
             
-            ForgeIconButton(systemImage: "pencil", style: .outline) {
+            ArkheIconButton(systemImage: "pencil", style: .outline) {
                 // Edit rule
             }
         }
@@ -627,7 +627,7 @@ struct ProgramReportingTab: View {
     let program: Program
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             VStack(spacing: 16) {
                 SectionHeader(title: "Grant Reporting Fields")
                 
@@ -657,7 +657,7 @@ struct ProgramReportingTab: View {
                     )
                 }
                 
-                ForgeButton(title: "Add Reporting Field", style: .outline) {
+                ArkheButton(title: "Add Reporting Field", style: .outline) {
                     // Add field action
                 }
             }
@@ -687,7 +687,7 @@ struct ReportingFieldRow: View {
             
             Spacer()
             
-            ForgeIconButton(systemImage: "pencil", style: .outline) {
+            ArkheIconButton(systemImage: "pencil", style: .outline) {
                 // Edit field
             }
         }
@@ -699,7 +699,7 @@ struct ProgramSettingsTab: View {
     let program: Program
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             Text("Program settings coming soon")
                 .font(.brandBody)
                 .foregroundColor(.textSecondary)
@@ -752,7 +752,7 @@ struct EditProgramSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Save Changes",
                         style: .primary,
                         isDisabled: programName.isEmpty || isLoading,

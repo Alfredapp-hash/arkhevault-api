@@ -7,7 +7,7 @@ class CoreDataController: ObservableObject {
     @Published var container: NSPersistentContainer
     
     private init() {
-        container = NSPersistentContainer(name: "ForgedInFireDataModel")
+        container = NSPersistentContainer(name: "ArkheVaultDataModel")
         
         // Configure CloudKit sync (optional - can be disabled)
         // container.persistentStoreDescriptions.first?.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)

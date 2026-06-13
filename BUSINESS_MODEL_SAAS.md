@@ -1,4 +1,4 @@
-# Forged In Fire - SaaS Business Model & Pricing Strategy
+# Arkhe Vault - SaaS Business Model & Pricing Strategy
 
 **Model:** Freemium for Good - 2-Year Free Nonprofit Program  
 **Target Market:** Domestic violence shelters, safe housing, trauma-informed care organizations  
@@ -165,7 +165,7 @@
 > "Get a $50,000 case management system for free while you build capacity. When you're ready to scale, we're just $99/month."
 
 **To Grant Writers:**
-> "ForgedInFire is FREE for 2 years. In Year 3, budget $1,200 annually for software that saves you 500+ staff hours per year."
+> "ArkheVault is FREE for 2 years. In Year 3, budget $1,200 annually for software that saves you 500+ staff hours per year."
 
 **To Boards:**
 > "No financial risk. If we don't deliver value in 2 years, we don't deserve your money."
@@ -238,7 +238,7 @@
 **Activities:**
 - Hire dedicated nonprofit success manager
 - Develop certification program
-- Launch "ForgedInFire Academy" (paid training)
+- Launch "ArkheVault Academy" (paid training)
 - Partner with state DV coalitions
 - International expansion (Canada, UK, Australia)
 

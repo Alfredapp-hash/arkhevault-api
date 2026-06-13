@@ -338,7 +338,7 @@ struct DocumentExtractionView: View {
             SectionHeader(title: "Document Extraction")
             
             // Image Selection
-            ForgeCard {
+            ArkheCard {
                 HStack {
                     Button(action: {
                         isPickingImage = true
@@ -377,7 +377,7 @@ struct DocumentExtractionView: View {
             
             // Process Button
             if let image = selectedImage {
-                ForgeButton(
+                ArkheButton(
                     title: extractionService.isProcessing ? "Processing..." : "Extract Fields",
                     style: .primary,
                     isDisabled: extractionService.isProcessing,
@@ -423,7 +423,7 @@ struct ExtractedFieldRow: View {
     let onEdit: () -> Void
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(field.fieldKey.replacingOccurrences(of: "_", with: " ").capitalized)
@@ -455,7 +455,7 @@ struct ExtractedFieldRow: View {
                     }
                 }
                 
-                ForgeIconButton(systemImage: "pencil", style: .outline) {
+                ArkheIconButton(systemImage: "pencil", style: .outline) {
                     onEdit()
                 }
             }

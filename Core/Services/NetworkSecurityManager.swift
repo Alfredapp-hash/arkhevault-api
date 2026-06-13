@@ -8,7 +8,7 @@ class NetworkSecurityManager: NSObject, URLSessionDelegate {
     static let shared = NetworkSecurityManager()
     
     private var secureSession: URLSession!
-    private let securityQueue = DispatchQueue(label: "com.forgedinfire.network.security", qos: .utility)
+    private let securityQueue = DispatchQueue(label: "com.arkheholdings.vault.network.security", qos: .utility)
     
     // MARK: - TLS Configuration Constants
     
@@ -28,16 +28,16 @@ class NetworkSecurityManager: NSObject, URLSessionDelegate {
     /// Pinned certificate SHA256 hashes for backend API
     /// These must be updated when certificates rotate
     private let pinnedBackendHashes: [String: [String]] = [
-        "api.forgedinfire.org": [
+        "api.arkhevault.org": [
             // Production certificate pins
             "PLACEHOLDER_PROD_CERT_HASH_1",
             "PLACEHOLDER_PROD_CERT_HASH_2"
         ],
-        "api-staging.forgedinfire.org": [
+        "api-staging.arkhevault.org": [
             // Staging certificate pins
             "PLACEHOLDER_STAGING_CERT_HASH_1"
         ],
-        "api-dev.forgedinfire.org": [
+        "api-dev.arkhevault.org": [
             // Development certificate pins
             "PLACEHOLDER_DEV_CERT_HASH_1"
         ]

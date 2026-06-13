@@ -8,7 +8,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Configure window behavior
         if let window = NSApp.windows.first {
-            window.title = "Forged In Fire - Client Management"
+            window.title = "Arkhe Vault - Client Management"
             window.titlebarAppearsTransparent = true
             window.styleMask.insert(.fullSizeContentView)
         }

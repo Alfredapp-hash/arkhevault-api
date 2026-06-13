@@ -2,9 +2,9 @@
 
 ## Overview
 
-This document provides step-by-step instructions for configuring code signing and provisioning profiles for the Forged In Fire Client Manager macOS application for development, testing, and App Store distribution.
+This document provides step-by-step instructions for configuring code signing and provisioning profiles for the Arkhe Vault Client Manager macOS application for development, testing, and App Store distribution.
 
-**Project Location:** `/Users/purduelaw/Desktop/ArkheApps/StudentTracker/ForgedInFireClientManager/`
+**Project Location:** `/Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVaultClientManager/`
 
 ---
 
@@ -53,28 +53,28 @@ This document provides step-by-step instructions for configuring code signing an
 The bundle identifier should follow reverse DNS notation:
 
 ```
-com.forgedinfire.clientmanager
+com.arkheholdings.vault.clientmanager
 ```
 
 ### Step 1: Configure in Xcode
 
 1. **Open Project in Xcode**
    ```bash
-   open /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ForgedInFireClientManager/ForgedInFireClientManager.xcodeproj
+   open /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVaultClientManager/ArkheVaultClientManager.xcodeproj
    ```
 
 2. **Select Target**
-   - Click on `ForgedInFireClientManager` project (blue icon)
-   - Select `ForgedInFireClientManager` target
+   - Click on `ArkheVaultClientManager` project (blue icon)
+   - Select `ArkheVaultClientManager` target
    - Go to "General" tab
 
 3. **Set Bundle Identifier**
    - Find "Bundle Identifier" field
-   - Enter: `com.forgedinfire.clientmanager`
+   - Enter: `com.arkheholdings.vault.clientmanager`
    - Click "Change Bundle Identifier" if needed
 
 4. **Display Name**
-   - Set "Display Name" to: `Forged In Fire Client Manager`
+   - Set "Display Name" to: `Arkhe Vault Client Manager`
 
 5. **Version Information**
    - Set "Version" to: `1.0.0`
@@ -138,7 +138,7 @@ For macOS app distribution, you need:
 3. Select "App IDs"
 4. Select "Mac" platform
 5. Choose "App ID" (not wildcard)
-6. Enter Bundle ID: `com.forgedinfire.clientmanager`
+6. Enter Bundle ID: `com.arkheholdings.vault.clientmanager`
 7. Select capabilities (see below)
 8. Register the App ID
 
@@ -160,10 +160,10 @@ Enable the following capabilities for the App ID:
 1. Go to [Profiles](https://developer.apple.com/account/resources/profiles/list)
 2. Click "+" to create a new profile
 3. Select "macOS App Development"
-4. Choose your App ID: `com.forgedinfire.clientmanager`
+4. Choose your App ID: `com.arkheholdings.vault.clientmanager`
 5. Select your development certificate
 6. Select your development team
-7. Name it: `Forged In Fire Client Manager Development`
+7. Name it: `Arkhe Vault Client Manager Development`
 8. Generate and download the profile
 
 ### Step 4: Create App Store Provisioning Profile
@@ -171,10 +171,10 @@ Enable the following capabilities for the App ID:
 1. Go to [Profiles](https://developer.apple.com/account/resources/profiles/list)
 2. Click "+" to create a new profile
 3. Select "Mac App Store"
-4. Choose your App ID: `com.forgedinfire.clientmanager`
+4. Choose your App ID: `com.arkheholdings.vault.clientmanager`
 5. Select your distribution certificate
 6. Select your development team
-7. Name it: `Forged In Fire Client Manager App Store`
+7. Name it: `Arkhe Vault Client Manager App Store`
 8. Generate and download the profile
 
 ---
@@ -195,19 +195,19 @@ Enable the following capabilities for the App ID:
 ### Step 2: Configure Signing in Xcode
 
 1. **Select Target**
-   - Click on `ForgedInFireClientManager` target
+   - Click on `ArkheVaultClientManager` target
    - Go to "Signing & Capabilities" tab
 
 2. **Enable Automatic Signing**
    - Check "Automatically manage signing"
    - Select your development team
-   - Select "Forged In Fire Client Manager Development" profile
+   - Select "Arkhe Vault Client Manager Development" profile
 
 3. **Configure for Release Build**
    - For App Store builds, you may need manual signing
    - Uncheck "Automatically manage signing" for Release configuration
    - Select your distribution certificate
-   - Select "Forged In Fire Client Manager App Store" profile
+   - Select "Arkhe Vault Client Manager App Store" profile
 
 ### Step 3: Enable Capabilities
 
@@ -244,7 +244,7 @@ Add the following keys to `Info.plist`:
 ### Step 1: Verify Code Signing
 
 1. **Select Target**
-   - Click on `ForgedInFireClientManager` target
+   - Click on `ArkheVaultClientManager` target
    - Go to "Signing & Capabilities" tab
 
 2. **Check Signing Status**
@@ -287,7 +287,7 @@ Add the following keys to `Info.plist`:
    - You may need to re-sign for the other Mac
    - Use codesign command if needed:
      ```bash
-     codesign --force --deep --sign "Developer ID" ForgedInFireClientManager.app
+     codesign --force --deep --sign "Developer ID" ArkheVaultClientManager.app
      ```
 
 ### Distribution Testing
@@ -313,8 +313,8 @@ Add the following keys to `Info.plist`:
 2. Click "My Apps" → "+"
 3. Create a new app
 4. Platform: macOS
-5. Name: Forged In Fire Client Manager
-6. Bundle ID: com.forgedinfire.clientmanager
+5. Name: Arkhe Vault Client Manager
+6. Bundle ID: com.arkheholdings.vault.clientmanager
 7. SKU: FORGED-IN-FIRE-001
 8. User Access: Complete the information
 
@@ -326,7 +326,7 @@ Add the following keys to `Info.plist`:
 
 2. **Distribute to App Store Connect**
    - Distribute App → App Store Connect
-   - Select "Forged In Fire Client Manager App Store" profile
+   - Select "Arkhe Vault Client Manager App Store" profile
    - Upload
 
 ### Step 3: Configure App Store Information
@@ -504,13 +504,13 @@ For automated builds, you can use environment variables:
 
 ```bash
 # Development build
-xcodebuild -scheme ForgedInFireClientManager \
+xcodebuild -scheme ArkheVaultClientManager \
   -configuration Debug \
   -CODE_SIGN_IDENTITY="Apple Development: Your Name (TEAM_ID)" \
   -PROVISIONING_PROFILE_SPEC=~/Library/MobileDevice/Provisioning\ Profiles/Development.mobileprovision
 
 # Production build
-xcodebuild -scheme ForgedInFireClientManager \
+xcodebuild -scheme ArkheVaultClientManager \
   -configuration Release \
   -CODE_SIGN_IDENTITY="Apple Distribution: Your Name (TEAM_ID)" \
   -PROVISIONING_PROFILE_SPEC=~/Library/MobileDevice/Provisioning\ Profiles/AppStore.mobileprovision
@@ -575,7 +575,7 @@ xcodebuild -scheme ForgedInFireClientManager \
 ### Bundle Identifier
 
 ```
-com.forgedinfire.clientmanager
+com.arkheholdings.vault.clientmanager
 ```
 
 ### Team ID
@@ -587,10 +587,10 @@ Find your Team ID in Developer Portal:
 
 ```bash
 # Check code signing
-codesign -dv -v ForgedInFireClientManager.app
+codesign -dv -v ArkheVaultClientManager.app
 
 # Re-sign app
-codesign --force --deep --sign "Developer ID" ForgedInFireClientManager.app
+codesign --force --deep --sign "Developer ID" ArkheVaultClientManager.app
 
 # Verify provisioning profile
 security cms -D -i ~/Library/MobileDevice/Provisioning\ Profiles/Profile.mobileprovision

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Forged In Fire Client Manager - Test Runner Script
+# Arkhe Vault Client Manager - Test Runner Script
 # Usage: ./test_runner.sh [options]
 
 set -e
@@ -13,7 +13,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 echo -e "${BLUE}========================================${NC}"
-echo -e "${BLUE}  Forged In Fire - Security Test Suite ${NC}"
+echo -e "${BLUE}  Arkhe Vault - Security Test Suite ${NC}"
 echo -e "${BLUE}========================================${NC}"
 echo ""
 
@@ -78,14 +78,14 @@ fi
 echo -e "${BLUE}Building project for testing...${NC}"
 if [ "$VERBOSE" = true ]; then
     xcodebuild build-for-testing \
-        -project ForgedInFireClientManager.xcodeproj \
-        -scheme ForgedInFireClientManager \
+        -project ArkheVault.xcodeproj \
+        -scheme ArkheVault \
         -destination 'platform=macOS' \
         2>&1 | tee build.log
 else
     xcodebuild build-for-testing \
-        -project ForgedInFireClientManager.xcodeproj \
-        -scheme ForgedInFireClientManager \
+        -project ArkheVault.xcodeproj \
+        -scheme ArkheVault \
         -destination 'platform=macOS' \
         2>&1 | grep -E '(error|warning|Build succeeded|Build failed)' || true
 fi
@@ -106,17 +106,17 @@ if [ "$RUN_UNIT_TESTS" = true ]; then
     
     if [ "$VERBOSE" = true ]; then
         xcodebuild test \
-            -project ForgedInFireClientManager.xcodeproj \
-            -scheme ForgedInFireClientManager \
+            -project ArkheVault.xcodeproj \
+            -scheme ArkheVault \
             -destination 'platform=macOS' \
-            -only-testing:ForgedInFireClientManagerTests \
+            -only-testing:ArkheVaultTests \
             2>&1 | tee unit_tests.log
     else
         xcodebuild test \
-            -project ForgedInFireClientManager.xcodeproj \
-            -scheme ForgedInFireClientManager \
+            -project ArkheVault.xcodeproj \
+            -scheme ArkheVault \
             -destination 'platform=macOS' \
-            -only-testing:ForgedInFireClientManagerTests \
+            -only-testing:ArkheVaultTests \
             2>&1 | grep -E '(Test Case|Test Suite|passed|failed|error)' || true
     fi
     
@@ -138,17 +138,17 @@ if [ "$RUN_UI_TESTS" = true ]; then
     
     if [ "$VERBOSE" = true ]; then
         xcodebuild test \
-            -project ForgedInFireClientManager.xcodeproj \
-            -scheme ForgedInFireClientManager \
+            -project ArkheVault.xcodeproj \
+            -scheme ArkheVault \
             -destination 'platform=macOS' \
-            -only-testing:ForgedInFireClientManagerUITests \
+            -only-testing:ArkheVaultUITests \
             2>&1 | tee ui_tests.log
     else
         xcodebuild test \
-            -project ForgedInFireClientManager.xcodeproj \
-            -scheme ForgedInFireClientManager \
+            -project ArkheVault.xcodeproj \
+            -scheme ArkheVault \
             -destination 'platform=macOS' \
-            -only-testing:ForgedInFireClientManagerUITests \
+            -only-testing:ArkheVaultUITests \
             2>&1 | grep -E '(Test Case|Test Suite|passed|failed)' || true
     fi
     
@@ -170,17 +170,17 @@ if [ "$RUN_PERF_TESTS" = true ]; then
     
     if [ "$VERBOSE" = true ]; then
         xcodebuild test \
-            -project ForgedInFireClientManager.xcodeproj \
-            -scheme ForgedInFireClientManager \
+            -project ArkheVault.xcodeproj \
+            -scheme ArkheVault \
             -destination 'platform=macOS' \
-            -only-testing:ForgedInFireClientManagerTests/PerformanceTests \
+            -only-testing:ArkheVaultTests/PerformanceTests \
             2>&1 | tee perf_tests.log
     else
         xcodebuild test \
-            -project ForgedInFireClientManager.xcodeproj \
-            -scheme ForgedInFireClientManager \
+            -project ArkheVault.xcodeproj \
+            -scheme ArkheVault \
             -destination 'platform=macOS' \
-            -only-testing:ForgedInFireClientManagerTests/PerformanceTests \
+            -only-testing:ArkheVaultTests/PerformanceTests \
             2>&1 | grep -E '(Test Case|measured|average)' || true
     fi
     

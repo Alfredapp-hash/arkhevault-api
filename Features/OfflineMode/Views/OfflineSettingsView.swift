@@ -11,7 +11,7 @@ class OfflineManager: ObservableObject {
     @Published var lastSyncDate: Date?
     
     private let monitor = NWPathMonitor()
-    private let queue = DispatchQueue(label: "com.forgedinfire.network")
+    private let queue = DispatchQueue(label: "com.arkheholdings.vault.network")
     private let context: NSManagedObjectContext
     
     enum SyncStatus {
@@ -342,7 +342,7 @@ struct OfflineSettingsView: View {
             SectionHeader(title: "Offline Mode")
             
             // Connection Status
-            ForgeCard {
+            ArkheCard {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Connection Status")
@@ -363,7 +363,7 @@ struct OfflineSettingsView: View {
             }
             
             // Force Offline Mode
-            ForgeCard {
+            ArkheCard {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Force Offline Mode")
@@ -388,7 +388,7 @@ struct OfflineSettingsView: View {
             // Sync Status
             SectionHeader(title: "Sync Status")
             
-            ForgeCard {
+            ArkheCard {
                 VStack(spacing: 12) {
                     SyncStatusIndicator()
                     
@@ -405,7 +405,7 @@ struct OfflineSettingsView: View {
                                 .foregroundColor(.warningGold)
                         }
                         
-                        ForgeButton(
+                        ArkheButton(
                             title: "Sync Now",
                             style: .primary,
                             isDisabled: !offlineManager.isOnline
@@ -460,7 +460,7 @@ struct OfflineSettingsView: View {
             // Offline Data Management
             SectionHeader(title: "Offline Data")
             
-            ForgeButton(
+            ArkheButton(
                 title: "Clear Offline Data",
                 style: .danger
             ) {
@@ -491,7 +491,7 @@ struct CapabilityRow: View {
     let isAvailable: Bool
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             HStack {
                 Image(systemName: icon)
                     .font(.brandCaption)

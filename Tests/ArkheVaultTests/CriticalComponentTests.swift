@@ -1,5 +1,5 @@
 import XCTest
-@testable import ForgedInFireClientManager
+@testable import ArkheVault
 
 // MARK: - Configuration Tests
 class ConfigurationTests: XCTestCase {
@@ -29,7 +29,7 @@ class ConfigurationTests: XCTestCase {
     func testAPIBaseURL() {
         let baseURL = configuration.apiBaseURL
         XCTAssertTrue(baseURL.hasPrefix("https://"))
-        XCTAssertTrue(baseURL.contains("forgedinfire"))
+        XCTAssertTrue(baseURL.contains("arkhevault"))
     }
     
     func testRateLimitingDefaults() {
@@ -272,11 +272,11 @@ class AppErrorTests: XCTestCase {
 // MARK: - Brand System Tests
 class BrandSystemTests: XCTestCase {
     func testAppName() {
-        XCTAssertEqual(BrandSystem.appName, "Forged In Fire")
+        XCTAssertEqual(BrandSystem.appName, "Arkhe Vault")
     }
     
     func testTagline() {
-        XCTAssertEqual(BrandSystem.tagline, "Strength Through Support")
+        XCTAssertEqual(BrandSystem.tagline, "Protecting Data. Empowering Missions.")
     }
     
     func testVersion() {
@@ -348,7 +348,7 @@ class CoreDataHelperTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Create in-memory Core Data stack for testing
-        let persistentContainer = NSPersistentContainer(name: "ForgedInFireDataModel")
+        let persistentContainer = NSPersistentContainer(name: "ArkheVaultDataModel")
         let description = persistentContainer.persistentStoreDescriptions.first
         description?.url = URL(fileURLWithPath: "/dev/null")
         

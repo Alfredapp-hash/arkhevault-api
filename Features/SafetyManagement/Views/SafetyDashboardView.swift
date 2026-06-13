@@ -26,7 +26,7 @@ struct SafetyDashboardView: View {
                     
                     Spacer()
                     
-                    ForgeButton(title: "New Safety Flag", style: .danger) {
+                    ArkheButton(title: "New Safety Flag", style: .danger) {
                         showingNewFlagSheet = true
                     }
                 }
@@ -166,7 +166,7 @@ struct SafetyFlagCard: View {
     
     var body: some View {
         Button(action: onTap) {
-            ForgeCard(backgroundColor: severityBackgroundColor) {
+            ArkheCard(backgroundColor: severityBackgroundColor) {
                 VStack(alignment: .leading, spacing: 12) {
                     // Header
                     HStack {
@@ -237,15 +237,15 @@ struct SafetyFlagCard: View {
                     // Quick Actions
                     if flag.isActive {
                         HStack(spacing: 8) {
-                            ForgeButton(title: "Resolve", style: .secondary) {
+                            ArkheButton(title: "Resolve", style: .secondary) {
                                 // Quick resolve action
                             }
                             
-                            ForgeIconButton(systemImage: "phone", style: .primary) {
+                            ArkheIconButton(systemImage: "phone", style: .primary) {
                                 // Call client
                             }
                             
-                            ForgeIconButton(systemImage: "doc.text", style: .outline) {
+                            ArkheIconButton(systemImage: "doc.text", style: .outline) {
                                 // Add note
                             }
                         }
@@ -413,7 +413,7 @@ struct NewSafetyFlagSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Create Flag",
                         style: .danger,
                         isDisabled: selectedClient == nil || descriptionText.isEmpty || isLoading,
@@ -514,7 +514,7 @@ struct SafetyFlagDetailView: View {
                 Spacer()
                 
                 if flag.isActive {
-                    ForgeButton(title: "Resolve Flag", style: .secondary) {
+                    ArkheButton(title: "Resolve Flag", style: .secondary) {
                         showingResolveDialog = true
                     }
                 }
@@ -527,7 +527,7 @@ struct SafetyFlagDetailView: View {
                 VStack(spacing: 20) {
                     SectionHeader(title: "Flag Details")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 12) {
                             HStack {
                                 Text("Severity")
@@ -576,7 +576,7 @@ struct SafetyFlagDetailView: View {
                     if let client = flag.client {
                         SectionHeader(title: "Client Information")
                         
-                        ForgeCard {
+                        ArkheCard {
                             VStack(spacing: 12) {
                                 InfoRow(icon: "person.fill", title: "Name", value: client.fullName)
                                 
@@ -607,7 +607,7 @@ struct SafetyFlagDetailView: View {
                     // Timeline
                     SectionHeader(title: "Timeline")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             TimelineItem(
                                 icon: "flag.fill",
@@ -633,15 +633,15 @@ struct SafetyFlagDetailView: View {
                         SectionHeader(title: "Quick Actions")
                         
                         HStack(spacing: 12) {
-                            ForgeButton(title: "Call Client", style: .primary) {
+                            ArkheButton(title: "Call Client", style: .primary) {
                                 // Call action
                             }
                             
-                            ForgeButton(title: "Add Note", style: .secondary) {
+                            ArkheButton(title: "Add Note", style: .secondary) {
                                 // Add note action
                             }
                             
-                            ForgeButton(title: "Escalate", style: .danger) {
+                            ArkheButton(title: "Escalate", style: .danger) {
                                 // Escalate action
                             }
                         }

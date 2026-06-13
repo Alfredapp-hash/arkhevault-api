@@ -1,10 +1,10 @@
-# Forged In Fire Client Manager - Deployment Guide
+# Arkhe Vault Client Manager - Deployment Guide
 
 ## Overview
 
-This guide provides step-by-step instructions for deploying the Forged In Fire Client Manager native macOS application for testing and App Store submission.
+This guide provides step-by-step instructions for deploying the Arkhe Vault Client Manager native macOS application for testing and App Store submission.
 
-**Project Location:** `/Users/purduelaw/Desktop/ArkheApps/StudentTracker/ForgedInFireClientManager/`
+**Project Location:** `/Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVaultClientManager/`
 
 **Current Status:** Phase 5 Complete - All core features implemented
 - **Total Lines of Code:** ~12,500 lines
@@ -45,7 +45,7 @@ This guide provides step-by-step instructions for deploying the Forged In Fire C
    - **Mac Installer Distribution Certificate** - For installer packages
 
 3. **App ID**
-   - Bundle Identifier: `com.forgedinfire.clientmanager`
+   - Bundle Identifier: `com.arkheholdings.vault.clientmanager`
    - Capabilities: Keychain Sharing, EventKit, Speech Recognition
 
 4. **Provisioning Profiles**
@@ -70,7 +70,7 @@ This guide provides step-by-step instructions for deploying the Forged In Fire C
 
 #### Bundle Identifier
 ```
-com.forgedinfire.clientmanager
+com.arkheholdings.vault.clientmanager
 ```
 
 #### Version Information
@@ -85,7 +85,7 @@ macOS 14.0+
 
 ### 2. Build Settings
 
-Navigate to `ForgedInFireClientManager.xcodeproj` → Target → Build Settings:
+Navigate to `ArkheVaultClientManager.xcodeproj` → Target → Build Settings:
 
 **Key Settings:**
 - `ENABLE_PREVIEWS`: NO (for release builds)
@@ -126,18 +126,18 @@ Add the following keys to `Info.plist`:
 
 #### Development Build
 ```bash
-cd /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ForgedInFireClientManager
-xcodebuild -scheme ForgedInFireClientManager -configuration Debug build
+cd /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVaultClientManager
+xcodebuild -scheme ArkheVaultClientManager -configuration Debug build
 ```
 
 #### Release Build
 ```bash
-xcodebuild -scheme ForgedInFireClientManager -configuration Release build
+xcodebuild -scheme ArkheVaultClientManager -configuration Release build
 ```
 
 #### Archive for App Store
 ```bash
-xcodebuild -scheme ForgedInFireClientManager -configuration Release archive -archivePath build/ForgedInFireClientManager.xcarchive
+xcodebuild -scheme ArkheVaultClientManager -configuration Release archive -archivePath build/ArkheVaultClientManager.xcarchive
 ```
 
 ---
@@ -277,12 +277,12 @@ xcodebuild -scheme ForgedInFireClientManager -configuration Release archive -arc
    - Log in to App Store Connect
    - Navigate to My Apps → (+) New App
    - Platform: macOS
-   - Name: Forged In Fire Client Manager
-   - Bundle ID: com.forgedinfire.clientmanager
+   - Name: Arkhe Vault Client Manager
+   - Bundle ID: com.arkheholdings.vault.clientmanager
    - SKU: FORGED-IN-FIRE-001
 
 2. **Configure App Information**
-   - **Name:** Forged In Fire Client Manager
+   - **Name:** Arkhe Vault Client Manager
    - **Subtitle:** Professional Client Management for Victim Advocacy
    - **Category:** Business
    - **Age Rating:** 17+ (due to sensitive content)
@@ -293,7 +293,7 @@ xcodebuild -scheme ForgedInFireClientManager -configuration Release archive -arc
 #### App Description (Draft)
 
 ```
-Forged In Fire Client Manager is a professional, native macOS application designed for victim advocacy organizations. Built with trauma-informed design principles, it provides comprehensive client management, program tracking, safety monitoring, and powerful AI-assisted documentation.
+Arkhe Vault Client Manager is a professional, native macOS application designed for victim advocacy organizations. Built with trauma-informed design principles, it provides comprehensive client management, program tracking, safety monitoring, and powerful AI-assisted documentation.
 
 KEY FEATURES:
 
@@ -317,9 +317,9 @@ PROFESSIONAL FEATURES:
 • Offline Mode: Work without internet connection
 • Cloud Sync: Secure backup and synchronization
 
-Built with Forged In Fire's signature branding and designed specifically for the unique needs of victim advocacy organizations. The application prioritizes client safety, staff efficiency, and data security.
+Built with Arkhe Vault's signature branding and designed specifically for the unique needs of victim advocacy organizations. The application prioritizes client safety, staff efficiency, and data security.
 
-Download Forged In Fire Client Manager today and transform your client management workflow.
+Download Arkhe Vault Client Manager today and transform your client management workflow.
 ```
 
 #### Keywords
@@ -329,17 +329,17 @@ client management, victim advocacy, case management, nonprofit, social services,
 
 #### Support URL
 ```
-https://forgedinfire.org/support
+https://arkhevault.org/support
 ```
 
 #### Marketing URL
 ```
-https://forgedinfire.org
+https://arkhevault.org
 ```
 
 #### Privacy Policy URL
 ```
-https://forgedinfire.org/privacy
+https://arkhevault.org/privacy
 ```
 
 ### 3. Screenshots
@@ -360,7 +360,7 @@ Required screenshots (minimum 1, recommended 5-10):
 ### 4. App Review Information
 
 **Demo Account:**
-- Username: demo@forgedinfire.org
+- Username: demo@arkhevault.org
 - Password: Demo123!
 - Notes: Full access to all features for review
 
@@ -382,12 +382,12 @@ The app includes a demo account with sample data for testing purposes.
 
 1. Build archive:
 ```bash
-xcodebuild -scheme ForgedInFireClientManager -configuration Release archive -archivePath build/ForgedInFireClientManager.xcarchive
+xcodebuild -scheme ArkheVaultClientManager -configuration Release archive -archivePath build/ArkheVaultClientManager.xcarchive
 ```
 
 2. Open archive in Organizer:
 ```bash
-open build/ForgedInFireClientManager.xcarchive
+open build/ArkheVaultClientManager.xcarchive
 ```
 
 3. In Xcode Organizer:
@@ -522,7 +522,7 @@ Create support channels:
 ## Contact Information
 
 **For questions or issues:**
-- Development Team: dev@forgedinfire.org
+- Development Team: dev@arkhevault.org
 - App Store Connect: https://appstoreconnect.apple.com
 - Xcode Help: https://developer.apple.com/xcode/
 
@@ -533,15 +533,15 @@ Create support channels:
 ### A. File Structure
 
 ```
-ForgedInFireClientManager/
+ArkheVaultClientManager/
 ├── App/
 │   ├── AppDelegate.swift
-│   ├── ForgedInFireApp.swift
+│   ├── ArkheVaultApp.swift
 │   └── MainWindow.swift
 ├── Core/
 │   ├── Data/
 │   │   ├── CoreDataController.swift
-│   │   ├── ForgedInFireDataModel.xcdatamodeld
+│   │   ├── ArkheVaultDataModel.xcdatamodeld
 │   │   └── Models/
 │   └── Services/
 │       ├── AuthenticationManager.swift
@@ -561,7 +561,7 @@ ForgedInFireClientManager/
 ├── Shared/
 │   ├── Components/
 │   └── Utilities/
-└── ForgedInFireClientManager.xcodeproj
+└── ArkheVaultClientManager.xcodeproj
 ```
 
 ### B. Dependencies

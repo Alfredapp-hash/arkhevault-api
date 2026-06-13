@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct ForgedInFireApp: App {
+struct ArkheVaultApp: App {
     @StateObject private var dataController = CoreDataController.shared
     @StateObject private var authenticationManager = AuthenticationManager.shared
     

@@ -1,6 +1,6 @@
 import XCTest
 import CryptoKit
-@testable import ForgedInFireClientManager
+@testable import ArkheVault
 
 // MARK: - Authentication Security Tests
 class AuthenticationSecurityTests: XCTestCase {
@@ -8,7 +8,7 @@ class AuthenticationSecurityTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Clear keychain before each test
-        let keychainService = "com.forgedinfire.clientmanager"
+        let keychainService = "com.arkheholdings.vault.clientmanager"
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: keychainService
@@ -20,7 +20,7 @@ class AuthenticationSecurityTests: XCTestCase {
     
     func testPasswordHashingConsistency() {
         let password = "testPassword123"
-        let salt = "ForgedInFire_test"
+        let salt = "ArkheVault_test"
         
         // Hash same password twice
         let inputData1 = Data((salt + password).utf8)
@@ -37,7 +37,7 @@ class AuthenticationSecurityTests: XCTestCase {
     func testPasswordHashingDifferentPasswords() {
         let password1 = "password123"
         let password2 = "password124"
-        let salt = "ForgedInFire_test"
+        let salt = "ArkheVault_test"
         
         let inputData1 = Data((salt + password1).utf8)
         let hash1 = SHA256.hash(data: inputData1)
@@ -52,7 +52,7 @@ class AuthenticationSecurityTests: XCTestCase {
     
     func testPasswordHashLength() {
         let password = "test"
-        let salt = "ForgedInFire_test"
+        let salt = "ArkheVault_test"
         
         let inputData = Data((salt + password).utf8)
         let hash = SHA256.hash(data: inputData)

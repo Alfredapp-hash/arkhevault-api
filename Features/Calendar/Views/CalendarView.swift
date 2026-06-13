@@ -28,7 +28,7 @@ struct CalendarView: View {
                     Spacer()
                     
                     HStack(spacing: 8) {
-                        ForgeButton(title: "Previous", style: .outline) {
+                        ArkheButton(title: "Previous", style: .outline) {
                             viewModel.changeMonth(by: -1)
                         }
                         
@@ -37,14 +37,14 @@ struct CalendarView: View {
                             .foregroundColor(.textPrimary)
                             .frame(width: 150)
                         
-                        ForgeButton(title: "Next", style: .outline) {
+                        ArkheButton(title: "Next", style: .outline) {
                             viewModel.changeMonth(by: 1)
                         }
                     }
                     
                     Spacer()
                     
-                    ForgeButton(title: "New Appointment", style: .primary) {
+                    ArkheButton(title: "New Appointment", style: .primary) {
                         showingNewAppointmentSheet = true
                     }
                 }
@@ -105,7 +105,7 @@ struct CalendarView: View {
                 )
                 
                 if viewModel.appointmentsForDate(selectedDate).isEmpty {
-                    ForgeCard {
+                    ArkheCard {
                         HStack(spacing: 12) {
                             Image(systemName: "calendar.badge.plus")
                                 .font(.system(size: 32))
@@ -201,7 +201,7 @@ struct CalendarGridView: View {
     private let calendar = Calendar.current
     
     var body: some View {
-        ForgeCard {
+        ArkheCard {
             VStack(spacing: 12) {
                 // Day Headers
                 HStack {
@@ -330,7 +330,7 @@ struct AppointmentCard: View {
     
     var body: some View {
         Button(action: onTap) {
-            ForgeCard(backgroundColor: statusBackgroundColor) {
+            ArkheCard(backgroundColor: statusBackgroundColor) {
                 HStack(spacing: 16) {
                     // Time
                     VStack(alignment: .leading, spacing: 4) {
@@ -583,7 +583,7 @@ struct NewAppointmentSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Schedule",
                         style: .primary,
                         isDisabled: title.isEmpty || startTime >= endTime || isLoading,
@@ -706,11 +706,11 @@ struct AppointmentDetailView: View {
                 Spacer()
                 
                 if appointment.status == "scheduled" {
-                    ForgeButton(title: "Complete", style: .primary) {
+                    ArkheButton(title: "Complete", style: .primary) {
                         showingCompleteDialog = true
                     }
                     
-                    ForgeButton(title: "Cancel", style: .danger) {
+                    ArkheButton(title: "Cancel", style: .danger) {
                         showingCancelDialog = true
                     }
                 }
@@ -723,7 +723,7 @@ struct AppointmentDetailView: View {
                 VStack(spacing: 20) {
                     SectionHeader(title: "Appointment Details")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 12) {
                             HStack {
                                 VStack(alignment: .leading, spacing: 4) {
@@ -765,7 +765,7 @@ struct AppointmentDetailView: View {
                     if appointment.client != nil || appointment.staff != nil {
                         SectionHeader(title: "Participants")
                         
-                        ForgeCard {
+                        ArkheCard {
                             VStack(spacing: 12) {
                                 if let client = appointment.client {
                                     InfoRow(icon: "person.fill", title: "Client", value: client.fullName)
@@ -782,7 +782,7 @@ struct AppointmentDetailView: View {
                     if let notes = appointment.value(forKey: "notes") as? String {
                         SectionHeader(title: "Notes")
                         
-                        ForgeCard {
+                        ArkheCard {
                             Text(notes)
                                 .font(.brandBody)
                                 .foregroundColor(.textPrimary)
@@ -793,15 +793,15 @@ struct AppointmentDetailView: View {
                     SectionHeader(title: "Actions")
                     
                     HStack(spacing: 12) {
-                        ForgeButton(title: "Edit", style: .primary) {
+                        ArkheButton(title: "Edit", style: .primary) {
                             // Edit action
                         }
                         
-                        ForgeButton(title: "Reschedule", style: .secondary) {
+                        ArkheButton(title: "Reschedule", style: .secondary) {
                             // Reschedule action
                         }
                         
-                        ForgeButton(title: "Delete", style: .danger) {
+                        ArkheButton(title: "Delete", style: .danger) {
                             // Delete action
                         }
                     }

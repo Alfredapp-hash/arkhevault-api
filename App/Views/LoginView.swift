@@ -20,7 +20,7 @@ struct LoginView: View {
             VStack(spacing: 24) {
                 Spacer()
                 
-                ForgeLogo(size: .large, style: .full, showTagline: true)
+                ArkheLogo(size: .large, style: .full, showTagline: true)
                     .padding(.bottom, 8)
                 
                 Text("Welcome Back")
@@ -96,7 +96,7 @@ struct LoginView: View {
                 }
                 
                 // Login Button
-                ForgeButton(
+                ArkheButton(
                     title: isLoggingIn ? "Signing In..." : "Sign In",
                     style: .primary,
                     isFullWidth: true,
@@ -141,9 +141,9 @@ struct LoginView: View {
             
             // Footer
             VStack(spacing: 8) {
-                ForgeLogo(size: .compact, style: .iconOnly)
+                ArkheLogo(size: .compact, style: .iconOnly)
                 
-                Text("Forged In Fire Client Manager")
+                Text("Arkhe Vault Client Manager")
                     .font(.brandTiny)
                     .foregroundColor(.textMuted)
                 
@@ -200,7 +200,7 @@ struct BiometricLoginView: View {
     var body: some View {
         VStack(spacing: 24) {
             VStack(spacing: 16) {
-                ForgeLogo(size: .large, style: .iconOnly)
+                ArkheLogo(size: .large, style: .iconOnly)
                 
                 Text("Biometric Authentication")
                     .font(.brandHeading)
@@ -211,7 +211,7 @@ struct BiometricLoginView: View {
                     .foregroundColor(.textSecondary)
             }
             
-            ForgeButton(
+            ArkheButton(
                 title: isAuthenticating ? "Authenticating..." : "Authenticate",
                 style: .primary,
                 isFullWidth: true,

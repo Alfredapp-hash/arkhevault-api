@@ -1,7 +1,7 @@
 import SwiftUI
 
-// MARK: - Forged In Fire Branded Button
-struct ForgeButton: View {
+// MARK: - Arkhe Vault Branded Button
+struct ArkheButton: View {
     let title: String
     let action: () -> Void
     var style: ButtonStyle = .primary
@@ -67,10 +67,10 @@ struct ForgeButton: View {
 }
 
 // MARK: - Icon Button Variant
-struct ForgeIconButton: View {
+struct ArkheIconButton: View {
     let systemImage: String
     let action: () -> Void
-    var style: ForgeButton.ButtonStyle = .primary
+    var style: ArkheButton.ButtonStyle = .primary
     var isDisabled: Bool = false
     
     var body: some View {
@@ -105,18 +105,18 @@ struct ForgeIconButton: View {
 // MARK: - Preview
 #Preview {
     VStack(spacing: 16) {
-        ForgeButton(title: "Primary Action", style: .primary) {}
-        ForgeButton(title: "Secondary Action", style: .secondary) {}
-        ForgeButton(title: "Danger Action", style: .danger) {}
-        ForgeButton(title: "Outline Action", style: .outline) {}
-        ForgeButton(title: "Ghost Action", style: .ghost) {}
-        ForgeButton(title: "Loading", style: .primary, isLoading: true) {}
+        ArkheButton(title: "Primary Action", style: .primary) {}
+        ArkheButton(title: "Secondary Action", style: .secondary) {}
+        ArkheButton(title: "Danger Action", style: .danger) {}
+        ArkheButton(title: "Outline Action", style: .outline) {}
+        ArkheButton(title: "Ghost Action", style: .ghost) {}
+        ArkheButton(title: "Loading", style: .primary, isLoading: true) {}
         
         HStack(spacing: 12) {
-            ForgeIconButton(systemImage: "plus", style: .primary) {}
-            ForgeIconButton(systemImage: "heart", style: .secondary) {}
-            ForgeIconButton(systemImage: "trash", style: .danger) {}
-            ForgeIconButton(systemImage: "pencil", style: .outline) {}
+            ArkheIconButton(systemImage: "plus", style: .primary) {}
+            ArkheIconButton(systemImage: "heart", style: .secondary) {}
+            ArkheIconButton(systemImage: "trash", style: .danger) {}
+            ArkheIconButton(systemImage: "pencil", style: .outline) {}
         }
     }
     .padding()

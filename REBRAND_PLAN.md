@@ -2,7 +2,7 @@
 
 ## Rebrand Overview
 
-**From:** Forged In Fire Client Manager  
+**From:** Arkhe Vault Client Manager  
 **To:** Arkhe Vault  
 **Parent Company:** Arkhe Holdings
 
@@ -61,13 +61,13 @@ static let dataBlue = Color(hex: "#448AFF")
 
 **Critical Path (Update First):**
 - [ ] `Shared/Utilities/Branding.swift` - Complete color overhaul
-- [ ] `Shared/Components/ForgeLogo.swift` - Rename to ArkheLogo, update design
-- [ ] `ForgedInFireApp.swift` - Rename to ArkheVaultApp
-- [ ] `App/ForgedInFireApp.swift` - Rename, update app name
+- [ ] `Shared/Components/ArkheLogo.swift` - Rename to ArkheLogo, update design
+- [ ] `ArkheVaultApp.swift` - Rename to ArkheVaultApp
+- [ ] `App/ArkheVaultApp.swift` - Rename, update app name
 - [ ] `Core/Services/Configuration.swift` - Update keychain service name
 
 **High Priority:**
-- [ ] All view files with "Forged In Fire" text
+- [ ] All view files with "Arkhe Vault" text
 - [ ] All view files with "Forge" component references
 - [ ] `AuthenticationManager.swift` - Update salt prefix
 - [ ] `SecurityEventLogger.swift` - Update service name
@@ -75,7 +75,7 @@ static let dataBlue = Color(hex: "#448AFF")
 - [ ] `NetworkSecurityManager.swift` - Update service refs
 
 **Medium Priority:**
-- [ ] All "ForgedInFire" in comments
+- [ ] All "ArkheVault" in comments
 - [ ] Keychain service identifiers
 - [ ] App group identifiers
 - [ ] Bundle identifiers
@@ -113,8 +113,8 @@ static let dataBlue = Color(hex: "#448AFF")
   - Dark version
 
 #### UI Components
-- [ ] Update ForgeButton → ArkheButton
-- [ ] Update ForgeCard → ArkheCard
+- [ ] Update ArkheButton → ArkheButton
+- [ ] Update ArkheCard → ArkheCard
 - [ ] Update all gradient styles
 - [ ] Update shadow effects to match tech aesthetic
 
@@ -122,20 +122,20 @@ static let dataBlue = Color(hex: "#448AFF")
 
 #### Global Find & Replace
 ```
-Forged In Fire → Arkhe Vault
-ForgedInFire → ArkheVault
-forgedinfire → arkhevault
-Forged In Fire Client Manager → Arkhe Vault
-com.forgedinfire → com.arkheholdings.vault
-ForgeButton → ArkheButton
-ForgeCard → ArkheCard
-ForgeLogo → ArkheLogo
+Arkhe Vault → Arkhe Vault
+ArkheVault → ArkheVault
+arkhevault → arkhevault
+Arkhe Vault Client Manager → Arkhe Vault
+com.arkheholdings.vault → com.arkheholdings.vault
+ArkheButton → ArkheButton
+ArkheCard → ArkheCard
+ArkheLogo → ArkheLogo
 ```
 
 ### 4. Security Updates
 
-- [ ] Keychain service: `com.forgedinfire.clientmanager` → `com.arkheholdings.vault`
-- [ ] Salt prefix: `ForgedInFire_` → `ArkheVault_`
+- [ ] Keychain service: `com.arkheholdings.vault.clientmanager` → `com.arkheholdings.vault`
+- [ ] Salt prefix: `ArkheVault_` → `ArkheVault_`
 - [ ] API key references
 - [ ] Certificate pinning domain references
 
@@ -228,7 +228,7 @@ ForgeLogo → ArkheLogo
 - [ ] All 11 documentation files updated
 - [ ] Build succeeds with zero warnings
 - [ ] All 85+ tests pass
-- [ ] No "Forged In Fire" references remain (except historical docs)
+- [ ] No "Arkhe Vault" references remain (except historical docs)
 - [ ] New logo integrated
 - [ ] New color scheme applied
 - [ ] App launches successfully

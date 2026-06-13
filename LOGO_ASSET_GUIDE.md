@@ -2,9 +2,9 @@
 
 ## Overview
 
-This document provides step-by-step instructions for adding the Forged In Fire logo assets to the native macOS application and configuring them for production use.
+This document provides step-by-step instructions for adding the Arkhe Vault logo assets to the native macOS application and configuring them for production use.
 
-**Project Location:** `/Users/purduelaw/Desktop/ArkheApps/StudentTracker/ForgedInFireClientManager/`
+**Project Location:** `/Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVaultClientManager/`
 
 ---
 
@@ -47,7 +47,7 @@ This document provides step-by-step instructions for adding the Forged In Fire l
 
 ### Color Specifications
 
-The logo should use the Forged In Fire brand colors:
+The logo should use the Arkhe Vault brand colors:
 - **Primary:** Forge Teal (#1E6B73)
 - **Secondary:** Bronze (#8B5E3C)
 - **Accent:** Warm Ivory (#FAF7F2) for text on dark backgrounds
@@ -59,7 +59,7 @@ The logo should use the Forged In Fire brand colors:
 ### Step 1: Prepare Logo Files
 
 1. **Obtain the Logo**
-   - Get the Forged In Fire logo in a high-resolution format (SVG, AI, or PNG)
+   - Get the Arkhe Vault logo in a high-resolution format (SVG, AI, or PNG)
    - Ensure you have permission to use the logo
 
 2. **Export Required Sizes**
@@ -88,7 +88,7 @@ The logo should use the Forged In Fire brand colors:
 ### Step 2: Create Asset Directory Structure
 
 ```
-ForgedInFireClientManager/
+ArkheVaultClientManager/
 ├── Assets.xcassets/ (Xcode will create this)
 │   ├── AppIcon.appiconset/
 │   └── Logo.imageset/
@@ -108,13 +108,13 @@ ForgedInFireClientManager/
 
 1. **Open Project in Xcode**
    ```bash
-   open /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ForgedInFireClientManager/ForgedInFireClientManager.xcodeproj
+   open /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVaultClientManager/ArkheVaultClientManager.xcodeproj
    ```
 
 2. **Navigate to Assets Catalog**
    - In Xcode Project Navigator
-   - Click on `ForgedInFireClientManager` (blue project icon)
-   - Select `ForgedInFireClientManager` target
+   - Click on `ArkheVaultClientManager` (blue project icon)
+   - Select `ArkheVaultClientManager` target
    - Go to "General" tab
    - Scroll to "App Icons and Launch Images"
    - Click on the App Icon field
@@ -143,7 +143,7 @@ ForgedInFireClientManager/
 
 1. **Create Resources Folder**
    ```bash
-   cd /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ForgedInFireClientManager
+   cd /Users/purduelaw/Desktop/ArkheApps/StudentTracker/ArkheVaultClientManager
    mkdir -p Resources/logos
    ```
 
@@ -153,7 +153,7 @@ ForgedInFireClientManager/
    ```
 
 3. **Add to Xcode Project**
-   - In Xcode, go to File → Add Files to "ForgedInFireClientManager"
+   - In Xcode, go to File → Add Files to "ArkheVaultClientManager"
    - Select the `Resources/logos` folder
    - Check "Copy items if needed"
    - Check "Create folder references"
@@ -168,10 +168,10 @@ ForgedInFireClientManager/
 The `Branding.swift` file already has the logo configuration. Update it to reference your actual logo assets:
 
 ```swift
-// MARK: - Forged In Fire Brand System
+// MARK: - Arkhe Vault Brand System
 struct BrandSystem {
     // Brand Identity
-    static let appName = "Forged In Fire"
+    static let appName = "Arkhe Vault"
     static let tagline = "Strength Through Support"
     static let version = "1.0.0"
     
@@ -188,9 +188,9 @@ struct BrandSystem {
 }
 ```
 
-### Update ForgeLogo.swift to Use Actual Assets
+### Update ArkheLogo.swift to Use Actual Assets
 
-Update the `LogoIcon` struct in `ForgeLogo.swift` to load actual assets:
+Update the `LogoIcon` struct in `ArkheLogo.swift` to load actual assets:
 
 ```swift
 // MARK: - Logo Icon

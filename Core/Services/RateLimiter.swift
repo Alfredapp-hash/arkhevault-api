@@ -7,7 +7,7 @@ class RateLimiter {
     private var requestTimestamps: [Date] = []
     private var hourlyTimestamps: [Date] = []
     
-    private let queue = DispatchQueue(label: "com.forgedinfire.ratelimiter", attributes: .concurrent)
+    private let queue = DispatchQueue(label: "com.arkheholdings.vault.ratelimiter", attributes: .concurrent)
     
     init(maxRequestsPerMinute: Int, maxRequestsPerHour: Int) {
         self.maxRequestsPerMinute = maxRequestsPerMinute

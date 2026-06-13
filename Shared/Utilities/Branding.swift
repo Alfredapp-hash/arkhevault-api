@@ -49,8 +49,10 @@ extension Color {
     static let bronzeLight = shieldSilverLight
     static let bronzeDark = shieldSilverDark
     static let warmIvory = shieldSilverLight
+    static let cream = shieldSilverLight
     static let deepCharcoal = deepSpace
     static let darkCharcoal = deepSpaceDark
+    static let lightCharcoal = deepSpaceLight
     
     // Status Colors (Tech-Security Theme)
     static let successGreen = Color(red: 0.0, green: 0.90, blue: 0.46) // #00E676
@@ -80,7 +82,7 @@ extension Color {
     static let brandBorderGlow = arkheCyan.opacity(0.3)
 }
 
-// MARK: - Forged In Fire Typography
+// MARK: - Arkhe Vault Typography
 extension Font {
     static let brandTitle = Font.system(size: 28, weight: .bold, design: .serif)
     static let brandHeading = Font.system(size: 22, weight: .semibold, design: .serif)
@@ -100,11 +102,10 @@ extension Font {
     static let techSubheading = Font.system(size: 18, weight: .medium, design: .default)
     static let techBody = Font.system(size: 14, weight: .regular, design: .monospaced)
     static let techCaption = Font.system(size: 12, weight: .regular, design: .monospaced)
-}
     static let taglineText = Font.system(size: 12, weight: .medium, design: .default)
 }
 
-// MARK: - Forged In Fire Gradients
+// MARK: - Arkhe Vault Gradients
 extension LinearGradient {
     static let forgeGradient = LinearGradient(
         colors: [.forgeTeal, .forgeTealLight],
@@ -125,7 +126,7 @@ extension LinearGradient {
     )
 }
 
-// MARK: - Forged In Fire Shadows
+// MARK: - Arkhe Vault Shadows
 extension View {
     func forgeShadow() -> some View {
         self.shadow(color: Color.black.opacity(0.3), radius: 8, x: 0, y: 4)

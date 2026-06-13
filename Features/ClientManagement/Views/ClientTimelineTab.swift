@@ -15,7 +15,7 @@ struct ClientTimelineTab: View {
             HStack {
                 SectionHeader(title: "Activity Timeline", subtitle: "\(filteredEvents.count) events")
                 
-                ForgeButton(title: "Add Event", style: .primary) {
+                ArkheButton(title: "Add Event", style: .primary) {
                     // Add event action
                 }
             }
@@ -42,7 +42,7 @@ struct ClientTimelineTab: View {
             
             // Timeline
             if filteredEvents.isEmpty {
-                ForgeCard {
+                ArkheCard {
                     VStack(spacing: 12) {
                         Image(systemName: "clock.arrow.circlepath")
                             .font(.system(size: 32))
@@ -462,7 +462,7 @@ struct AddTimelineEventSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Add Event",
                         style: .primary,
                         isDisabled: title.isEmpty || description.isEmpty || isLoading,
@@ -533,7 +533,7 @@ struct TimelineSummaryView: View {
                 // Recent Activity Chart
                 SectionHeader(title: "Activity Trends")
                 
-                ForgeCard {
+                ArkheCard {
                     Text("Activity chart coming soon")
                         .font(.brandBody)
                         .foregroundColor(.textSecondary)

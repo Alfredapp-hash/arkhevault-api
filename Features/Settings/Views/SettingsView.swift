@@ -32,7 +32,7 @@ struct SettingsView: View {
                     // Profile Settings
                     SectionHeader(title: "Profile")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             if let currentUser = viewModel.currentUser {
                                 HStack(spacing: 16) {
@@ -65,7 +65,7 @@ struct SettingsView: View {
                                     
                                     Spacer()
                                     
-                                    ForgeButton(title: "Edit Profile", style: .secondary) {
+                                    ArkheButton(title: "Edit Profile", style: .secondary) {
                                         viewModel.showingEditProfile = true
                                     }
                                 }
@@ -76,7 +76,7 @@ struct SettingsView: View {
                     // Appearance Settings
                     SectionHeader(title: "Appearance")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             SettingsToggleRow(
                                 title: "Dark Mode",
@@ -109,7 +109,7 @@ struct SettingsView: View {
                     // Notification Settings
                     SectionHeader(title: "Notifications")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             SettingsToggleRow(
                                 title: "Push Notifications",
@@ -149,7 +149,7 @@ struct SettingsView: View {
                     // Security Settings
                     SectionHeader(title: "Security")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             SettingsToggleRow(
                                 title: "Biometric Authentication",
@@ -184,7 +184,7 @@ struct SettingsView: View {
                     // Data & Privacy
                     SectionHeader(title: "Data & Privacy")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             SettingsRow(
                                 title: "Privacy Settings",
@@ -221,7 +221,7 @@ struct SettingsView: View {
                     // AI Settings
                     SectionHeader(title: "AI Settings")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             SettingsToggleRow(
                                 title: "AI Enhancement",
@@ -254,7 +254,7 @@ struct SettingsView: View {
                     // About
                     SectionHeader(title: "About")
                     
-                    ForgeCard {
+                    ArkheCard {
                         VStack(spacing: 16) {
                             SettingsRow(
                                 title: "Version",
@@ -289,8 +289,8 @@ struct SettingsView: View {
                     }
                     
                     // Logout
-                    ForgeCard {
-                        ForgeButton(
+                    ArkheCard {
+                        ArkheButton(
                             title: "Log Out",
                             style: .danger,
                             isFullWidth: true
@@ -495,7 +495,7 @@ struct EditProfileSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Save",
                         style: .primary,
                         isDisabled: firstName.isEmpty || lastName.isEmpty || email.isEmpty || isLoading,
@@ -558,7 +558,7 @@ struct ChangePasswordSheet: View {
                 }
                 
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(
+                    ArkheButton(
                         title: "Change Password",
                         style: .primary,
                         isDisabled: currentPassword.isEmpty || newPassword.isEmpty || confirmPassword.isEmpty || isLoading,
@@ -605,7 +605,7 @@ struct TwoFactorSetupSheet: View {
                                 .font(.brandCaption)
                                 .foregroundColor(.textSecondary)
                             
-                            ForgeButton(title: "Set Up", style: .primary) {
+                            ArkheButton(title: "Set Up", style: .primary) {
                                 showingVerification = true
                             }
                         }
@@ -620,7 +620,7 @@ struct TwoFactorSetupSheet: View {
                             TextField("Verification Code", text: $verificationCode)
                                 .textFieldStyle(PlainTextFieldStyle())
                             
-                            ForgeButton(title: "Verify", style: .primary) {
+                            ArkheButton(title: "Verify", style: .primary) {
                                 // Verify code
                             }
                         }
@@ -676,7 +676,7 @@ struct PrivacySettingsSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(title: "Done", style: .primary) {
+                    ArkheButton(title: "Done", style: .primary) {
                         dismiss()
                     }
                 }
@@ -708,7 +708,7 @@ struct FontSizePickerSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(title: "Done", style: .primary) {
+                    ArkheButton(title: "Done", style: .primary) {
                         dismiss()
                     }
                 }
@@ -731,7 +731,7 @@ struct TermsOfServiceSheet: View {
                         .foregroundColor(.textPrimary)
                     
                     Text("""
-                    By using the Forged In Fire Client Management application, you agree to these terms of service.
+                    By using the Arkhe Vault Client Management application, you agree to these terms of service.
                     
                     1. Acceptance of Terms
                     By accessing and using this application, you accept and agree to be bound by the terms and provisions of this agreement.
@@ -757,7 +757,7 @@ struct TermsOfServiceSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(title: "Done", style: .primary) {
+                    ArkheButton(title: "Done", style: .primary) {
                         dismiss()
                     }
                 }
@@ -780,7 +780,7 @@ struct PrivacyPolicySheet: View {
                         .foregroundColor(.textPrimary)
                     
                     Text("""
-                    Forged In Fire is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information.
+                    Arkhe Vault is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information.
                     
                     1. Information We Collect
                     We collect information you provide directly to us, such as when you create an account, update your profile, or use our services.
@@ -806,7 +806,7 @@ struct PrivacyPolicySheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    ForgeButton(title: "Done", style: .primary) {
+                    ArkheButton(title: "Done", style: .primary) {
                         dismiss()
                     }
                 }

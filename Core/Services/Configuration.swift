@@ -48,11 +48,11 @@ class Configuration {
     var apiBaseURL: String {
         switch environment {
         case .development:
-            return "https://api-dev.forgedinfire.org"
+            return "https://api-dev.arkhevault.org"
         case .staging:
-            return "https://api-staging.forgedinfire.org"
+            return "https://api-staging.arkhevault.org"
         case .production:
-            return "https://api.forgedinfire.org"
+            return "https://api.arkhevault.org"
         }
     }
     

@@ -11,7 +11,7 @@
 ### 1. Core Branding (`Branding.swift`)
 
 **Updated:**
-- ✅ App name: "Forged In Fire" → "Arkhe Vault"
+- ✅ App name: "Arkhe Vault" → "Arkhe Vault"
 - ✅ Parent company: Added "Arkhe Holdings"
 - ✅ Tagline: "Strength Through Support" → "Protecting Data. Empowering Missions."
 - ✅ Logo references: `arkhe_vault_logo`
@@ -34,7 +34,7 @@
 
 **AuthenticationManager.swift:**
 - ✅ Keychain service: `com.arkheholdings.vault`
-- ✅ Salt prefix: `ArkheVault_` (was `ForgedInFire_`)
+- ✅ Salt prefix: `ArkheVault_` (was `ArkheVault_`)
 - ✅ Biometric prompt: "Authenticate to access Arkhe Vault"
 
 **SessionManager.swift:**
@@ -62,13 +62,13 @@
 
 ```bash
 # Global find and replace in all .swift files:
-Forged In Fire → Arkhe Vault
-ForgedInFire → ArkheVault
-forgedinfire → arkhevault
-com.forgedinfire → com.arkheholdings.vault
-ForgeButton → ArkheButton
-ForgeCard → ArkheCard
-ForgeLogo → ArkheLogo
+Arkhe Vault → Arkhe Vault
+ArkheVault → ArkheVault
+arkhevault → arkhevault
+com.arkheholdings.vault → com.arkheholdings.vault
+ArkheButton → ArkheButton
+ArkheCard → ArkheCard
+ArkheLogo → ArkheLogo
 ```
 
 **Key files to update:**
@@ -77,7 +77,7 @@ ForgeLogo → ArkheLogo
 - [ ] `Configuration.swift` - Bundle ID references
 - [ ] `LoginView.swift` - Welcome text
 - [ ] `MainWindow.swift` - Window title
-- [ ] `ForgedInFireApp.swift` → Rename to `ArkheVaultApp.swift`
+- [ ] `ArkheVaultApp.swift` → Rename to `ArkheVaultApp.swift`
 - [ ] All feature view files
 
 ### Medium Priority (Documentation)
