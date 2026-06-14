@@ -19,7 +19,7 @@ struct ControlsPanelView: View {
                 PremiumSliderControl(
                     icon: "speedometer",
                     title: "Typing Speed",
-                    subtitle: "Words per minute — affects delay between keystrokes",
+                    subtitle: "Base pace — natural pauses are added automatically",
                     value: $settings.wordsPerMinute,
                     range: TypingSettings.wpmRange,
                     step: 5,

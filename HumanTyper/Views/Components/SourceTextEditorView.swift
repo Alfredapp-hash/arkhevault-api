@@ -14,7 +14,7 @@ struct SourceTextEditorView: View {
     }
 
     private var estimatedDuration: String {
-        TypingSettings.formatDuration(settings.estimatedDuration(forCharacterCount: characterCount))
+        TypingSettings.formatDuration(settings.estimatedDuration(forText: text))
     }
 
     var body: some View {

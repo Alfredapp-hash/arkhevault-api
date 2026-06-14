@@ -10,11 +10,15 @@ struct TypingSettings: Equatable {
     static let countdownRange: ClosedRange<Int> = 3...10
 
     func estimatedDuration(forCharacterCount count: Int) -> TimeInterval {
-        guard count > 0 else { return 0 }
-        let basePerChar = 60.0 / (wordsPerMinute * 5.0)
-        let thinkingPauses = Double(count) / 60.0 * 0.4
-        let typoOverhead = Double(count) * errorRate * 0.5
-        return Double(count) * basePerChar * 1.12 + thinkingPauses + typoOverhead
+        estimatedDuration(forText: String(repeating: "x", count: count))
+    }
+
+    func estimatedDuration(forText text: String) -> TimeInterval {
+        WritingCadenceEstimator.estimatedDuration(
+            text: text,
+            wordsPerMinute: wordsPerMinute,
+            errorRate: errorRate
+        )
     }
 
     static func formatDuration(_ seconds: TimeInterval) -> String {

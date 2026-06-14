@@ -22,6 +22,7 @@
 		HT000013 /* CountdownRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100015 /* CountdownRingView.swift */; };
 		HT000014 /* StatusIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100016 /* StatusIndicatorView.swift */; };
 		HT000015 /* ControlsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100017 /* ControlsPanelView.swift */; };
+		HT000016 /* NaturalWritingCadence.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100018 /* NaturalWritingCadence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		HT100015 /* CountdownRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownRingView.swift; sourceTree = "<group>"; };
 		HT100016 /* StatusIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusIndicatorView.swift; sourceTree = "<group>"; };
 		HT100017 /* ControlsPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsPanelView.swift; sourceTree = "<group>"; };
+		HT100018 /* NaturalWritingCadence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalWritingCadence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				HT100004 /* AccessibilityChecker.swift */,
 				HT100005 /* KeyboardSimulator.swift */,
 				HT100006 /* HumanTypingEngine.swift */,
+				HT100018 /* NaturalWritingCadence.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				HT000013 /* CountdownRingView.swift in Sources */,
 				HT000014 /* StatusIndicatorView.swift in Sources */,
 				HT000015 /* ControlsPanelView.swift in Sources */,
+				HT000016 /* NaturalWritingCadence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

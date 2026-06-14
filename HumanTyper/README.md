@@ -39,9 +39,28 @@ You can also trigger the system prompt by clicking **Start** — macOS may open 
 
 ## How it works
 
-- **Timing:** Variable delays based on words-per-minute, with jitter, slower punctuation pauses, faster common letter pairs, and occasional “thinking” pauses every ~12 words.
-- **Errors:** At the configured rate, a nearby QWERTY key is typed instead, followed by a short pause, backspace, and the correct character.
-- **Target:** Any app with a focused text field — no special Word integration required.
+Human Typer models **long-form writing** — the way someone types a letter or essay, not robotic constant-speed input.
+
+### Natural writing rhythm
+
+| Behavior | What happens |
+|----------|----------------|
+| **Opening hesitation** | 1–2 second pause before the first character — "how do I begin?" |
+| **Flow bursts** | After finishing a thought, types faster for a short stretch when the words come easily |
+| **Sentence pauses** | 0.5–1.3s after `.` `!` `?` while planning the next sentence |
+| **Deep thought** | Every 2–5 sentences, a longer 1–3s pause as if re-reading or planning |
+| **Clause pauses** | Brief hesitations after `,` `;` `:` while choosing phrasing |
+| **Paragraph breaks** | 1.4–3.8s pause before starting a new paragraph (after blank line) |
+| **Word-search pauses** | Occasional 0.2–1s gaps between words when "finding" the right word |
+| **Long words** | Slightly slower keystrokes on longer or uncommon words |
+| **Fatigue** | Very subtle slowdown on very long documents (1,200+ characters) |
+| **Typos** | Nearby-key mistakes with backspace correction at your error rate |
+
+### Timing engine
+
+- Variable per-keystroke delays with log-normal jitter
+- Faster common letter pairs (`th`, `er`, `in`, etc.)
+- Estimated duration in the UI accounts for sentence, paragraph, and thinking pauses
 
 ## Keyboard layout
 
@@ -76,7 +95,8 @@ HumanTyper/
 ├── Services/
 │   ├── AccessibilityChecker.swift
 │   ├── KeyboardSimulator.swift
-│   └── HumanTypingEngine.swift
+│   ├── HumanTypingEngine.swift
+│   └── NaturalWritingCadence.swift
 ├── Models/TypingSettings.swift
 └── Info.plist
 ```

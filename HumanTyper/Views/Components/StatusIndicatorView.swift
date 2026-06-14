@@ -140,7 +140,7 @@ struct StatusIndicatorView: View {
         case .countdown(let remaining):
             return "Switch to Word or your target app now — \(remaining)s remaining."
         case .typing:
-            return "Keystrokes are being sent to the focused application."
+            return "Writing naturally — pauses at sentences, paragraphs, and between thoughts."
         case .completed:
             return "All characters have been typed successfully."
         case .cancelled:

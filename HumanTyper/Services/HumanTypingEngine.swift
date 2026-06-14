@@ -80,33 +80,48 @@ final class HumanTypingEngine: ObservableObject {
         onProgress: @escaping @Sendable (Int) async -> Void
     ) async throws {
         let keyboard = KeyboardSimulator.shared
-        var context = HumanTypingContext(wordsPerMinute: Int(settings.wordsPerMinute))
+        let characters = Array(text)
+        var cadence = NaturalWritingCadence(wordsPerMinute: Int(settings.wordsPerMinute))
         var previousCharacter: Character?
-        let total = text.count
-        var index = 0
 
-        for character in text {
+        for index in characters.indices {
             try Task.checkCancellation()
+
+            let character = characters[index]
+            let nextCharacter = index + 1 < characters.count ? characters[index + 1] : nil
+
+            let beforePause = cadence.pauseBefore(
+                character: character,
+                previous: previousCharacter,
+                at: index,
+                allCharacters: characters
+            )
+            if beforePause > 0 {
+                try await sleep(seconds: beforePause)
+            }
 
             if shouldMakeTypo(settings: settings, character: character) {
                 try await performTypoSequence(
                     intended: character,
-                    context: &context,
+                    cadence: &cadence,
                     previousCharacter: previousCharacter,
                     keyboard: keyboard
                 )
             } else {
                 keyboard.typeCharacter(character)
-                try await sleep(seconds: context.nextDelay(after: character, previous: previousCharacter))
+                let afterPause = cadence.pauseAfter(
+                    character: character,
+                    previous: previousCharacter,
+                    next: nextCharacter
+                )
+                try await sleep(seconds: afterPause)
             }
 
-            index += 1
-            await onProgress(index)
-
+            await onProgress(index + 1)
             previousCharacter = character
         }
 
-        if total == 0 {
+        if characters.isEmpty {
             await onProgress(0)
         }
     }
@@ -120,85 +135,31 @@ final class HumanTypingEngine: ObservableObject {
 
     private nonisolated static func performTypoSequence(
         intended: Character,
-        context: inout HumanTypingContext,
+        cadence: inout NaturalWritingCadence,
         previousCharacter: Character?,
         keyboard: KeyboardSimulator
     ) async throws {
         guard let typo = KeyCodeMap.nearbyTypo(for: intended) else {
             keyboard.typeCharacter(intended)
-            try await sleep(seconds: context.nextDelay(after: intended, previous: previousCharacter))
+            let afterPause = cadence.pauseAfter(character: intended, previous: previousCharacter, next: nil)
+            try await sleep(seconds: afterPause)
             return
         }
 
         keyboard.typeCharacter(typo)
-        try await sleep(seconds: Double.random(in: 0.15...0.40))
+        try await sleep(seconds: Double.random(in: 0.18...0.45))
 
         keyboard.backspace()
-        try await sleep(seconds: Double.random(in: 0.08...0.18))
+        try await sleep(seconds: Double.random(in: 0.10...0.24))
 
         keyboard.typeCharacter(intended)
-        try await sleep(seconds: context.nextDelay(after: intended, previous: typo))
+        let afterPause = cadence.pauseAfter(character: intended, previous: typo, next: nil)
+        try await sleep(seconds: afterPause)
     }
 
     private nonisolated static func sleep(seconds: TimeInterval) async throws {
         let clamped = max(seconds, 0.03)
         let nanoseconds = UInt64(clamped * 1_000_000_000)
         try await Task.sleep(nanoseconds: nanoseconds)
-    }
-}
-
-private struct HumanTypingContext {
-    private enum Constants {
-        static let logNormalSigma = 0.35
-        static let punctuationMultiplier = 1.35
-        static let digraphMultiplier = 0.85
-        static let thinkingWordInterval = 12
-        static let thinkingPauseRange: ClosedRange<Double> = 0.3...0.8
-        static let commonDigraphs: Set<String> = [
-            "th", "he", "in", "er", "an", "re", "on", "at", "en", "nd",
-            "ti", "es", "or", "te", "of", "ed", "is", "it", "al", "ar"
-        ]
-        static let punctuation: Set<Character> = [".", ",", "!", "?", ";", ":"]
-    }
-
-    let baseDelay: TimeInterval
-    var wordsSincePause = 0
-
-    init(wordsPerMinute: Int) {
-        let normalizedWPM = max(wordsPerMinute, 40)
-        baseDelay = 60.0 / (Double(normalizedWPM) * 5.0)
-    }
-
-    mutating func nextDelay(after character: Character, previous: Character?) -> TimeInterval {
-        if character == " " {
-            wordsSincePause += 1
-            if wordsSincePause >= Constants.thinkingWordInterval {
-                wordsSincePause = 0
-                return Double.random(in: Constants.thinkingPauseRange)
-            }
-        }
-
-        var delay = baseDelay * logNormalMultiplier()
-
-        if let previous, Constants.commonDigraphs.contains(String([previous, character])) {
-            delay *= Constants.digraphMultiplier
-        }
-
-        if Constants.punctuation.contains(character) {
-            delay *= Constants.punctuationMultiplier
-        }
-
-        return max(delay, 0.03)
-    }
-
-    private func logNormalMultiplier() -> Double {
-        let normal = Double.random(in: -1...1) * Constants.logNormalSigma
-        return exp(normal).clamped(to: 0.7...1.4)
-    }
-}
-
-private extension Comparable {
-    func clamped(to range: ClosedRange<Self>) -> Self {
-        min(max(self, range.lowerBound), range.upperBound)
     }
 }
