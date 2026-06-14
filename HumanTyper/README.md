@@ -45,22 +45,26 @@ Human Typer models **long-form writing** — the way someone types a letter or e
 
 | Behavior | What happens |
 |----------|----------------|
-| **Opening hesitation** | 1–2 second pause before the first character — "how do I begin?" |
-| **Flow bursts** | After finishing a thought, types faster for a short stretch when the words come easily |
+| **Variable WPM waves** | Speed drifts up and down in slow and fast cycles — like real essay writing |
+| **Paragraph arc** | Slow start → ramps up → peaks mid-paragraph → eases at the end |
+| **Sentence arc** | Cautious opener → confident middle → release at punctuation |
+| **Flow bursts** | Faster stretches when words come easily after a completed thought |
+| **Opening hesitation** | 1–2 second pause before the first character |
 | **Sentence pauses** | 0.5–1.3s after `.` `!` `?` while planning the next sentence |
-| **Deep thought** | Every 2–5 sentences, a longer 1–3s pause as if re-reading or planning |
-| **Clause pauses** | Brief hesitations after `,` `;` `:` while choosing phrasing |
-| **Paragraph breaks** | 1.4–3.8s pause before starting a new paragraph (after blank line) |
-| **Word-search pauses** | Occasional 0.2–1s gaps between words when "finding" the right word |
-| **Long words** | Slightly slower keystrokes on longer or uncommon words |
-| **Fatigue** | Very subtle slowdown on very long documents (1,200+ characters) |
-| **Typos** | Nearby-key mistakes with backspace correction at your error rate |
+| **Deep thought** | Every 2–5 sentences, a longer 1–3s pause |
+| **Paragraph breaks** | 1.4–3.8s pause before a new paragraph |
+| **Word-search pauses** | Occasional gaps between words when choosing phrasing |
+| **Typos** | Nearby-key mistakes with backspace correction |
 
-### Timing engine
+### Typing all or a selection
 
-- Variable per-keystroke delays with log-normal jitter
-- Faster common letter pairs (`th`, `er`, `in`, etc.)
-- Estimated duration in the UI accounts for sentence, paragraph, and thinking pauses
+1. Paste your full essay into the source editor
+2. Use the **All / Selection** toggle below the editor
+3. **All** — types the entire pasted text
+4. **Selection** — highlight any passage with your mouse, then click **Type Selection**
+5. Duration estimate updates based on what will be typed
+
+Your WPM slider sets the **average** pace; the engine varies speed around it automatically.
 
 ## Keyboard layout
 

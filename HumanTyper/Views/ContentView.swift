@@ -4,6 +4,7 @@ struct ContentView: View {
     @EnvironmentObject private var typingEngine: HumanTypingEngine
 
     @State private var sourceText = ""
+    @State private var textSelection = TextSelectionState()
     @State private var settings = TypingSettings()
     @State private var hasAccessibility = AccessibilityChecker.isTrusted
 
@@ -16,8 +17,29 @@ struct ContentView: View {
         }
     }
 
+    private var textToType: String? {
+        switch settings.runScope {
+        case .fullText:
+            return sourceText.isEmpty ? nil : sourceText
+        case .selection:
+            return textSelection.selectedText(in: sourceText)
+        }
+    }
+
     private var canStart: Bool {
-        !sourceText.isEmpty && hasAccessibility
+        textToType != nil && hasAccessibility
+    }
+
+    private var startButtonTitle: String {
+        switch settings.runScope {
+        case .fullText:
+            return "Type All Text"
+        case .selection:
+            if let selected = textSelection.selectedText(in: sourceText) {
+                return "Type Selection (\(selected.count))"
+            }
+            return "Type Selection"
+        }
     }
 
     var body: some View {
@@ -46,6 +68,8 @@ struct ContentView: View {
                     HStack(alignment: .top, spacing: AppTheme.Spacing.xl) {
                         SourceTextEditorView(
                             text: $sourceText,
+                            selection: $textSelection,
+                            runScope: $settings.runScope,
                             isDisabled: isRunning,
                             settings: settings
                         )
@@ -56,9 +80,13 @@ struct ContentView: View {
                             isDisabled: isRunning,
                             canStart: canStart,
                             isRunning: isRunning,
-                            onStart: { typingEngine.start(text: sourceText, settings: settings) },
+                            startButtonTitle: startButtonTitle,
+                            onStart: startTyping,
                             onStop: { typingEngine.stop() },
-                            onClear: { sourceText = "" }
+                            onClear: {
+                                sourceText = ""
+                                textSelection = TextSelectionState()
+                            }
                         )
                         .frame(width: 340)
                     }
@@ -77,11 +105,16 @@ struct ContentView: View {
         .animation(.spring(response: 0.45, dampingFraction: 0.86), value: statusKey)
     }
 
+    private func startTyping() {
+        guard let text = textToType else { return }
+        typingEngine.start(text: text, scope: settings.runScope, settings: settings)
+    }
+
     private var statusKey: String {
         switch typingEngine.status {
         case .idle: return "idle"
         case .countdown(let r): return "cd-\(r)"
-        case .typing: return "typing-\(typingEngine.typedCharacters)"
+        case .typing(let scope): return "typing-\(scope)-\(typingEngine.typedCharacters)"
         case .completed: return "done"
         case .cancelled: return "cancel"
         case .failed(let m): return "fail-\(m)"

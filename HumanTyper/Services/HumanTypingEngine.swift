@@ -7,12 +7,15 @@ final class HumanTypingEngine: ObservableObject {
     @Published private(set) var totalCharacters: Int = 0
     @Published private(set) var typedCharacters: Int = 0
     @Published private(set) var countdownTotal: Int = 5
+    @Published private(set) var activeScope: TypingRunScope = .fullText
 
     private var typingTask: Task<Void, Never>?
 
-    func start(text: String, settings: TypingSettings) {
+    func start(text: String, scope: TypingRunScope, settings: TypingSettings) {
         guard !text.isEmpty else {
-            status = .failed("Paste some text first.")
+            status = .failed(scope == .selection
+                ? "Highlight some text in the editor first."
+                : "Paste some text first.")
             return
         }
 
@@ -22,6 +25,7 @@ final class HumanTypingEngine: ObservableObject {
         }
 
         stop()
+        activeScope = scope
         countdownTotal = settings.countdownSeconds
         totalCharacters = text.count
         typedCharacters = 0
@@ -35,7 +39,7 @@ final class HumanTypingEngine: ObservableObject {
             guard let self else { return }
             do {
                 try await runCountdown(seconds: countdownSeconds)
-                status = .typing
+                status = .typing(scope: scope)
                 try await Self.typeText(text, settings: settings) { index in
                     await MainActor.run {
                         self.typedCharacters = index

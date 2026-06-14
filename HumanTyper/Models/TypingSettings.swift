@@ -1,9 +1,31 @@
 import Foundation
 
+enum TypingRunScope: String, CaseIterable, Identifiable {
+    case fullText
+    case selection
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .fullText: return "All"
+        case .selection: return "Selection"
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .fullText: return "doc.text"
+        case .selection: return "selection.pin.in.out"
+        }
+    }
+}
+
 struct TypingSettings: Equatable {
     var wordsPerMinute: Double = 65
     var errorRate: Double = 0.02
     var countdownSeconds: Int = 5
+    var runScope: TypingRunScope = .fullText
 
     static let wpmRange: ClosedRange<Double> = 40...120
     static let errorRateRange: ClosedRange<Double> = 0...0.10
@@ -35,7 +57,7 @@ struct TypingSettings: Equatable {
 enum TypingStatus: Equatable {
     case idle
     case countdown(remaining: Int)
-    case typing
+    case typing(scope: TypingRunScope)
     case completed
     case cancelled
     case failed(String)

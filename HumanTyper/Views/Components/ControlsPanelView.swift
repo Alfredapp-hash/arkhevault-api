@@ -5,6 +5,7 @@ struct ControlsPanelView: View {
     let isDisabled: Bool
     let canStart: Bool
     let isRunning: Bool
+    let startButtonTitle: String
     let onStart: () -> Void
     let onStop: () -> Void
     let onClear: () -> Void
@@ -19,7 +20,7 @@ struct ControlsPanelView: View {
                 PremiumSliderControl(
                     icon: "speedometer",
                     title: "Typing Speed",
-                    subtitle: "Base pace — natural pauses are added automatically",
+                    subtitle: "Average essay pace — WPM naturally rises and falls",
                     value: $settings.wordsPerMinute,
                     range: TypingSettings.wpmRange,
                     step: 5,
@@ -63,8 +64,8 @@ struct ControlsPanelView: View {
         VStack(spacing: AppTheme.Spacing.md) {
             Button(action: onStart) {
                 HStack(spacing: AppTheme.Spacing.sm) {
-                    Image(systemName: "play.fill")
-                    Text("Start Typing")
+                    Image(systemName: settings.runScope == .selection ? "selection.pin.in.out" : "play.fill")
+                    Text(startButtonTitle)
                 }
                 .frame(maxWidth: .infinity)
             }

@@ -104,7 +104,7 @@ struct StatusIndicatorView: View {
 
     private var showsProgressBar: Bool {
         switch status {
-        case .typing:
+        case .typing(let scope):
             return totalCharacters > 0
         default:
             return false
@@ -115,7 +115,7 @@ struct StatusIndicatorView: View {
         switch status {
         case .idle: return "idle"
         case .countdown(let r): return "countdown-\(r)"
-        case .typing: return "typing-\(typedCharacters)"
+        case .typing(let scope): return "typing-\(scope)-\(typedCharacters)"
         case .completed: return "completed"
         case .cancelled: return "cancelled"
         case .failed(let m): return "failed-\(m)"
@@ -126,7 +126,8 @@ struct StatusIndicatorView: View {
         switch status {
         case .idle: return "Ready"
         case .countdown: return "Get ready"
-        case .typing: return "Typing in progress"
+        case .typing(let scope):
+            return scope == .selection ? "Typing selection" : "Typing in progress"
         case .completed: return "Complete"
         case .cancelled: return "Stopped"
         case .failed: return "Something went wrong"
@@ -139,8 +140,10 @@ struct StatusIndicatorView: View {
             return "Paste your text and press Start when you're ready."
         case .countdown(let remaining):
             return "Switch to Word or your target app now — \(remaining)s remaining."
-        case .typing:
-            return "Writing naturally — pauses at sentences, paragraphs, and between thoughts."
+        case .typing(let scope):
+            return scope == .selection
+                ? "Writing your highlighted passage with natural essay rhythm."
+                : "Writing naturally — WPM varies with flow, pauses, and planning."
         case .completed:
             return "All characters have been typed successfully."
         case .cancelled:
