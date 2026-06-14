@@ -2,28 +2,35 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var typingEngine: HumanTypingEngine
+    @EnvironmentObject private var profileStore: TypingProfileStore
+    @EnvironmentObject private var historyStore: RunHistoryStore
+    @EnvironmentObject private var preferences: AppPreferences
 
     @State private var sourceText = ""
     @State private var textSelection = TextSelectionState()
+    @State private var typingQueue: [TypingQueueItem] = []
     @State private var settings = TypingSettings()
     @State private var hasAccessibility = AccessibilityChecker.isTrusted
+    @State private var showOnboarding = false
+    @State private var showHistory = false
+    @State private var showAbout = false
+    @State private var showSummary = false
+    @State private var selectedProfileID: UUID?
 
     private var isRunning: Bool {
         switch typingEngine.status {
-        case .countdown, .typing:
-            return true
-        default:
-            return false
+        case .countdown, .typing, .stopping: return true
+        default: return false
         }
     }
 
     private var textToType: String? {
-        switch settings.runScope {
-        case .fullText:
-            return sourceText.isEmpty ? nil : sourceText
-        case .selection:
-            return textSelection.selectedText(in: sourceText)
-        }
+        TextRunResolver.resolveText(
+            fullText: sourceText,
+            scope: settings.runScope,
+            selection: textSelection,
+            queue: typingQueue
+        )
     }
 
     private var canStart: Bool {
@@ -32,13 +39,18 @@ struct ContentView: View {
 
     private var startButtonTitle: String {
         switch settings.runScope {
-        case .fullText:
-            return "Type All Text"
+        case .fullText: return "Type All Text"
         case .selection:
             if let selected = textSelection.selectedText(in: sourceText) {
                 return "Type Selection (\(selected.count))"
             }
             return "Type Selection"
+        case .fromCursor:
+            if let text = textToType { return "Type From Cursor (\(text.count))" }
+            return "Type From Cursor"
+        case .queued:
+            let count = typingQueue.map(\.text.count).reduce(0, +)
+            return "Type Queue (\(count))"
         }
     }
 
@@ -57,6 +69,10 @@ struct ContentView: View {
                         }
                     }
 
+                    if let warning = typingEngine.focusWarning {
+                        focusWarningBanner(warning)
+                    }
+
                     StatusIndicatorView(
                         status: typingEngine.status,
                         progress: typingEngine.progress,
@@ -65,11 +81,23 @@ struct ContentView: View {
                         countdownTotal: typingEngine.countdownTotal
                     )
 
+                    PermissionsChecklistView(
+                        hasAccessibility: hasAccessibility,
+                        layoutName: KeyboardLayoutService.currentLayoutName,
+                        targetAppName: FocusMonitor.frontmostApplicationName,
+                        dryRun: preferences.dryRunEnabled
+                    )
+
+                    if preferences.dryRunEnabled {
+                        DryRunLogView(log: typingEngine.latestLog)
+                    }
+
                     HStack(alignment: .top, spacing: AppTheme.Spacing.xl) {
                         SourceTextEditorView(
                             text: $sourceText,
                             selection: $textSelection,
                             runScope: $settings.runScope,
+                            queue: $typingQueue,
                             isDisabled: isRunning,
                             settings: settings
                         )
@@ -77,6 +105,9 @@ struct ContentView: View {
 
                         ControlsPanelView(
                             settings: $settings,
+                            profileStore: profileStore,
+                            selectedProfileID: $selectedProfileID,
+                            preferences: preferences,
                             isDisabled: isRunning,
                             canStart: canStart,
                             isRunning: isRunning,
@@ -86,38 +117,74 @@ struct ContentView: View {
                             onClear: {
                                 sourceText = ""
                                 textSelection = TextSelectionState()
-                            }
+                                typingQueue = []
+                            },
+                            onShowHistory: { showHistory = true },
+                            onShowAbout: { showAbout = true }
                         )
-                        .frame(width: 340)
+                        .frame(width: 360)
                     }
                 }
                 .padding(AppTheme.Spacing.xxl)
             }
         }
-        .frame(minWidth: 900, minHeight: 680)
+        .frame(minWidth: 940, minHeight: 720)
         .onAppear {
             hasAccessibility = AccessibilityChecker.requestAccess(prompt: false)
+            showOnboarding = !preferences.hasCompletedOnboarding
         }
         .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) { _ in
             hasAccessibility = AccessibilityChecker.isTrusted
         }
-        .animation(.spring(response: 0.45, dampingFraction: 0.86), value: hasAccessibility)
-        .animation(.spring(response: 0.45, dampingFraction: 0.86), value: statusKey)
+        .onChange(of: typingEngine.status) { _, newStatus in
+            if case .completed(let summary) = newStatus {
+                historyStore.add(summary)
+                showSummary = true
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .showAbout)) { _ in
+            showAbout = true
+        }
+        .sheet(isPresented: $showOnboarding) {
+            OnboardingView(isPresented: $showOnboarding) {
+                preferences.hasCompletedOnboarding = true
+            }
+        }
+        .sheet(isPresented: $showHistory) {
+            HistoryView(historyStore: historyStore)
+        }
+        .sheet(isPresented: $showAbout) {
+            AboutView()
+        }
+        .sheet(isPresented: $showSummary) {
+            if let summary = typingEngine.lastSummary {
+                RunSummarySheet(summary: summary, log: typingEngine.latestLog)
+            }
+        }
     }
 
     private func startTyping() {
         guard let text = textToType else { return }
-        typingEngine.start(text: text, scope: settings.runScope, settings: settings)
+        typingEngine.start(
+            text: text,
+            scope: settings.runScope,
+            settings: settings,
+            preferences: preferences
+        )
     }
 
-    private var statusKey: String {
-        switch typingEngine.status {
-        case .idle: return "idle"
-        case .countdown(let r): return "cd-\(r)"
-        case .typing(let scope): return "typing-\(scope)-\(typingEngine.typedCharacters)"
-        case .completed: return "done"
-        case .cancelled: return "cancel"
-        case .failed(let m): return "fail-\(m)"
+    private func focusWarningBanner(_ message: String) -> some View {
+        HStack(spacing: AppTheme.Spacing.sm) {
+            Image(systemName: "exclamationmark.triangle.fill")
+                .foregroundStyle(AppTheme.warning)
+            Text(message)
+                .font(AppTheme.captionFont())
+                .foregroundStyle(AppTheme.textSecondary)
+        }
+        .padding(AppTheme.Spacing.md)
+        .background {
+            RoundedRectangle(cornerRadius: AppTheme.Radius.md, style: .continuous)
+                .fill(AppTheme.warning.opacity(0.1))
         }
     }
 }
@@ -125,5 +192,8 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environmentObject(HumanTypingEngine())
-        .frame(width: 960, height: 720)
+        .environmentObject(TypingProfileStore())
+        .environmentObject(RunHistoryStore())
+        .environmentObject(AppPreferences())
+        .frame(width: 980, height: 760)
 }

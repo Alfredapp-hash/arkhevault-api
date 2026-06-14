@@ -34,11 +34,16 @@ struct NaturalWritingCadence {
     private var wordsInParagraph = 0
     private var nextDeepThoughtAfterSentences: Int
     private var nextMicroPauseAfterWords: Int
-    private var paragraphCount = 0
 
-    init(wordsPerMinute: Int) {
+    private let documentMode: TypingDocumentMode
+    private let fullText: String
+    private var currentWord = ""
+
+    init(wordsPerMinute: Int, documentMode: TypingDocumentMode = .essay, fullText: String = "") {
         let wpm = max(wordsPerMinute, 40)
-        baseDelay = 60.0 / (Double(wpm) * 5.0)
+        self.documentMode = documentMode
+        self.fullText = fullText
+        baseDelay = 60.0 / (Double(wpm) * 5.0) / documentMode.velocityMultiplier
         nextDeepThoughtAfterSentences = Int.random(in: 2...4)
         nextMicroPauseAfterWords = Int.random(in: 4...9)
     }
@@ -69,7 +74,7 @@ struct NaturalWritingCadence {
             wordsInParagraph = 0
             burstCharactersRemaining = 0
             resetVelocity(for: .warmingUp, multiplier: randomRange(0.55...0.72))
-            return randomRange(1.4...3.8)
+            return randomRange(1.4...3.8) * documentMode.pauseMultiplier
         }
 
         if isSentenceStart(character: character, previous: previous, before: index, in: allCharacters) {
@@ -116,7 +121,7 @@ struct NaturalWritingCadence {
             return pauseAfterSpace()
         }
 
-        return keystrokeDelay(for: character, previous: previous)
+        return keystrokeDelay(for: character, previous: previous, at: charactersTyped - 1)
     }
 
     // MARK: - Velocity engine
@@ -284,11 +289,18 @@ struct NaturalWritingCadence {
             return randomRange(0.35...1.05)
         }
 
-        return keystrokeDelay(for: " ", previous: nil)
+        return keystrokeDelay(for: " ", previous: nil, at: charactersTyped)
     }
 
-    private mutating func keystrokeDelay(for character: Character, previous: Character?) -> TimeInterval {
+    private mutating func keystrokeDelay(for character: Character, previous: Character?, at index: Int) -> TimeInterval {
         var delay = (baseDelay / velocityMultiplier) * logNormalMultiplier() * fatigueMultiplier()
+
+        let segment = TextStructureAnalyzer.segment(at: index, in: fullText)
+        delay *= TextStructureAnalyzer.pauseMultiplier(for: segment, mode: documentMode)
+
+        if !currentWord.isEmpty {
+            delay *= WordFrequencyService.delayMultiplier(forWord: currentWord)
+        }
 
         if burstCharactersRemaining > 0 {
             burstCharactersRemaining -= 1
@@ -314,8 +326,10 @@ struct NaturalWritingCadence {
     private mutating func updateWordTracking(for character: Character) {
         if character.isLetter || character.isNumber || character == "'" {
             currentWordLength += 1
+            currentWord.append(character)
         } else {
             currentWordLength = 0
+            currentWord = ""
         }
     }
 

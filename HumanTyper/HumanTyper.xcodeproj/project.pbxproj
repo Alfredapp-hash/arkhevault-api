@@ -24,6 +24,26 @@
 		HT000015 /* ControlsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100017 /* ControlsPanelView.swift */; };
 		HT000016 /* NaturalWritingCadence.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100018 /* NaturalWritingCadence.swift */; };
 		HT000017 /* SelectableTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100019 /* SelectableTextEditor.swift */; };
+		HT000018 /* TypingDocumentMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100020 /* TypingDocumentMode.swift */; };
+		HT000019 /* TypingProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100021 /* TypingProfile.swift */; };
+		HT000020 /* RunHistoryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100022 /* RunHistoryEntry.swift */; };
+		HT000021 /* TypingRunLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100023 /* TypingRunLog.swift */; };
+		HT000022 /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100024 /* AppPreferences.swift */; };
+		HT000023 /* KeyboardLayoutService.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100025 /* KeyboardLayoutService.swift */; };
+		HT000024 /* FocusMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100026 /* FocusMonitor.swift */; };
+		HT000025 /* PasteInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100027 /* PasteInjector.swift */; };
+		HT000026 /* TextStructureAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100028 /* TextStructureAnalyzer.swift */; };
+		HT000027 /* AdaptiveTimingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100029 /* AdaptiveTimingController.swift */; };
+		HT000028 /* TypingErrorSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100030 /* TypingErrorSimulator.swift */; };
+		HT000029 /* TypingSessionRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100031 /* TypingSessionRunner.swift */; };
+		HT000030 /* TypingSoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100032 /* TypingSoundPlayer.swift */; };
+		HT000031 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100033 /* OnboardingView.swift */; };
+		HT000032 /* RunSummarySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100034 /* RunSummarySheet.swift */; };
+		HT000033 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100035 /* HistoryView.swift */; };
+		HT000034 /* PermissionsChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100036 /* PermissionsChecklistView.swift */; };
+		HT000035 /* DryRunLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100037 /* DryRunLogView.swift */; };
+		HT000036 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100038 /* AboutView.swift */; };
+		HT000037 /* TypingQueueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100039 /* TypingQueueView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +66,26 @@
 		HT100017 /* ControlsPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsPanelView.swift; sourceTree = "<group>"; };
 		HT100018 /* NaturalWritingCadence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaturalWritingCadence.swift; sourceTree = "<group>"; };
 		HT100019 /* SelectableTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableTextEditor.swift; sourceTree = "<group>"; };
+		HT100020 /* TypingDocumentMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingDocumentMode.swift; sourceTree = "<group>"; };
+		HT100021 /* TypingProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingProfile.swift; sourceTree = "<group>"; };
+		HT100022 /* RunHistoryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunHistoryEntry.swift; sourceTree = "<group>"; };
+		HT100023 /* TypingRunLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingRunLog.swift; sourceTree = "<group>"; };
+		HT100024 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
+		HT100025 /* KeyboardLayoutService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutService.swift; sourceTree = "<group>"; };
+		HT100026 /* FocusMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusMonitor.swift; sourceTree = "<group>"; };
+		HT100027 /* PasteInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteInjector.swift; sourceTree = "<group>"; };
+		HT100028 /* TextStructureAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStructureAnalyzer.swift; sourceTree = "<group>"; };
+		HT100029 /* AdaptiveTimingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveTimingController.swift; sourceTree = "<group>"; };
+		HT100030 /* TypingErrorSimulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingErrorSimulator.swift; sourceTree = "<group>"; };
+		HT100031 /* TypingSessionRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingSessionRunner.swift; sourceTree = "<group>"; };
+		HT100032 /* TypingSoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingSoundPlayer.swift; sourceTree = "<group>"; };
+		HT100033 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		HT100034 /* RunSummarySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSummarySheet.swift; sourceTree = "<group>"; };
+		HT100035 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		HT100036 /* PermissionsChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsChecklistView.swift; sourceTree = "<group>"; };
+		HT100037 /* DryRunLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DryRunLogView.swift; sourceTree = "<group>"; };
+		HT100038 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		HT100039 /* TypingQueueView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingQueueView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +156,13 @@
 				HT100016 /* StatusIndicatorView.swift */,
 				HT100017 /* ControlsPanelView.swift */,
 				HT100019 /* SelectableTextEditor.swift */,
+				HT100033 /* OnboardingView.swift */,
+				HT100034 /* RunSummarySheet.swift */,
+				HT100035 /* HistoryView.swift */,
+				HT100036 /* PermissionsChecklistView.swift */,
+				HT100037 /* DryRunLogView.swift */,
+				HT100038 /* AboutView.swift */,
+				HT100039 /* TypingQueueView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -127,6 +174,14 @@
 				HT100005 /* KeyboardSimulator.swift */,
 				HT100006 /* HumanTypingEngine.swift */,
 				HT100018 /* NaturalWritingCadence.swift */,
+				HT100025 /* KeyboardLayoutService.swift */,
+				HT100026 /* FocusMonitor.swift */,
+				HT100027 /* PasteInjector.swift */,
+				HT100028 /* TextStructureAnalyzer.swift */,
+				HT100029 /* AdaptiveTimingController.swift */,
+				HT100030 /* TypingErrorSimulator.swift */,
+				HT100031 /* TypingSessionRunner.swift */,
+				HT100032 /* TypingSoundPlayer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -135,6 +190,11 @@
 			isa = PBXGroup;
 			children = (
 				HT100003 /* TypingSettings.swift */,
+				HT100020 /* TypingDocumentMode.swift */,
+				HT100021 /* TypingProfile.swift */,
+				HT100022 /* RunHistoryEntry.swift */,
+				HT100023 /* TypingRunLog.swift */,
+				HT100024 /* AppPreferences.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -224,6 +284,26 @@
 				HT000015 /* ControlsPanelView.swift in Sources */,
 				HT000016 /* NaturalWritingCadence.swift in Sources */,
 				HT000017 /* SelectableTextEditor.swift in Sources */,
+				HT000018 /* TypingDocumentMode.swift in Sources */,
+				HT000019 /* TypingProfile.swift in Sources */,
+				HT000020 /* RunHistoryEntry.swift in Sources */,
+				HT000021 /* TypingRunLog.swift in Sources */,
+				HT000022 /* AppPreferences.swift in Sources */,
+				HT000023 /* KeyboardLayoutService.swift in Sources */,
+				HT000024 /* FocusMonitor.swift in Sources */,
+				HT000025 /* PasteInjector.swift in Sources */,
+				HT000026 /* TextStructureAnalyzer.swift in Sources */,
+				HT000027 /* AdaptiveTimingController.swift in Sources */,
+				HT000028 /* TypingErrorSimulator.swift in Sources */,
+				HT000029 /* TypingSessionRunner.swift in Sources */,
+				HT000030 /* TypingSoundPlayer.swift in Sources */,
+				HT000031 /* OnboardingView.swift in Sources */,
+				HT000032 /* RunSummarySheet.swift in Sources */,
+				HT000033 /* HistoryView.swift in Sources */,
+				HT000034 /* PermissionsChecklistView.swift in Sources */,
+				HT000035 /* DryRunLogView.swift in Sources */,
+				HT000036 /* AboutView.swift in Sources */,
+				HT000037 /* TypingQueueView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,118 +1,84 @@
 # Human Typer
 
-A simple macOS app that types pasted text into any focused application (Microsoft Word, Notes, a browser, etc.) at a human pace, with natural timing variation and occasional typos that get corrected.
+A macOS app that types pasted text into any focused application at a **human pace** — with natural WPM variation, thinking pauses, typos, and self-corrections.
 
 ## Requirements
 
-- macOS 14.0 or later
-- Xcode 15 or later (to build)
-- **Accessibility** permission (required for keyboard simulation)
+- macOS 14.0+
+- Xcode 15+
+- **Accessibility** permission
 
-## Build
+## Quick start
 
-1. Open `HumanTyper/HumanTyper.xcodeproj` in Xcode.
-2. Select the **HumanTyper** scheme and your Mac as the run destination.
-3. Press **Cmd+R** to build and run.
+1. Open `HumanTyper/HumanTyper.xcodeproj` in Xcode → **Cmd+R**
+2. Complete onboarding and grant **Accessibility**
+3. Paste text, choose scope (**All**, **Selection**, **From Cursor**, or **Queue**)
+4. Pick a document mode (**Essay**, **Email**, **Notes**, **Code**)
+5. Click **Start** → switch to Word during countdown
 
-## First-time setup: Accessibility
+## Features
 
-Human Typer uses macOS `CGEvent` to simulate keystrokes. Without Accessibility access, keystrokes are silently dropped.
+### Typing scopes
+| Scope | How |
+|-------|-----|
+| **All** | Types the full pasted text |
+| **Selection** | Highlight text → type only that part |
+| **From Cursor** | Place cursor (or highlight range) → type from there |
+| **Queue** | Add multiple selections → type in order |
 
-1. Launch Human Typer.
-2. If you see the orange banner, click **Open Settings**.
-3. In **System Settings → Privacy & Security → Accessibility**, enable **Human Typer**.
-4. If prompted on first launch, allow the app to control your computer.
+### Document modes
+- **Essay** — full pauses, deep thought, paragraph arcs
+- **Email** — shorter pauses, moderate speed
+- **Notes** — fast, informal
+- **Code** — steady bursts, fewer thinking breaks
 
-You can also trigger the system prompt by clicking **Start** — macOS may open the Accessibility pane automatically.
+### Natural typing
+- Variable WPM waves, paragraph/sentence arcs
+- Sentence & paragraph planning pauses
+- Nearby-key typos, doubled letters, word revisions
+- Structure-aware slowdown (headings, quotes, citations)
+- Rare-word slowdown
+- Paste fallback for unsupported characters
 
-## Usage
+### Workflow tools
+- **Dry run** — preview timing/events without keystrokes
+- **Saved profiles** — Slow Essay, Quick Email, etc.
+- **Run summary** — actual WPM, typos, pauses
+- **History** — last 20 runs
+- **Export log** — JSON or CSV
+- **Menu bar** — status, dry-run toggle, stop
+- **Pre-flight checklist** — permissions & focus warnings
+- **Auto-focus Word** (optional)
 
-1. **Paste** your text into the **Source text** field.
-2. Adjust **Speed** (WPM), **Error rate**, and **Countdown** if desired.
-   - Default speed: 65 WPM
-   - Default error rate: 2% (nearby-key typos with backspace correction)
-   - Default countdown: 5 seconds
-3. Click **Start**.
-4. During the countdown, **click into your target app** (e.g. a Word document).
-5. Human Typer types the text into whatever field is focused.
-6. Click **Stop** at any time to cancel.
+### Keyboard shortcuts
+| Shortcut | Action |
+|----------|--------|
+| ⌘↩ | Start |
+| Esc | Stop |
+| ⇧⌘V | Paste into source |
 
-## How it works
+## Tests
 
-Human Typer models **long-form writing** — the way someone types a letter or essay, not robotic constant-speed input.
-
-### Natural writing rhythm
-
-| Behavior | What happens |
-|----------|----------------|
-| **Variable WPM waves** | Speed drifts up and down in slow and fast cycles — like real essay writing |
-| **Paragraph arc** | Slow start → ramps up → peaks mid-paragraph → eases at the end |
-| **Sentence arc** | Cautious opener → confident middle → release at punctuation |
-| **Flow bursts** | Faster stretches when words come easily after a completed thought |
-| **Opening hesitation** | 1–2 second pause before the first character |
-| **Sentence pauses** | 0.5–1.3s after `.` `!` `?` while planning the next sentence |
-| **Deep thought** | Every 2–5 sentences, a longer 1–3s pause |
-| **Paragraph breaks** | 1.4–3.8s pause before a new paragraph |
-| **Word-search pauses** | Occasional gaps between words when choosing phrasing |
-| **Typos** | Nearby-key mistakes with backspace correction |
-
-### Typing all or a selection
-
-1. Paste your full essay into the source editor
-2. Use the **All / Selection** toggle below the editor
-3. **All** — types the entire pasted text
-4. **Selection** — highlight any passage with your mouse, then click **Type Selection**
-5. Duration estimate updates based on what will be typed
-
-Your WPM slider sets the **average** pace; the engine varies speed around it automatically.
-
-## Keyboard layout
-
-This version assumes a **US QWERTY** keyboard layout. Non-US layouts may produce incorrect characters for some symbols.
-
-## Troubleshooting
-
-| Problem | Fix |
-|--------|-----|
-| Nothing appears in Word | Confirm Accessibility is enabled and Word’s text cursor is active before the countdown ends |
-| Characters dropped | Lower the WPM slider slightly |
-| Start button disabled | Paste text and grant Accessibility access |
-| Wrong characters | Check that your Mac keyboard layout is US QWERTY |
+Unit tests are in `HumanTyper/Tests/`. In Xcode: **File → New → Target → Unit Testing Bundle**, then add the test files to the target.
 
 ## Project structure
 
 ```
 HumanTyper/
-├── HumanTyperApp.swift
-├── Views/
-│   ├── ContentView.swift
-│   ├── Theme/AppTheme.swift
-│   └── Components/
-│       ├── AppBackgroundView.swift
-│       ├── AppHeaderView.swift
-│       ├── AccessibilityBannerView.swift
-│       ├── SourceTextEditorView.swift
-│       ├── PremiumSliderControl.swift
-│       ├── CountdownRingView.swift
-│       ├── StatusIndicatorView.swift
-│       └── ControlsPanelView.swift
-├── Services/
-│   ├── AccessibilityChecker.swift
-│   ├── KeyboardSimulator.swift
-│   ├── HumanTypingEngine.swift
-│   └── NaturalWritingCadence.swift
-├── Models/TypingSettings.swift
-└── Info.plist
+├── Models/           # Settings, profiles, history, preferences
+├── Services/         # Typing engine, cadence, errors, focus, paste
+├── Views/            # UI components
+└── Tests/            # Unit tests
 ```
 
-## Keyboard shortcuts
+## Troubleshooting
 
-| Shortcut | Action |
-|----------|--------|
-| ⌘↩ | Start typing |
-| Esc | Stop |
-| ⇧⌘V | Paste into source field |
+| Problem | Fix |
+|---------|-----|
+| Nothing types | Grant Accessibility; focus target app before countdown ends |
+| Wrong characters | US QWERTY assumed; unsupported chars use paste fallback |
+| Human Typer still frontmost | Switch to Word during countdown (warning banner shown) |
 
 ## License
 
-For personal and development use.
+Personal and development use.

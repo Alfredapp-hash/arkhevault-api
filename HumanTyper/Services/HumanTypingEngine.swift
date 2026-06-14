@@ -8,14 +8,21 @@ final class HumanTypingEngine: ObservableObject {
     @Published private(set) var typedCharacters: Int = 0
     @Published private(set) var countdownTotal: Int = 5
     @Published private(set) var activeScope: TypingRunScope = .fullText
+    @Published private(set) var latestLog = TypingRunLog()
+    @Published private(set) var focusWarning: String?
+    @Published private(set) var lastSummary: RunSummary?
 
     private var typingTask: Task<Void, Never>?
+    private let sessionRunner = TypingSessionRunner()
 
-    func start(text: String, scope: TypingRunScope, settings: TypingSettings) {
+    func start(
+        text: String,
+        scope: TypingRunScope,
+        settings: TypingSettings,
+        preferences: AppPreferences
+    ) {
         guard !text.isEmpty else {
-            status = .failed(scope == .selection
-                ? "Highlight some text in the editor first."
-                : "Paste some text first.")
+            status = .failed(scopeFailureMessage(scope))
             return
         }
 
@@ -24,33 +31,55 @@ final class HumanTypingEngine: ObservableObject {
             return
         }
 
+        if preferences.autoFocusTargetEnabled {
+            if let bundleID = settings.targetBundleID {
+                _ = FocusMonitor.activateTarget(bundleID: bundleID)
+            } else if settings.documentMode == .essay {
+                _ = FocusMonitor.activateMicrosoftWord()
+            }
+        }
+
         stop()
         activeScope = scope
         countdownTotal = settings.countdownSeconds
         totalCharacters = text.count
         typedCharacters = 0
         progress = 0
+        latestLog = TypingRunLog()
+        focusWarning = nil
         status = .countdown(remaining: settings.countdownSeconds)
 
-        let countdownSeconds = settings.countdownSeconds
-        let characterCount = text.count
+        let configuration = TypingSessionConfiguration(
+            text: text,
+            scope: scope,
+            settings: settings,
+            dryRun: preferences.dryRunEnabled,
+            soundEnabled: preferences.soundEnabled,
+            adaptiveTimingEnabled: preferences.adaptiveTimingEnabled,
+            revisionErrorsEnabled: preferences.revisionErrorsEnabled
+        )
 
         typingTask = Task { [weak self] in
             guard let self else { return }
             do {
-                try await runCountdown(seconds: countdownSeconds)
+                try await runCountdown(seconds: settings.countdownSeconds, settings: settings)
                 status = .typing(scope: scope)
-                try await Self.typeText(text, settings: settings) { index in
+
+                let result = try await sessionRunner.run(configuration: configuration) { typed, total in
                     await MainActor.run {
-                        self.typedCharacters = index
-                        self.totalCharacters = characterCount
-                        self.progress = Double(index) / Double(max(characterCount, 1))
+                        self.typedCharacters = typed
+                        self.totalCharacters = total
+                        self.progress = Double(typed) / Double(max(total, 1))
                     }
+                } onLog: { log in
+                    await MainActor.run { self.latestLog = log }
                 }
+
                 if !Task.isCancelled {
-                    status = .completed
+                    lastSummary = result.summary
+                    status = .completed(summary: result.summary)
                     progress = 1
-                    typedCharacters = characterCount
+                    typedCharacters = text.count
                 }
             } catch is CancellationError {
                 status = .cancelled
@@ -61,109 +90,44 @@ final class HumanTypingEngine: ObservableObject {
     }
 
     func stop() {
+        if case .typing = status {
+            status = .stopping
+        }
         typingTask?.cancel()
         typingTask = nil
-        if case .typing = status {
+        if case .stopping = status {
             status = .cancelled
         } else if case .countdown = status {
             status = .cancelled
         }
     }
 
-    private func runCountdown(seconds: Int) async throws {
+    private func runCountdown(seconds: Int, settings: TypingSettings) async throws {
         for remaining in stride(from: seconds, through: 1, by: -1) {
             try Task.checkCancellation()
             status = .countdown(remaining: remaining)
-            try await Self.sleep(seconds: 1)
+            updateFocusWarning(settings: settings)
+            try await Task.sleep(nanoseconds: 1_000_000_000)
         }
     }
 
-    private nonisolated static func typeText(
-        _ text: String,
-        settings: TypingSettings,
-        onProgress: @escaping @Sendable (Int) async -> Void
-    ) async throws {
-        let keyboard = KeyboardSimulator.shared
-        let characters = Array(text)
-        var cadence = NaturalWritingCadence(wordsPerMinute: Int(settings.wordsPerMinute))
-        var previousCharacter: Character?
-
-        for index in characters.indices {
-            try Task.checkCancellation()
-
-            let character = characters[index]
-            let nextCharacter = index + 1 < characters.count ? characters[index + 1] : nil
-
-            let beforePause = cadence.pauseBefore(
-                character: character,
-                previous: previousCharacter,
-                at: index,
-                allCharacters: characters
-            )
-            if beforePause > 0 {
-                try await sleep(seconds: beforePause)
-            }
-
-            if shouldMakeTypo(settings: settings, character: character) {
-                try await performTypoSequence(
-                    intended: character,
-                    cadence: &cadence,
-                    previousCharacter: previousCharacter,
-                    keyboard: keyboard
-                )
-            } else {
-                keyboard.typeCharacter(character)
-                let afterPause = cadence.pauseAfter(
-                    character: character,
-                    previous: previousCharacter,
-                    next: nextCharacter
-                )
-                try await sleep(seconds: afterPause)
-            }
-
-            await onProgress(index + 1)
-            previousCharacter = character
-        }
-
-        if characters.isEmpty {
-            await onProgress(0)
+    private func updateFocusWarning(settings: TypingSettings) {
+        if FocusMonitor.isHumanTyperFrontmost {
+            focusWarning = "Switch to your target app — Human Typer is still frontmost."
+        } else if let bundleID = settings.targetBundleID,
+                  !FocusMonitor.isTargetFocused(bundleID: bundleID) {
+            focusWarning = "Expected target app is not focused."
+        } else {
+            focusWarning = nil
         }
     }
 
-    private nonisolated static func shouldMakeTypo(settings: TypingSettings, character: Character) -> Bool {
-        guard settings.errorRate > 0 else { return false }
-        guard character.isLetter || character.isNumber else { return false }
-        guard KeyCodeMap.nearbyTypo(for: character) != nil else { return false }
-        return Double.random(in: 0..<1) < settings.errorRate
-    }
-
-    private nonisolated static func performTypoSequence(
-        intended: Character,
-        cadence: inout NaturalWritingCadence,
-        previousCharacter: Character?,
-        keyboard: KeyboardSimulator
-    ) async throws {
-        guard let typo = KeyCodeMap.nearbyTypo(for: intended) else {
-            keyboard.typeCharacter(intended)
-            let afterPause = cadence.pauseAfter(character: intended, previous: previousCharacter, next: nil)
-            try await sleep(seconds: afterPause)
-            return
+    private func scopeFailureMessage(_ scope: TypingRunScope) -> String {
+        switch scope {
+        case .fullText: return "Paste some text first."
+        case .selection: return "Highlight some text in the editor first."
+        case .fromCursor: return "Place the cursor or highlight from where typing should begin."
+        case .queued: return "Add one or more sections to the queue first."
         }
-
-        keyboard.typeCharacter(typo)
-        try await sleep(seconds: Double.random(in: 0.18...0.45))
-
-        keyboard.backspace()
-        try await sleep(seconds: Double.random(in: 0.10...0.24))
-
-        keyboard.typeCharacter(intended)
-        let afterPause = cadence.pauseAfter(character: intended, previous: typo, next: nil)
-        try await sleep(seconds: afterPause)
-    }
-
-    private nonisolated static func sleep(seconds: TimeInterval) async throws {
-        let clamped = max(seconds, 0.03)
-        let nanoseconds = UInt64(clamped * 1_000_000_000)
-        try await Task.sleep(nanoseconds: nanoseconds)
     }
 }
