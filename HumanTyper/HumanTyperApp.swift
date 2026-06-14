@@ -8,8 +8,8 @@ struct HumanTyperApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(typingEngine)
-                .frame(minWidth: 520, minHeight: 560)
         }
-        .windowResizability(.contentSize)
+        .defaultSize(width: 960, height: 720)
+        .windowResizability(.contentMinSize)
     }
 }

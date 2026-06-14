@@ -4,7 +4,7 @@ A simple macOS app that types pasted text into any focused application (Microsof
 
 ## Requirements
 
-- macOS 13.0 or later
+- macOS 14.0 or later
 - Xcode 15 or later (to build)
 - **Accessibility** permission (required for keyboard simulation)
 
@@ -61,7 +61,18 @@ This version assumes a **US QWERTY** keyboard layout. Non-US layouts may produce
 ```
 HumanTyper/
 ├── HumanTyperApp.swift
-├── Views/ContentView.swift
+├── Views/
+│   ├── ContentView.swift
+│   ├── Theme/AppTheme.swift
+│   └── Components/
+│       ├── AppBackgroundView.swift
+│       ├── AppHeaderView.swift
+│       ├── AccessibilityBannerView.swift
+│       ├── SourceTextEditorView.swift
+│       ├── PremiumSliderControl.swift
+│       ├── CountdownRingView.swift
+│       ├── StatusIndicatorView.swift
+│       └── ControlsPanelView.swift
 ├── Services/
 │   ├── AccessibilityChecker.swift
 │   ├── KeyboardSimulator.swift
@@ -69,6 +80,14 @@ HumanTyper/
 ├── Models/TypingSettings.swift
 └── Info.plist
 ```
+
+## Keyboard shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| ⌘↩ | Start typing |
+| Esc | Stop |
+| ⇧⌘V | Paste into source field |
 
 ## License
 

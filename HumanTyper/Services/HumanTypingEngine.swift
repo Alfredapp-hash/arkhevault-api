@@ -3,6 +3,10 @@ import Foundation
 @MainActor
 final class HumanTypingEngine: ObservableObject {
     @Published private(set) var status: TypingStatus = .idle
+    @Published private(set) var progress: Double = 0
+    @Published private(set) var totalCharacters: Int = 0
+    @Published private(set) var typedCharacters: Int = 0
+    @Published private(set) var countdownTotal: Int = 5
 
     private var typingTask: Task<Void, Never>?
 
@@ -18,21 +22,36 @@ final class HumanTypingEngine: ObservableObject {
         }
 
         stop()
+        countdownTotal = settings.countdownSeconds
+        totalCharacters = text.count
+        typedCharacters = 0
+        progress = 0
         status = .countdown(remaining: settings.countdownSeconds)
 
         let countdownSeconds = settings.countdownSeconds
-        typingTask = Task {
+        let characterCount = text.count
+
+        typingTask = Task { [weak self] in
+            guard let self else { return }
             do {
                 try await runCountdown(seconds: countdownSeconds)
-                await MainActor.run { status = .typing }
-                try await Self.typeText(text, settings: settings)
+                status = .typing
+                try await Self.typeText(text, settings: settings) { index in
+                    await MainActor.run {
+                        self.typedCharacters = index
+                        self.totalCharacters = characterCount
+                        self.progress = Double(index) / Double(max(characterCount, 1))
+                    }
+                }
                 if !Task.isCancelled {
-                    await MainActor.run { status = .completed }
+                    status = .completed
+                    progress = 1
+                    typedCharacters = characterCount
                 }
             } catch is CancellationError {
-                await MainActor.run { status = .cancelled }
+                status = .cancelled
             } catch {
-                await MainActor.run { status = .failed(error.localizedDescription) }
+                status = .failed(error.localizedDescription)
             }
         }
     }
@@ -50,15 +69,21 @@ final class HumanTypingEngine: ObservableObject {
     private func runCountdown(seconds: Int) async throws {
         for remaining in stride(from: seconds, through: 1, by: -1) {
             try Task.checkCancellation()
-            await MainActor.run { status = .countdown(remaining: remaining) }
+            status = .countdown(remaining: remaining)
             try await Self.sleep(seconds: 1)
         }
     }
 
-    private nonisolated static func typeText(_ text: String, settings: TypingSettings) async throws {
+    private nonisolated static func typeText(
+        _ text: String,
+        settings: TypingSettings,
+        onProgress: @escaping @Sendable (Int) async -> Void
+    ) async throws {
         let keyboard = KeyboardSimulator.shared
         var context = HumanTypingContext(wordsPerMinute: Int(settings.wordsPerMinute))
         var previousCharacter: Character?
+        let total = text.count
+        var index = 0
 
         for character in text {
             try Task.checkCancellation()
@@ -75,7 +100,14 @@ final class HumanTypingEngine: ObservableObject {
                 try await sleep(seconds: context.nextDelay(after: character, previous: previousCharacter))
             }
 
+            index += 1
+            await onProgress(index)
+
             previousCharacter = character
+        }
+
+        if total == 0 {
+            await onProgress(0)
         }
     }
 

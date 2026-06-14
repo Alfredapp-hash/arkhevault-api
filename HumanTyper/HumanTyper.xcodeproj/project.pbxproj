@@ -13,6 +13,15 @@
 		HT000004 /* AccessibilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100004 /* AccessibilityChecker.swift */; };
 		HT000005 /* KeyboardSimulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100005 /* KeyboardSimulator.swift */; };
 		HT000006 /* HumanTypingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100006 /* HumanTypingEngine.swift */; };
+		HT000007 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100009 /* AppTheme.swift */; };
+		HT000008 /* AppBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100010 /* AppBackgroundView.swift */; };
+		HT000009 /* AppHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100011 /* AppHeaderView.swift */; };
+		HT000010 /* AccessibilityBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100012 /* AccessibilityBannerView.swift */; };
+		HT000011 /* SourceTextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100013 /* SourceTextEditorView.swift */; };
+		HT000012 /* PremiumSliderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100014 /* PremiumSliderControl.swift */; };
+		HT000013 /* CountdownRingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100015 /* CountdownRingView.swift */; };
+		HT000014 /* StatusIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100016 /* StatusIndicatorView.swift */; };
+		HT000015 /* ControlsPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HT100017 /* ControlsPanelView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +33,15 @@
 		HT100006 /* HumanTypingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanTypingEngine.swift; sourceTree = "<group>"; };
 		HT100007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		HT100008 /* HumanTyper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HumanTyper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		HT100009 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		HT100010 /* AppBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBackgroundView.swift; sourceTree = "<group>"; };
+		HT100011 /* AppHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHeaderView.swift; sourceTree = "<group>"; };
+		HT100012 /* AccessibilityBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityBannerView.swift; sourceTree = "<group>"; };
+		HT100013 /* SourceTextEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTextEditorView.swift; sourceTree = "<group>"; };
+		HT100014 /* PremiumSliderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumSliderControl.swift; sourceTree = "<group>"; };
+		HT100015 /* CountdownRingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownRingView.swift; sourceTree = "<group>"; };
+		HT100016 /* StatusIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusIndicatorView.swift; sourceTree = "<group>"; };
+		HT100017 /* ControlsPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlsPanelView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +86,33 @@
 			isa = PBXGroup;
 			children = (
 				HT100002 /* ContentView.swift */,
+				HT300007 /* Theme */,
+				HT300008 /* Components */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		HT300007 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				HT100009 /* AppTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		HT300008 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				HT100010 /* AppBackgroundView.swift */,
+				HT100011 /* AppHeaderView.swift */,
+				HT100012 /* AccessibilityBannerView.swift */,
+				HT100013 /* SourceTextEditorView.swift */,
+				HT100014 /* PremiumSliderControl.swift */,
+				HT100015 /* CountdownRingView.swift */,
+				HT100016 /* StatusIndicatorView.swift */,
+				HT100017 /* ControlsPanelView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		HT300005 /* Services */ = {
@@ -164,6 +207,15 @@
 				HT000004 /* AccessibilityChecker.swift in Sources */,
 				HT000005 /* KeyboardSimulator.swift in Sources */,
 				HT000006 /* HumanTypingEngine.swift in Sources */,
+				HT000007 /* AppTheme.swift in Sources */,
+				HT000008 /* AppBackgroundView.swift in Sources */,
+				HT000009 /* AppHeaderView.swift in Sources */,
+				HT000010 /* AccessibilityBannerView.swift in Sources */,
+				HT000011 /* SourceTextEditorView.swift in Sources */,
+				HT000012 /* PremiumSliderControl.swift in Sources */,
+				HT000013 /* CountdownRingView.swift in Sources */,
+				HT000014 /* StatusIndicatorView.swift in Sources */,
+				HT000015 /* ControlsPanelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +239,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -206,7 +258,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
