@@ -1,2 +1,1 @@
-/** Placeholder for future dashboard module */
-export {};
+export { VerticalSliceButton } from "./VerticalSliceButton";

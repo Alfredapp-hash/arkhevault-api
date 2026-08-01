@@ -1,2 +1,2 @@
-/** Placeholder for future clients module */
-export {};
+export { ClientsPageContent } from "./ClientsPageContent";
+export { ClientDetailContent } from "./ClientDetailContent";

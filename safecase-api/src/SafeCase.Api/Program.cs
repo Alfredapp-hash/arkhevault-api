@@ -110,6 +110,7 @@ app.MapHealthChecks("/health/ready", new Microsoft.AspNetCore.Diagnostics.Health
 });
 
 app.MapIdentityEndpoints();
+app.MapCaseworkEndpoints();
 
 if (builder.Configuration.GetValue("Seed:Enabled", app.Environment.IsDevelopment()))
 {

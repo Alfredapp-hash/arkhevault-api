@@ -1,2 +1,1 @@
-/** Placeholder for future cases module */
-export {};
+export { CaseDetailContent } from "./CaseDetailContent";

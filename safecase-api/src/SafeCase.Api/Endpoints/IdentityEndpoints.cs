@@ -99,43 +99,6 @@ public static class IdentityEndpoints
             return Results.Ok(events);
         }).RequireAuthorization();
 
-        // Tenancy probe used by authorization tests (not a product UI surface).
-        api.MapGet("/organizations/{organizationId:guid}/clients", async (
-            Guid organizationId,
-            SafeCaseDbContext db,
-            OrganizationContext organizationContext,
-            ICurrentUser currentUser,
-            IPermissionGate gate,
-            CancellationToken ct) =>
-        {
-            organizationContext.OrganizationId = organizationId;
-            currentUser.OrganizationId = organizationId;
-
-            if (!currentUser.IsPlatformOperator)
-            {
-                if (currentUser.MembershipId is null)
-                {
-                    throw new NotFoundException("Organization not found.");
-                }
-
-                gate.RequirePermission(PermissionCodes.ClientRead);
-            }
-
-            var clients = await db.Clients.AsNoTracking()
-                .Include(c => c.Identity)
-                .Select(c => new
-                {
-                    c.Id,
-                    c.OrganizationId,
-                    FirstName = c.Identity!.FirstName,
-                    LastName = c.Identity.LastName,
-                    c.Status
-                })
-                .ToListAsync(ct);
-
-            return Results.Ok(clients);
-        }).RequireAuthorization();
-
         return app;
     }
 }

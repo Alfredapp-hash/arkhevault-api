@@ -1,10 +1,15 @@
-import { ModulePlaceholder } from "@/components/shell/ModulePlaceholder";
+import { ClientsPageContent } from "@/features/clients";
 
 export default function ClientsPage() {
   return (
-    <ModulePlaceholder
-      title="Clients"
-      description="Client records and intake workflows will be implemented in src/features/clients."
-    />
+    <section>
+      <header className="page-header">
+        <h1 className="page-title">Clients</h1>
+        <p className="page-lead">
+          View and create client records for your organization.
+        </p>
+      </header>
+      <ClientsPageContent />
+    </section>
   );
 }

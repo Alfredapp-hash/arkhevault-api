@@ -20,6 +20,7 @@ public static class DependencyInjection
         services.AddScoped<MeService>();
         services.AddScoped<OrganizationService>();
         services.AddScoped<MembershipService>();
+        services.AddScoped<CaseworkService>();
 
         var connectionString = configuration.GetConnectionString("SafeCase")
             ?? configuration["DATABASE_URL"]
