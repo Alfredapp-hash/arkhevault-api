@@ -1,0 +1,36 @@
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+.vs/
+
+# Secrets / local env
+.env
+.env.*
+!.env.example
+*.local.json
+
+# .NET
+**/bin/
+**/obj/
+**/TestResults/
+**/artifacts/
+*.user
+
+# Node
+**/node_modules/
+**/.next/
+**/out/
+**/coverage/
+**/.turbo/
+
+# Netlify
+.netlify/
+
+# Python
+**/__pycache__/
+
+# Playwright
+**/test-results/
+**/playwright-report/

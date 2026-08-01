@@ -1,0 +1,493 @@
+@import "tailwindcss";
+
+:root {
+  /* Calm victim-services palette — soft slate, sage, warm paper */
+  --color-paper: #f4f7f9;
+  --color-paper-elevated: #fbfcfd;
+  --color-ink: #1c2a36;
+  --color-ink-muted: #4f6270;
+  --color-ink-subtle: #7a8d9a;
+  --color-accent: #3d6b7a;
+  --color-accent-soft: #e3eef2;
+  --color-sage: #5a7d66;
+  --color-sage-soft: #e8f0ea;
+  --color-border: #d4dee4;
+  --color-border-strong: #b8c7d1;
+  --color-focus: #2f5f72;
+
+  --font-display: var(--font-source-serif);
+  --font-body: var(--font-dm-sans);
+
+  --shell-header-height: 5.5rem;
+  --shell-sidebar-width: 14rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 1rem;
+  --shadow-soft: 0 1px 2px rgb(28 42 54 / 0.04),
+    0 8px 24px rgb(28 42 54 / 0.06);
+}
+
+@theme inline {
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(
+      ellipse 120% 80% at 10% -10%,
+      rgb(227 238 242 / 0.9),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 90% 60% at 100% 0%,
+      rgb(232 240 234 / 0.75),
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-paper) 0%,
+      #eef3f6 100%
+    );
+  background-attachment: fixed;
+}
+
+/* ── App shell ── */
+
+.app-shell {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: var(--shell-header-height);
+  padding: 1rem 1.75rem;
+  border-bottom: 1px solid var(--color-border);
+  background: rgb(251 252 253 / 0.82);
+  backdrop-filter: blur(10px);
+}
+
+.app-header-brand {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.app-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.app-body {
+  display: grid;
+  grid-template-columns: var(--shell-sidebar-width) 1fr;
+  flex: 1;
+  min-height: 0;
+}
+
+.app-sidebar {
+  padding: 1.25rem 0.75rem;
+  border-right: 1px solid var(--color-border);
+  background: rgb(251 252 253 / 0.55);
+}
+
+.app-main {
+  padding: 2rem 2.25rem 3rem;
+  min-width: 0;
+}
+
+/* ── Brand ── */
+
+.brand-hero-link,
+.brand-compact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-hero-mark,
+.brand-compact-mark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-paper-elevated);
+  background: linear-gradient(145deg, var(--color-accent), var(--color-sage));
+  border-radius: var(--radius-md);
+}
+
+.brand-hero-mark {
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: 1.125rem;
+}
+
+.brand-compact-mark {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.75rem;
+}
+
+.brand-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.brand-hero-name {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.brand-hero-tagline {
+  font-size: 0.875rem;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.01em;
+}
+
+.brand-compact-name {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ── Navigation ── */
+
+.app-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.app-nav-link {
+  display: block;
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-ink-muted);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.app-nav-link:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+}
+
+.app-nav-link--active {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ── Org selector ── */
+
+.org-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 12rem;
+}
+
+.org-selector-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-subtle);
+}
+
+.org-selector-control {
+  appearance: none;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(45deg, transparent 50%, var(--color-ink-subtle) 50%) no-repeat
+      calc(100% - 1rem) calc(50% - 2px) / 6px 6px,
+    var(--color-paper-elevated);
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--color-ink);
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+/* ── User menu ── */
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid var(--color-border);
+}
+
+.user-menu-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.125rem;
+}
+
+.user-menu-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.user-menu-role {
+  font-size: 0.75rem;
+  color: var(--color-ink-subtle);
+}
+
+.user-menu-action {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.user-menu-action:hover {
+  text-decoration: underline;
+}
+
+/* ── Page content ── */
+
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.5rem, 2vw, 1.875rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.page-lead {
+  margin: 0;
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+}
+
+.dashboard-focus {
+  max-width: 40rem;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-paper-elevated);
+  box-shadow: var(--shadow-soft);
+}
+
+.dashboard-focus-text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--color-ink-muted);
+}
+
+.module-placeholder {
+  max-width: 36rem;
+}
+
+.inline-code {
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  background: var(--color-accent-soft);
+  font-family: ui-monospace, monospace;
+  font-size: 0.875em;
+  color: var(--color-accent);
+}
+
+/* ── Login page ── */
+
+.login-page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+}
+
+.login-card {
+  width: min(100%, 28rem);
+  padding: 2.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-paper-elevated);
+  box-shadow: var(--shadow-soft);
+}
+
+.login-title {
+  margin: 1.5rem 0 0.75rem;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.login-lead {
+  margin: 0 0 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-ink-muted);
+}
+
+.login-status {
+  margin-bottom: 1.25rem;
+}
+
+.login-status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: var(--color-sage-soft);
+  color: var(--color-sage);
+}
+
+.login-status-badge--ready {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.login-status-hint {
+  margin: 0.75rem 0 0;
+  font-size: 0.8125rem;
+  color: var(--color-ink-subtle);
+  line-height: 1.5;
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: white;
+  background: var(--color-accent);
+  cursor: pointer;
+}
+
+.login-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.login-footnote {
+  margin: 1rem 0 0;
+  font-size: 0.75rem;
+  color: var(--color-ink-subtle);
+  word-break: break-all;
+}
+
+.login-back {
+  display: inline-block;
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.login-back:hover {
+  text-decoration: underline;
+}
+
+/* ── Responsive (tablet / desktop first) ── */
+
+@media (max-width: 900px) {
+  .app-body {
+    grid-template-columns: 1fr;
+  }
+
+  .app-sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+  }
+
+  .app-nav-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+
+  .app-header {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .app-header-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .user-menu {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .user-menu-identity {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 540px) {
+  .app-main {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .brand-hero-tagline {
+    display: none;
+  }
+
+  .org-selector {
+    min-width: 0;
+    flex: 1;
+  }
+}

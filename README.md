@@ -1,35 +1,27 @@
-# SafeCase macOS Prototype
+# SafeCase
 
-> **Prototype Status**  
-> This repository is a **design and workflow prototype**.  
+> **Prototype + conversion workspace**  
+> The macOS SwiftUI app in this repository is a **design and workflow prototype**.  
 > It is **not approved** for real survivor, victim, health, legal, confidential, or personally identifying information.  
 > Use synthetic data only.
 
-Formerly known as Forged In Fire Client Manager / Arkhe Vault. This codebase preserves SwiftUI screens, Core Data domain concepts, and operational workflows as a reference for the Azure SaaS rebuild.
+## Layout
 
-## What this repository is
+| Path | Role |
+|---|---|
+| `App/`, `Core/`, `Features/`, `Shared/`, `Tests/` | macOS SwiftUI prototype (reference) |
+| `docs/azure-conversion/` | Authoritative Azure conversion audit, plan, agent prompts |
+| `safecase-api/` | ASP.NET Core 10 API + EF Core + Bicep (Milestone 1 scaffold) |
+| `safecase-web/` | Next.js pilot application shell |
+| `safecase-governance/` | Draft security/privacy/pilot operating docs |
+| `docs/STATUS.md` | Honest completion status |
 
-- A **macOS SwiftUI prototype** for victim-services case management workflows
-- A **feature discovery** and UX reference for the SafeCase web application
-- A **local Core Data** schema that informs the PostgreSQL domain model
+These folders are the conversion plan’s sibling repositories, scaffolded in-tree so delivery can start before GitHub repo splits.
 
-## What this repository is not
-
-- Not a multi-tenant SaaS system
-- Not Azure-compatible production software
-- Not an authoritative source of client records
-- Not approved for live organization data
-
-## Azure conversion
-
-The authoritative conversion plan lives in:
-
-- [`docs/azure-conversion/`](docs/azure-conversion/)
-
-Target architecture:
+## Target architecture
 
 ```text
-Browser / approved client
+Browser (safecase-web)
         │  OpenID Connect
         ▼
 Microsoft Entra External ID
@@ -45,25 +37,33 @@ SafeCase API (ASP.NET Core on Azure App Service)
         └── Azure Functions
 ```
 
-Planned sibling repositories:
+## Quick start (scaffolds)
 
-| Repository | Purpose |
-|---|---|
-| `safecase-macos-prototype` | This repo (rename target) |
-| `safecase-api` | ASP.NET Core 10 API + Bicep + tests |
-| `safecase-web` | Next.js pilot web application |
-| `safecase-governance` | Security, privacy, and pilot operating docs |
+### API
 
-## Important supersession notice
+```bash
+cd safecase-api
+# docker compose up -d   # when Docker is available
+dotnet restore SafeCase.sln
+dotnet build SafeCase.sln
+dotnet test SafeCase.sln --filter "FullyQualifiedName~UnitTests|FullyQualifiedName~ArchitectureTests"
+dotnet run --project src/SafeCase.Api
+```
 
-Older planning documents in this repository describe an AWS / Node.js / custom JWT path (`UPGRADE_PASS_2_SAAS_INFRASTRUCTURE.md`, parts of `MASTER_UPGRADE_ROADMAP.md`, `EXECUTION_CHECKLIST_ORDERED.md`). Those plans are **superseded** by the Azure conversion package under `docs/azure-conversion/`.
+### Web
 
-Security claims in `SECURITY_AUDIT_REPORT.md` and production-readiness claims in `PROGRESS_AUDIT.md` / `IMPLEMENTATION_SUMMARY.md` are **not accurate** for a multi-organization SaaS product. See the fresh audit for current findings.
+```bash
+cd safecase-web
+pnpm install
+pnpm dev
+```
 
-## Local development (prototype only)
+## Conversion docs
 
-This is a SwiftUI macOS project. Do not connect it to production identities, provider keys used for real casework, or any real client data.
+Start here: [`docs/azure-conversion/README.md`](docs/azure-conversion/README.md)
 
-## License / use
+Parallel agent prompts: [`docs/azure-conversion/03-PARALLEL-AGENT-PROMPTS.md`](docs/azure-conversion/03-PARALLEL-AGENT-PROMPTS.md)
 
-Internal prototype reference. Treat all sample content as fictional.
+## Supersession
+
+Older AWS/Node plans and “cleared for live testing” claims in root markdown files are **superseded** by `docs/azure-conversion/`.

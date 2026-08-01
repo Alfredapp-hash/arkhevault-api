@@ -1,0 +1,11 @@
+bin/
+obj/
+.vs/
+*.user
+*.swp
+.env
+.appsettings.*.local.json
+TestResults/
+artifacts/
+.idea/
+*.DotSettings.user
