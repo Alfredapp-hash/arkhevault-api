@@ -1,3 +1,7 @@
+> **SUPERSEDED (2026-08-01):** This document is historical and must not guide Azure production work.
+> Authoritative conversion package: [`docs/azure-conversion/`](docs/azure-conversion/).
+> Fresh audit: [`docs/azure-conversion/01-FRESH-AUDIT.md`](docs/azure-conversion/01-FRESH-AUDIT.md).
+
 # Forged In Fire Client Manager - Comprehensive Progress Audit
 
 **Audit Date:** 2024

@@ -1,3 +1,7 @@
+> **SUPERSEDED (2026-08-01):** This document is historical and must not guide Azure production work.
+> Authoritative conversion package: [`docs/azure-conversion/`](docs/azure-conversion/).
+> Fresh audit: [`docs/azure-conversion/01-FRESH-AUDIT.md`](docs/azure-conversion/01-FRESH-AUDIT.md).
+
 # Arkhe Vault - Ordered Execution Checklist
 
 **Execute these steps in exact order. Do not skip ahead.**
