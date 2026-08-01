@@ -1,0 +1,45 @@
+name: safecase-api-ci
+
+on:
+  pull_request:
+    paths:
+      - 'safecase-api/**'
+      - '.github/workflows/safecase-api-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'safecase-api/**'
+
+defaults:
+  run:
+    working-directory: safecase-api
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Restore
+        run: dotnet restore SafeCase.sln
+      - name: Build
+        run: dotnet build SafeCase.sln --no-restore -c Release
+      - name: Unit + architecture tests
+        run: dotnet test SafeCase.sln --no-build -c Release --filter "FullyQualifiedName~SafeCase.UnitTests|FullyQualifiedName~SafeCase.ArchitectureTests"
+      - name: Authorization tests
+        run: |
+          sudo service postgresql start || true
+          sudo -u postgres psql -c "DO \$\$ BEGIN IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname='safecase') THEN CREATE ROLE safecase LOGIN PASSWORD 'safecase_dev_only'; END IF; END \$\$;"
+          sudo -u postgres psql -c "DROP DATABASE IF EXISTS safecase;"
+          sudo -u postgres psql -c "CREATE DATABASE safecase OWNER safecase;"
+          dotnet test tests/SafeCase.AuthorizationTests/SafeCase.AuthorizationTests.csproj -c Release --no-build
+
+      - name: Bicep build
+        run: |
+          if command -v az >/dev/null; then
+            az bicep build --file infrastructure/bicep/main.bicep
+          else
+            echo "Azure CLI not available in runner image path; skipping az bicep (install in hardened pipeline)."
+          fi

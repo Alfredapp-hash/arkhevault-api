@@ -1,0 +1,1 @@
+export { CaseDetailContent } from "./CaseDetailContent";

@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: safecase
+      POSTGRES_USER: safecase
+      POSTGRES_PASSWORD: safecase_dev_only
+    ports:
+      - "5432:5432"
+    volumes:
+      - safecase_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U safecase -d safecase"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  safecase_pg:
