@@ -7,27 +7,36 @@
 | Area | Status |
 |---|---|
 | macOS SwiftUI workflow prototype | Present (reference only) |
-| Azure-compatible multi-tenant SaaS | **Not complete** — scaffolding started |
-| Entra External ID login in production path | Not configured yet |
-| Authoritative PostgreSQL + RLS | Schema/migration scaffolded; RLS policies documented, not yet enforced in deployed env |
-| Web vertical slice (client→case→note→audit) | Shell only |
+| Azure conversion plan / audit | Complete in `docs/azure-conversion/` |
+| API Milestone 1 skeleton | Complete |
+| Identity / organizations / memberships (Wave 2) | **In progress / local complete** |
+| Entra External ID production config | Not configured yet (dev auth header for local only) |
+| PostgreSQL + EF filters + RLS | Migrations + policies + authz tests passing locally |
+| Web shell + org selector against `/me` | Wired for local dev auth |
+| Vertical slice (client→case→note→task→timeline→audit UI) | Not started |
 | Real survivor/client data | **Forbidden** until Phase 8 signoff |
 
-## Monorepo layout (temporary)
+## How to run Wave 2 locally
 
-Sibling repos from the conversion plan are scaffolded in-tree so work can proceed before GitHub repo splits:
+```bash
+# API
+cd safecase-api
+# Postgres required (local service or docker compose)
+dotnet run --project src/SafeCase.Api
+# Dev headers: X-Dev-User: dev-org-a-admin
 
-| Path | Intended eventual repo |
-|---|---|
-| `/` (App, Core, Features, …) | `safecase-macos-prototype` |
-| `safecase-api/` | `safecase-api` |
-| `safecase-web/` | `safecase-web` |
-| `safecase-governance/` | `safecase-governance` |
-| `docs/azure-conversion/` | Shared conversion package |
+# Web
+cd safecase-web
+cp .env.example .env.local
+pnpm install && pnpm dev
+```
 
-## Next implementation targets
+## Test counts (local)
 
-1. Configure Entra External ID (human Azure tenant work)
-2. Membership/role APIs + tenant EF filters + RLS SQL apply
-3. Vertical slice APIs + web UI
-4. Split monorepo folders into dedicated GitHub repositories when ready
+- UnitTests: 6 passed
+- ArchitectureTests: 2 passed
+- AuthorizationTests: 7 passed (tenant isolation, disable membership, IDOR fail-closed)
+
+## Next
+
+Wave 3 vertical slice APIs + web: client create → case → assign → note → task → timeline → audit review.

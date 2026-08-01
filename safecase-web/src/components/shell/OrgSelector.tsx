@@ -1,30 +1,53 @@
 "use client";
 
-import type { Organization } from "@/types/auth";
+import { useSession } from "@/lib/session/SessionProvider";
 
-const PLACEHOLDER_ORGS: Organization[] = [
-  { id: "org-1", name: "North County Victim Services" },
-  { id: "org-2", name: "Metro Family Justice Center" },
-];
+export function OrgSelector() {
+  const { me, loading, selectedOrganizationId, setSelectedOrganizationId, error } =
+    useSession();
 
-interface OrgSelectorProps {
-  organizations?: Organization[];
-  selectedOrgId?: string;
-}
+  const organizations = (me?.memberships ?? [])
+    .filter((m) => m.isActive)
+    .map((m) => ({
+      id: m.organizationId,
+      name: m.organizationName,
+    }));
 
-export function OrgSelector({
-  organizations = PLACEHOLDER_ORGS,
-  selectedOrgId = organizations[0]?.id,
-}: OrgSelectorProps) {
+  if (loading) {
+    return (
+      <label className="org-selector">
+        <span className="org-selector-label">Organization</span>
+        <select className="org-selector-control" disabled aria-label="Select organization">
+          <option>Loading…</option>
+        </select>
+      </label>
+    );
+  }
+
+  if (error || organizations.length === 0) {
+    return (
+      <label className="org-selector">
+        <span className="org-selector-label">Organization</span>
+        <select
+          className="org-selector-control"
+          disabled
+          aria-label="Select organization"
+          title={error ?? "No organization memberships"}
+        >
+          <option>{error ? "API unavailable" : "No organizations"}</option>
+        </select>
+      </label>
+    );
+  }
+
   return (
     <label className="org-selector">
       <span className="org-selector-label">Organization</span>
       <select
         className="org-selector-control"
-        defaultValue={selectedOrgId}
+        value={selectedOrganizationId ?? organizations[0]?.id}
         aria-label="Select organization"
-        disabled
-        title="Organization switching will be enabled after Entra sign-in"
+        onChange={(event) => setSelectedOrganizationId(event.target.value)}
       >
         {organizations.map((org) => (
           <option key={org.id} value={org.id}>

@@ -42,7 +42,9 @@ dotnet run --project src/SafeCase.Api
 
 - Liveness: `GET /health`
 - Readiness (Postgres): `GET /health/ready`
-- Me stub: `GET /api/v1/me`
+- Session: `GET /api/v1/me` (provisions user)
+- Organizations / memberships under `/api/v1/organizations...`
+- Dev auth header (Development only): `X-Dev-User: dev-org-a-admin` plus optional `X-Organization-Id`
 
 ### Entra External ID
 
@@ -56,7 +58,7 @@ Set when ready (do not commit secrets):
 }
 ```
 
-Until configured, the API runs in development-unauthenticated mode for skeleton bring-up only.
+Until Entra is configured, Development uses `Auth:UseDevAuth=true` with `X-Dev-User` headers. Never enable dev auth against real data.
 
 ## Infrastructure
 

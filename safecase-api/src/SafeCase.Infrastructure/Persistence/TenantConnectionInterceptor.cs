@@ -31,7 +31,7 @@ public sealed class TenantConnectionInterceptor(IOrganizationContext organizatio
 
 public interface IOrganizationContext
 {
-    Guid? OrganizationId { get; }
+    Guid? OrganizationId { get; set; }
 }
 
 public sealed class OrganizationContext : IOrganizationContext

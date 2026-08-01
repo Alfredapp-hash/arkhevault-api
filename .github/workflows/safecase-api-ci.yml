@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - 'safecase-api/**'
-      - '.github/workflows/api-ci.yml'
+      - '.github/workflows/safecase-api-ci.yml'
   push:
     branches: [main]
     paths:
@@ -28,6 +28,14 @@ jobs:
         run: dotnet build SafeCase.sln --no-restore -c Release
       - name: Unit + architecture tests
         run: dotnet test SafeCase.sln --no-build -c Release --filter "FullyQualifiedName~SafeCase.UnitTests|FullyQualifiedName~SafeCase.ArchitectureTests"
+      - name: Authorization tests
+        run: |
+          sudo service postgresql start || true
+          sudo -u postgres psql -c "DO \$\$ BEGIN IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname='safecase') THEN CREATE ROLE safecase LOGIN PASSWORD 'safecase_dev_only'; END IF; END \$\$;"
+          sudo -u postgres psql -c "DROP DATABASE IF EXISTS safecase;"
+          sudo -u postgres psql -c "CREATE DATABASE safecase OWNER safecase;"
+          dotnet test tests/SafeCase.AuthorizationTests/SafeCase.AuthorizationTests.csproj -c Release --no-build
+
       - name: Bicep build
         run: |
           if command -v az >/dev/null; then

@@ -8,8 +8,12 @@ using SafeCase.Domain.Tasks;
 
 namespace SafeCase.Infrastructure.Persistence;
 
-public class SafeCaseDbContext(DbContextOptions<SafeCaseDbContext> options) : DbContext(options)
+public class SafeCaseDbContext(
+    DbContextOptions<SafeCaseDbContext> options,
+    IOrganizationContext organizationContext) : DbContext(options)
 {
+    private readonly IOrganizationContext _organizationContext = organizationContext;
+
     public DbSet<Organization> Organizations => Set<Organization>();
     public DbSet<User> Users => Set<User>();
     public DbSet<OrganizationMembership> Memberships => Set<OrganizationMembership>();
@@ -179,5 +183,25 @@ public class SafeCaseDbContext(DbContextOptions<SafeCaseDbContext> options) : Db
             e.Property(x => x.EventHash).HasMaxLength(128).IsRequired();
             e.Property(x => x.RowVersion).IsRowVersion();
         });
+
+        // Fail closed: tenant rows are invisible until organization context is set.
+        modelBuilder.Entity<Client>().HasQueryFilter(x =>
+            _organizationContext.OrganizationId != null && x.OrganizationId == _organizationContext.OrganizationId);
+        modelBuilder.Entity<ClientIdentity>().HasQueryFilter(x =>
+            _organizationContext.OrganizationId != null && x.OrganizationId == _organizationContext.OrganizationId);
+        modelBuilder.Entity<ClientContactMethod>().HasQueryFilter(x =>
+            _organizationContext.OrganizationId != null && x.OrganizationId == _organizationContext.OrganizationId);
+        modelBuilder.Entity<Case>().HasQueryFilter(x =>
+            _organizationContext.OrganizationId != null && x.OrganizationId == _organizationContext.OrganizationId);
+        modelBuilder.Entity<CaseAssignment>().HasQueryFilter(x =>
+            _organizationContext.OrganizationId != null && x.OrganizationId == _organizationContext.OrganizationId);
+        modelBuilder.Entity<CaseNote>().HasQueryFilter(x =>
+            _organizationContext.OrganizationId != null && x.OrganizationId == _organizationContext.OrganizationId);
+        modelBuilder.Entity<CaseTimelineEvent>().HasQueryFilter(x =>
+            _organizationContext.OrganizationId != null && x.OrganizationId == _organizationContext.OrganizationId);
+        modelBuilder.Entity<TaskItem>().HasQueryFilter(x =>
+            _organizationContext.OrganizationId != null && x.OrganizationId == _organizationContext.OrganizationId);
+        modelBuilder.Entity<AuditEvent>().HasQueryFilter(x =>
+            _organizationContext.OrganizationId != null && x.OrganizationId == _organizationContext.OrganizationId);
     }
 }

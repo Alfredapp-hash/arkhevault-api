@@ -1,13 +1,16 @@
-using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using SafeCase.Api.Auth;
+using SafeCase.Api.Endpoints;
+using SafeCase.Api.Middleware;
+using SafeCase.Application;
 using SafeCase.Infrastructure;
-using SafeCase.Infrastructure.Persistence;
+using SafeCase.Infrastructure.Persistence.Seed;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddProblemDetails();
+builder.Services.AddSafeCaseExceptionHandling();
 builder.Services.AddOpenApi();
 builder.Services.AddHealthChecks()
     .AddCheck("self", () => Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckResult.Healthy(), tags: ["live"])
@@ -19,35 +22,50 @@ builder.Services.AddHealthChecks()
         failureStatus: Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded,
         tags: ["ready"]);
 
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var entraTenantId = builder.Configuration["Entra:TenantId"];
 var entraAudience = builder.Configuration["Entra:Audience"];
-var authEnabled = !string.IsNullOrWhiteSpace(entraTenantId) && !string.IsNullOrWhiteSpace(entraAudience);
+var entraConfigured = !string.IsNullOrWhiteSpace(entraTenantId) && !string.IsNullOrWhiteSpace(entraAudience);
+var useDevAuth = builder.Configuration.GetValue("Auth:UseDevAuth", builder.Environment.IsDevelopment());
 
-if (authEnabled)
+var authBuilder = builder.Services.AddAuthentication(options =>
 {
-    builder.Services
-        .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        .AddJwtBearer(options =>
+    if (useDevAuth)
+    {
+        options.DefaultAuthenticateScheme = DevAuthenticationHandler.SchemeName;
+        options.DefaultChallengeScheme = DevAuthenticationHandler.SchemeName;
+    }
+    else
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    }
+});
+
+if (useDevAuth)
+{
+    authBuilder.AddScheme<AuthenticationSchemeOptions, DevAuthenticationHandler>(
+        DevAuthenticationHandler.SchemeName,
+        _ => { });
+}
+
+if (entraConfigured)
+{
+    authBuilder.AddJwtBearer(options =>
+    {
+        options.Authority = $"https://{builder.Configuration["Entra:AuthorityHost"] ?? $"{entraTenantId}.ciamlogin.com"}/{entraTenantId}/v2.0/";
+        options.Audience = entraAudience;
+        options.TokenValidationParameters = new TokenValidationParameters
         {
-            options.Authority = $"https://{builder.Configuration["Entra:AuthorityHost"] ?? $"{entraTenantId}.ciamlogin.com"}/{entraTenantId}/v2.0/";
-            options.Audience = entraAudience;
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                NameClaimType = "name",
-                RoleClaimType = ClaimTypes.Role
-            };
-        });
-    builder.Services.AddAuthorization();
-}
-else
-{
-    // Local/dev skeleton only — never the production default once Entra is configured.
-    builder.Services.AddAuthorization();
+            ValidateIssuer = true,
+            NameClaimType = "name"
+        };
+    });
 }
 
+builder.Services.AddAuthorization();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("WebPilot", policy =>
@@ -69,19 +87,17 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("WebPilot");
-
-if (authEnabled)
-{
-    app.UseAuthentication();
-}
+app.UseAuthentication();
+app.UseMiddleware<CurrentUserMiddleware>();
 app.UseAuthorization();
 
 app.MapGet("/", () => Results.Ok(new
 {
     service = "SafeCase.Api",
-    version = "0.1.0",
+    version = "0.2.0",
     status = "ok",
-    authConfigured = authEnabled
+    authConfigured = entraConfigured,
+    devAuth = useDevAuth
 }));
 
 app.MapHealthChecks("/health", new Microsoft.AspNetCore.Diagnostics.HealthChecks.HealthCheckOptions
@@ -93,31 +109,12 @@ app.MapHealthChecks("/health/ready", new Microsoft.AspNetCore.Diagnostics.Health
     Predicate = check => check.Tags.Contains("ready")
 });
 
-app.MapGet("/api/v1/me", (ClaimsPrincipal user) =>
+app.MapIdentityEndpoints();
+
+if (builder.Configuration.GetValue("Seed:Enabled", app.Environment.IsDevelopment()))
 {
-    if (!authEnabled)
-    {
-        return Results.Ok(new
-        {
-            mode = "development-unauthenticated",
-            message = "Configure Entra:TenantId and Entra:Audience to enable JWT auth.",
-            memberships = Array.Empty<object>()
-        });
-    }
-
-    if (user.Identity?.IsAuthenticated != true)
-    {
-        return Results.Unauthorized();
-    }
-
-    return Results.Ok(new
-    {
-        entraObjectId = user.FindFirstValue("oid") ?? user.FindFirstValue(ClaimTypes.NameIdentifier),
-        name = user.FindFirstValue("name") ?? user.Identity?.Name,
-        email = user.FindFirstValue("preferred_username") ?? user.FindFirstValue(ClaimTypes.Email),
-        memberships = Array.Empty<object>()
-    });
-}).WithName("GetMe");
+    await DevDataSeeder.SeedAsync(app.Services);
+}
 
 app.Run();
 
